@@ -1,0 +1,34 @@
+<template>
+  <div>
+    <NavComponent />
+    <div class="bodi">
+    
+    </div>
+    <FooterComponent />
+  </div>
+</template>
+
+<script>
+
+import NavComponent from "@/components/NavComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
+
+
+
+export default {
+  components: {
+    NavComponent,
+    FooterComponent,
+    
+  },
+};
+</script>
+
+<style scoped>
+.bodi {
+  margin-left: 56px;
+}
+.p {
+  outline: red solid 2px;
+}
+</style>
