@@ -2,10 +2,10 @@
   <div class="sidebar d-flex flex-column flex-shrink-0" @mouseenter="abre" @mouseleave="cierra" :style="{ width: sidebarWidth }">
     <div class="m-auto sidebar2">
       <SidebarLinks to="/ui/login" icon="bi bi-list" class="mb-5" >Login</SidebarLinks>
-      <SidebarLinks to="/ui/compras" icon="bi bi-handbag">Compras</SidebarLinks>
-      <SidebarLinks to="#" icon="bi bi-ticket-perforated">Ofertas</SidebarLinks>
-      <SidebarLinks to="#" icon="bi bi-shop-window">Mi tienda</SidebarLinks>
-      <SidebarLinks to="#" icon="bi bi-coin">Mercado pago</SidebarLinks>
+      <SidebarLinks to="/ui/pago" icon="bi bi-handbag">Compras</SidebarLinks>
+      <SidebarLinks to="/ui/datos" icon="bi bi-ticket-perforated">Ofertas</SidebarLinks>
+      <SidebarLinks to="/ui/ine" icon="bi bi-shop-window">Mi tienda</SidebarLinks>
+      <SidebarLinks to="/ui/anuncio" icon="bi bi-coin">Mercado pago</SidebarLinks>
       <SidebarLinks to="#" icon="bi bi-music-note-list">Música</SidebarLinks>
       <SidebarLinks to="#" icon="bi bi-card-list">Cuentas</SidebarLinks>
       <SidebarLinks to="#" icon="bi bi-person-circle">Perfil</SidebarLinks>
@@ -42,7 +42,7 @@ export default{
   --sidebar-bg-color: rgba(29, 76, 242,1.0);
   --sidebar-item-hover: rgba(30, 144, 255,0.400
   );
-  --sidebar-item-active: #ffffff;
+  --sidebar-item-active: rgba(30, 144, 255,0.400);
 }
 </style>
 
