@@ -9,6 +9,12 @@ import SubirIneView from "@/views/SubirIneView";
 import FormasDePagoView from "@/views/FormasDePagoView";
 import DatosGeneralesView from "@/views/DatosGeneralesView";
 import AnuncioView from "@/views/AnuncioView";
+import LoginView from "@/views/LoginView";
+import RegisterView from "@/views/RegisterView";
+import RegisterConfirmView from "@/views/RegisterConfirmView";
+import ForgotPassView from "@/views/ForgotPassView"
+import ForgotConfirmView from "@/views/ForgotPassView";
+import ForbiddenView from "@/views/ForbiddenView";
 
 const routes = [
   {
@@ -16,6 +22,36 @@ const routes = [
     name: "home",
     component: HomeView,
     meta: { allowedRoles: ["admin", "regular"] },
+  },
+  {
+    path: "/ui/login",
+    name: "login",
+    component: LoginView,
+  },
+  {
+    path: "/ui/register",
+    name: "register",
+    component: RegisterView,
+  },
+  {
+    path: "/ui/rc",
+    name: "registerConfirm",
+    component: RegisterConfirmView,
+  },
+  {
+    path: "/ui/forgot",
+    name: "forgot",
+    component: ForgotPassView,
+  },
+  {
+    path: "/ui/fc",
+    name: "forgotConfirm",
+    component: ForgotConfirmView,
+  },
+  {
+    path: "/ui/edit",
+    name: "edit",
+    component: EditImagesView,
   },
   {
     path: "/ui/ine",
@@ -28,19 +64,19 @@ const routes = [
     component: FormasDePagoView,
   },
   {
-    path: "/ui/edit",
-    name: "edit",
-    component: EditImagesView,
-  },
-  {
     path: "/ui/anuncio",
     name: "Anuncio",
-    component:AnuncioView ,
+    component: AnuncioView,
   },
   {
     path: "/ui/datos",
     name: "datos",
-    component:DatosGeneralesView,
+    component: DatosGeneralesView,
+  },
+  {
+    path: "/ui/forbiden",
+    name: "forbiden",
+    component: ForbiddenView,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: PageNotFoundView },
 ];
@@ -107,7 +143,7 @@ router.beforeEach((to, from, next) => {
       store.state.userData.jwt == undefined
     ) {
       store.commit("setDestination", to.fullPath);
-      router.push("/ui/producto");
+      router.push("/");
       return;
     }
     // SI estoy autenticado actualmente, asi que solo voy a checar si mi rol es el adecuado:
