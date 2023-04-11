@@ -50,8 +50,11 @@
 <script>
 import axios from 'axios'
 import store from '@/store'
-
+import AvisoWindow from '@/components/AvisoWindow.vue'
 export default {
+  components: {
+    AvisoWindow
+  },
     data() {
         return {
             token:'',

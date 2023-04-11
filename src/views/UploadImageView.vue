@@ -160,7 +160,7 @@
             this.loading = false;
             this.loader = 'ancho'
             this.resetImage();
-            router.push("/ui/userimages");
+            router.push("/ui/ine");
           })
           .catch((error) => {
             this.loading = false;

@@ -13,8 +13,9 @@ import LoginView from "@/views/LoginView";
 import RegisterView from "@/views/RegisterView";
 import RegisterConfirmView from "@/views/RegisterConfirmView";
 import ForgotPassView from "@/views/ForgotPassView"
-import ForgotConfirmView from "@/views/ForgotPassView";
+import ForgotConfirmView from "@/views/ForgotConfirmView";
 import ForbiddenView from "@/views/ForbiddenView";
+import UploadImageView from "@/views/UploadImageView"
 
 const routes = [
   {
@@ -44,8 +45,8 @@ const routes = [
     component: ForgotPassView,
   },
   {
-    path: "/ui/fc",
-    name: "forgotConfirm",
+    path: "/ui/forgot-confirm",
+    name: "forgot-confirm",
     component: ForgotConfirmView,
   },
   {
@@ -77,6 +78,11 @@ const routes = [
     path: "/ui/forbiden",
     name: "forbiden",
     component: ForbiddenView,
+  },
+  {
+    path: "/ui/upload",
+    name: "upload",
+    component: UploadImageView,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: PageNotFoundView },
 ];

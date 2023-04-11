@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-
+<NavComponent />
         <div class="card ancho">
             <div class="card-header">
                 <h1>Recuperación de clave</h1>
@@ -8,16 +8,11 @@
             <div class="card-body">
                 <p>Captura tu correo</p>
                 <input type="text" v-model="email" />
-                <br/>
-                <div class="row ">
-                    <vue-recaptcha
-                        id="solvecaptcha"
-                        ref="recaptcha"
-                        sitekey="6LetXssSAAAAAF7WikI044mAdOiyyKPUxkklqMtN"
-                        @expired="onCaptchaExpired"
-                        @verify="onCaptchaVerified"
-                    />
-                </div>                
+                <br />
+                <div class="row">
+                    <vue-recaptcha id="solvecaptcha" ref="recaptcha" sitekey="6LetXssSAAAAAF7WikI044mAdOiyyKPUxkklqMtN"
+                        @expired="onCaptchaExpired" @verify="onCaptchaVerified" />
+                </div>
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-between">
@@ -26,20 +21,10 @@
                 </div>
             </div>
         </div>
-        <MessageComponent 
-            ref="message01" 
-            alertType=3
-            duration=4000 
-            :text=errorText 
-            iconType=1
-            style="max-width: 600px;" />
+        <MessageComponent ref="message01" alertType=3 duration=4000 :text=errorText iconType=1 style="max-width: 600px;" />
 
-            <AvisoWindow 
-                ref="avisoWindow"
-                avisoTitulo="Recuperación de clave" 
-                :avisoMsg=msg
-                :target=destino  />
-        <FooterComponent class="down" />
+        <AvisoWindow ref="avisoWindow" avisoTitulo="Recuperación de clave" :avisoMsg=msg :target=destino />
+        <FooterComponent />
     </div>
 </template>
 
@@ -48,6 +33,9 @@ import axios from 'axios'
 import store from '@/store'
 import { VueRecaptcha } from "vue-recaptcha";
 import AvisoWindow from '@/components/AvisoWindow.vue'
+import FooterComponent from '@/components/FooterComponent.vue';
+import NavComponent from '@/components/NavComponent'
+
 
 const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
@@ -57,45 +45,50 @@ const HTTP_STATUS = {
 };
 
 export default {
+
+    
+
     data() {
         return {
-            email:'',
-            msg:'',
-            destino:'',
-            errorText:''
+            email: '',
+            msg: '',
+            destino: '',
+            errorText: ''
         }
-    }, 
-    components: {
-      VueRecaptcha,
-      AvisoWindow
     },
-    mounted(){
+    components: {
+    VueRecaptcha,
+    AvisoWindow,
+    FooterComponent,
+    NavComponent
+},
+    mounted() {
         store.commit('setDestination', '/ui/results')
     },
     methods: {
-        enviar: function() {
-            if(!emailRegex.test(this.email)) {
-              this.errorText = "Formato de correo inválido"
-              this.$refs.message01.presenta()
-              return
-            }            
+        enviar: function () {
+            if (!emailRegex.test(this.email)) {
+                this.errorText = "Formato de correo inválido"
+                this.$refs.message01.presenta()
+                return
+            }
             axios.get("https://access.qbits.mx/api/forgot-password-request", {
-                    headers: {test: 'ok'},
-                    params: {email: this.email}
+                headers: { test: 'ok' },
+                params: { email: this.email }
             })
-            .then(response => {
-                response;
-                store.commit('setDestination', '/ui/forgot-confirm')
-                this.msg = 'Te hemos enviado un correo con un token de recuperación.'
-                this.destino = '/ui/forgot-confirm'
-                this.$refs.avisoWindow.openModal()
-            })
-            .catch( error => {
-                error;
-                this.msg = error.response
-                this.destino = ''
-                this.$refs.avisoWindow.openModal()
-            })
+                .then(response => {
+                    response;
+                    store.commit('setDestination', '/ui/forgot-confirm')
+                    this.msg = 'Te hemos enviado un correo con un token de recuperación.'
+                    this.destino = '/ui/forgot-confirm'
+                    this.$refs.avisoWindow.openModal()
+                })
+                .catch(error => {
+                    error;
+                    this.msg = error.response
+                    this.destino = ''
+                    this.$refs.avisoWindow.openModal()
+                })
         },
         onCaptchaVerified(recaptchaToken) {
             this.captcha = false;
@@ -112,11 +105,11 @@ export default {
                 console.log(error.data);
                 this.msgErr = "Ha ocurrido un error de red: " + error;
             }).finally(() => (console.log('this.loading = false')));
-          },
-          onCaptchaExpired() {
-                this.captcha = false;
-                this.$refs.recaptcha.reset();
-          },         
+        },
+        onCaptchaExpired() {
+            this.captcha = false;
+            this.$refs.recaptcha.reset();
+        },
     }
 }
 </script>
