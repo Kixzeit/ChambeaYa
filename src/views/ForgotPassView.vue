@@ -47,6 +47,7 @@
 import axios from 'axios'
 import store from '@/store'
 import { VueRecaptcha } from "vue-recaptcha";
+import AvisoWindow from '@/components/AvisoWindow.vue'
 
 const emailRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
@@ -65,7 +66,8 @@ export default {
         }
     }, 
     components: {
-        VueRecaptcha
+      VueRecaptcha,
+      AvisoWindow
     },
     mounted(){
         store.commit('setDestination', '/ui/results')
