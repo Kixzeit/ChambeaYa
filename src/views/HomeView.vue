@@ -1,9 +1,9 @@
 <template>
-  <v-container class="fill-height" fluid style="margin-top: 50px">
-    <v-row no-gutters class="btn-new">
-      <v-col>
+  <div class="container" fluid style="margin-top: 50px">
+    <div class="row">
+      <div class="col">
         <h2>Bienvenido</h2>
-      </v-col>
-    </v-row>
-  </v-container>
+      </div>
+    </div>
+  </div>
 </template>

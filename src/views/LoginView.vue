@@ -48,7 +48,6 @@
             iconType=1
             style="max-width: 600px;" />
 
-        <FooterComponent class="down" />
     </div>        
     
 </template>

@@ -78,7 +78,6 @@
         <div class="row d-flex justify-content-around mt-4 mb-4">
           <div class="col-sm-12 col-lg-3 mb-4"><a href="http://localhost:8080/ui/ine" class="btn btn-primary"><span><i class="fa-solid fa-address-card mx-2" style="color: #ffffff;"></i></span> Credencial INE</a></div>
           <div class="col-sm-12 col-lg-3 mb-4"><a href="http://localhost:8080/ui/pago" class="btn btn-primary"><span><i class="fa-solid fa-credit-card mx-2" style="color: #ffffff;"></i></span> Agregar forma de pago</a></div>
-          
         </div>
         <div class="col-sm-12">
           <button type="submit" class="btn btn-primary my-4">
