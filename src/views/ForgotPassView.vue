@@ -9,7 +9,7 @@
                 <p>Captura tu correo</p>
                 <input type="text" v-model="email" />
                 <br/>
-                <div class="row">
+                <div class="row ">
                     <vue-recaptcha
                         id="solvecaptcha"
                         ref="recaptcha"

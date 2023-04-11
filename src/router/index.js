@@ -143,7 +143,7 @@ router.beforeEach((to, from, next) => {
       store.state.userData.jwt == undefined
     ) {
       store.commit("setDestination", to.fullPath);
-      router.push("/");
+      router.push("/ui/producto");
       return;
     }
     // SI estoy autenticado actualmente, asi que solo voy a checar si mi rol es el adecuado:

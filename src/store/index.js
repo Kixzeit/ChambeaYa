@@ -9,7 +9,7 @@ const store = createStore({
     destination: "/",
     nombreCompleto: "",
     userData: {
-      idUser: 49,
+      idUser: 0,
       nick: "cyz",
       email: "",
       role: "",
