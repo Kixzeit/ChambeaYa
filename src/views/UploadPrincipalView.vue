@@ -47,7 +47,7 @@
             <div class="col">
               <button
                 :disabled=buttonDisabled
-                @click="saveImage"
+                @click="savePrincipal"
                 class="btn btn-success"
                 prepend-icon="mdi-cloud-upload">
                 Guardar
@@ -57,7 +57,7 @@
               <a
                 class="btn btn-danger"
                 :disabled=loading
-                href="/ui/ine">
+                href="/ui/media">
                 Cancelar
               </a>
             </div>

@@ -16,7 +16,8 @@ import ForgotPassView from "@/views/ForgotPassView"
 import ForgotConfirmView from "@/views/ForgotConfirmView";
 import ForbiddenView from "@/views/ForbiddenView";
 import UploadImageView from "@/views/UploadImageView"
-
+import UploadIneView from "@/views/UploadIneView";
+import UploadPrincipalView from "@/views/UploadPrincipalView"
 const routes = [
   {
     path: "/",
@@ -83,6 +84,16 @@ const routes = [
     path: "/ui/upload",
     name: "upload",
     component: UploadImageView,
+  },
+  {
+    path: "/ui/upload/ine",
+    name: "upload-ine",
+    component: UploadIneView,
+  },
+  {
+    path: "/ui/upload/Principal",
+    name: "upload-Princiapl",
+    component: UploadPrincipalView,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: PageNotFoundView },
 ];

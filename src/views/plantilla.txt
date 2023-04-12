@@ -29,3 +29,32 @@ export default {
 }
 
 </style>
+
+
+
+
+
+
+
+rest services:
+___________________________________________
+
+subir ine:
+https://upload.qbits.mx/api/up/upload-identification
+mostrar ine:
+https://upload.qbits.mx/api/up/get-user-identification-images/49
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.
+
+*subir foto perfil:
+https://upload.qbits.mx/api/up/upload-profile-photo
+mostrar foto perfil:
+https://upload.qbits.mx/api/up/get-user-pricipal-image/49
+
+
+
+
+
+
+
+
