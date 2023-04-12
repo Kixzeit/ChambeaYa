@@ -20,6 +20,7 @@
     "buffer": "^6.0.3",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
+    "vue-awesome-sidebar": "^1.2.3",
     "vue-cropper": "^0.5.11",
     "vue-cropperjs": "^5.0.0",
     "vue-recaptcha": "^2.0.3",

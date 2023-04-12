@@ -2,8 +2,9 @@
   <div>
     <NavComponent />
     <div class="bodi ">
+      <h1>{{ idUser }}</h1>
       <!-- div de imagenes -->
-      <a class="btn btn-primary p-2 my-2" href="/ui/upload/ine">Subir archivos</a>
+      <a class="btn btn-primary p-2 my-2" href="/ui/upload/principal">Subir archivos</a>
       <div class="d-flex gap-3 flex-wrap m-5 justify-content-around divi">
       <div v-for="imagen in imagenes" v-bind:key="imagen.id" id="contenedor">
         <div class="elemento position-relative ">
@@ -46,6 +47,7 @@ export default {
   data() {
     return {
       imagenes: [],
+      idUser:store.state.userData.idUser
     };
   },
   mounted() {
@@ -54,7 +56,7 @@ export default {
   methods: {
     carga() {
       axios
-        .get("https://upload.qbits.mx/api/up/get-user-identification-images/49")
+        .get("https://upload.qbits.mx/api/up/get-user-identification-images/"+ this.idUser)
         .then((response) => {
           this.imagenes = response.data;
           console.log(this.imagenes);

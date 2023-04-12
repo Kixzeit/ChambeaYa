@@ -111,7 +111,7 @@
         userId: store.state.userData.idUser,
         jwt: store.state.userData.jwt,
         profilePicture: def,
-        aspectRadio: 3 / 4,
+        aspectRadio: 16 / 9,
         loading: false,
         loader: 'ancho',
         dragover: false,
