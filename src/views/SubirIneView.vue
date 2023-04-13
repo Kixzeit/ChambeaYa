@@ -1,37 +1,42 @@
 <template>
   <div>
     <NavComponent />
-    <div class="bodi ">
+    <div class="bodi">
       <h1>{{ idUser }}</h1>
       <!-- div de imagenes -->
-      <a class="btn btn-primary p-2 my-2" href="/ui/upload/principal">Subir archivos</a>
+      <div
+        v-if="loadedImages < maxImagesAllowed"
+        class="row justify-content-center"
+      >
+        <a class="btn btn-primary p-2 my-2" href="/ui/upload/principal"
+          >Subir archivos</a
+        >
+      </div>
+
+      <div v-else>
+        <h1>El máximo de imágenes permitido ha sido alcanzado</h1>
+      </div>
+
       <div class="d-flex gap-3 flex-wrap m-5 justify-content-around divi">
-      <div v-for="imagen in imagenes" v-bind:key="imagen.id" id="contenedor">
-        <div class="elemento position-relative ">
-          <img
-            :src="une(imagen.fullHttpUploadUrl)"
-            alt=""
-            class="rounded img"
-          />
+        <div v-for="imagen in imagenes" v-bind:key="imagen.id" id="contenedor">
+          <div class="elemento position-relative">
+            <img
+              :src="une(imagen.fullHttpUploadUrl)"
+              alt=""
+              class="rounded img"
+            />
             <i
-              class="fa-solid fa-circle-xmark fa-bounce fa-2xl  position-absolute top-0 end-0 border border-light"
+              class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
               style="color: #ec091f"
               @click="elimina(imagen)"
             ></i>
+          </div>
         </div>
       </div>
-    </div>
-      <FooterComponent/>
+      <FooterComponent />
     </div>
   </div>
 </template>
-
-<!-- <div class="d-flex justify-content-center align-items-center " v-for="imagen in imagenes" v-bind:key="imagen.id">
-          <div class="imagenes">
-            <img :src="une(imagen.fullHttpUploadUrl)" alt=""/><br>
-            <a href="/ui/upload/ine" class="btn btn-primary">chosee file</a>
-          </div>
-      </div> -->
 
 <script>
 import NavComponent from "@/components/NavComponent.vue";
@@ -47,7 +52,9 @@ export default {
   data() {
     return {
       imagenes: [],
-      idUser:store.state.userData.idUser
+      idUser: store.state.userData.idUser,
+      maxImagesAllowed: 2,
+      loadedImages: 0,
     };
   },
   mounted() {
@@ -56,9 +63,13 @@ export default {
   methods: {
     carga() {
       axios
-        .get("https://upload.qbits.mx/api/up/get-user-identification-images/"+ this.idUser)
+        .get(
+          "https://upload.qbits.mx/api/up/get-user-identification-images/" +
+            this.idUser
+        )
         .then((response) => {
           this.imagenes = response.data;
+          this.loadedImages = this.imagenes.length;
           console.log(this.imagenes);
         })
         .catch((error) => {
@@ -66,35 +77,38 @@ export default {
         });
     },
     elimina: function (imagen) {
-      this.loader = 'loader'
-      let tarjeta = document.querySelectorAll(".elemento")
-        console.log('La imagen se ha eliminado correctamente');
-        // Eliminar la imagen de la matriz de imágenes
+      this.loader = "loader";
+      let tarjeta = document.querySelectorAll(".elemento");
+      console.log("La imagen se ha eliminado correctamente");
+      // Eliminar la imagen de la matriz de imágenes
       const index = this.imagenes.indexOf(imagen);
       //this.imagenes.splice(index,1);
-      console.log( index )
+      console.log(index);
       tarjeta[index].textContent = "";
-      console.log(imagen.id)
-      console.log("estoy llegando")
+      console.log(imagen.id);
+      console.log("estoy llegando");
       const options = {
-  method: 'DELETE',
-  url: `https://upload.qbits.mx/api/up/delete-media/${imagen.id}`,
-  headers: {
-    idMedia :imagen.id,
-    IdUser: store.state.userData.idUser,
-    jwt: store.state.userData.jwt,
-        }
+        method: "DELETE",
+        url: `https://upload.qbits.mx/api/up/delete-media/${imagen.id}`,
+        headers: {
+          idMedia: imagen.id,
+          IdUser: store.state.userData.idUser,
+          jwt: store.state.userData.jwt,
+        },
       };
-      console.log("estoy llegando")
-  axios.request(options).then(function (response) {
-    this.loader = 'none'
-    console.log(response.data);
-    this.delete = response.data;
-    location.reload()
-  }).catch(function (error) {
-    this.loader = 'none'
-  console.error(error);
-});
+      console.log("estoy llegando");
+      axios
+        .request(options)
+        .then(function (response) {
+          this.loader = "none";
+          console.log(response.data);
+          this.delete = response.data;
+          location.reload();
+        })
+        .catch(function (error) {
+          this.loader = "none";
+          console.error(error);
+        });
     },
     une(Nombreimg) {
       return `https://media.visitanos.net/image${Nombreimg}`;
@@ -127,8 +141,7 @@ img {
   height: 150px;
 }
 
-.divi{
-  padding-bottom:300px;
+.divi {
+  padding-bottom: 300px;
 }
-
 </style>
