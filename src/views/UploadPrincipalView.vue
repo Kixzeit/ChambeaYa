@@ -57,7 +57,7 @@
               <a
                 class="btn btn-danger"
                 :disabled=loading
-                href="/ui/media">
+                href="/ui/datos">
                 Cancelar
               </a>
             </div>
@@ -141,64 +141,6 @@
         this.imageBlob = "";
         this.cropperSelected="";
       },
-      saveImage: function () {
-        this.loader = 'loader'
-        this.loading = true;
-        let formd = new FormData();
-        formd.append("file", this.imageBlob, this.imageBlob.name);
-        const headers = {
-          "Content-Type": "multipart/form-data",
-          "Access-Control-Allow-Origin": "*",
-          jwt: this.jwt,
-          idUser: store.state.userData.idUser,
-        };
-  
-        axios
-          .post("https://upload.qbits.mx/api/up/upload-image", formd, { headers })
-          .then((response) => {
-            response;
-            this.loading = false;
-            this.loader = 'ancho'
-            this.resetImage();
-            router.push("/ui/ine");
-          })
-          .catch((error) => {
-            this.loading = false;
-            this.loader = 'ancho'
-            this.resetImage();
-            this.errorText = error.response ? error.response.data.exceptionLongDescription : error
-            this.$refs.message01.presenta()
-          });
-      },
-      saveIne: function () {
-        this.loader = 'loader'
-        this.loading = true;
-        let formd = new FormData();
-        formd.append("file", this.imageBlob, this.imageBlob.name);
-        const headers = {
-          "Content-Type": "multipart/form-data",
-          "Access-Control-Allow-Origin": "*",
-          jwt: this.jwt,
-          idUser: store.state.userData.idUser,
-        };
-  
-        axios
-          .post("https://upload.qbits.mx/api/up/upload-identification", formd, { headers })
-          .then((response) => {
-            response;
-            this.loading = false;
-            this.loader = 'ancho'
-            this.resetImage();
-            router.push("/ui/ine");
-          })
-          .catch((error) => {
-            this.loading = false;
-            this.loader = 'ancho'
-            this.resetImage();
-            this.errorText = error.response ? error.response.data.exceptionLongDescription : error
-            this.$refs.message01.presenta()
-          });
-      },
       savePrincipal: function () {
         this.loader = 'loader'
         this.loading = true;
@@ -218,7 +160,7 @@
             this.loading = false;
             this.loader = 'ancho'
             this.resetImage();
-            router.push("/ui/ine");
+            router.push("/ui/datos");
           })
           .catch((error) => {
             this.loading = false;

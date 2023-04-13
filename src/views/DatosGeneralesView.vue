@@ -168,7 +168,7 @@ export default {
     return {
       imagenes: [],
       idUser: store.state.userData.idUser,
-      maxImagesAllowed: 2,
+      maxImagesAllowed: 1,
       loadedImages: 0,
     };
   },

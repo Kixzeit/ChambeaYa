@@ -1,0 +1,42 @@
+<template>
+<div class="content">
+
+<UploadComponent
+class ="centra"
+titulo="subir imagen"
+radio="1"
+apiUrl=""
+returnUrl="""
+/>
+
+</div>
+</template>
+
+<style scoped>
+  .centra {
+    max-width: 600px;
+    margin: auto;
+    padding-top: 10%;
+    padding-bottom: 200px;
+  }
+  .fondo-card {
+    background-color: #efefff;
+  }
+  .croppedImage {
+    display: block;
+    width: 80%;
+    height: auto;
+  }
+  .img-user {
+    text-align: center;
+    padding: 20px;
+  }
+  img {
+    height: 300px;
+    margin: 0 auto;
+  }
+  .drag {
+    background-color: gray;
+    color: white;
+  }
+  </style>

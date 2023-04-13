@@ -5,7 +5,7 @@
       <h1>{{ idUser }}</h1>
       <!-- div de imagenes -->
       <div v-if="loadedImages < maxImagesAllowed" class="">
-        <a class="btn btn-primary" href="/ui/upload/principal"
+        <a class="btn btn-primary" href="/ui/upload/ine"
           >Subir archivos</a
         >
       </div>
@@ -50,7 +50,7 @@ export default {
     return {
       imagenes: [],
       idUser: store.state.userData.idUser,
-      maxImagesAllowed: 1,
+      maxImagesAllowed: 2,
       loadedImages: 0,
     };
   },
