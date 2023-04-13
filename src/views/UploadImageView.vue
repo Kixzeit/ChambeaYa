@@ -57,7 +57,7 @@
               <a
                 class="btn btn-danger"
                 :disabled=loading
-                href="/ui/ine">
+                href="/ui/anuncio">
                 Cancelar
               </a>
             </div>
@@ -111,7 +111,7 @@
         userId: store.state.userData.idUser,
         jwt: store.state.userData.jwt,
         profilePicture: def,
-        aspectRadio: 3 / 4,
+        aspectRadio: 1 / 1,
         loading: false,
         loader: 'ancho',
         dragover: false,
@@ -160,7 +160,7 @@
             this.loading = false;
             this.loader = 'ancho'
             this.resetImage();
-            router.push("/ui/ine");
+            router.push("/ui/anuncio");
           })
           .catch((error) => {
             this.loading = false;

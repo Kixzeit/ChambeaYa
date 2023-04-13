@@ -4,11 +4,8 @@
     <div class="bodi">
       <h1>{{ idUser }}</h1>
       <!-- div de imagenes -->
-      <div
-        v-if="loadedImages < maxImagesAllowed"
-        class="row justify-content-center"
-      >
-        <a class="btn btn-primary p-2 my-2" href="/ui/upload/principal"
+      <div v-if="loadedImages < maxImagesAllowed" class="">
+        <a class="btn btn-primary" href="/ui/upload/principal"
           >Subir archivos</a
         >
       </div>
@@ -17,7 +14,7 @@
         <h1>El máximo de imágenes permitido ha sido alcanzado</h1>
       </div>
 
-      <div class="d-flex gap-3 flex-wrap m-5 justify-content-around divi">
+      <div class="d-flex gap-3 flex-wrap justify-content-around divi">
         <div v-for="imagen in imagenes" v-bind:key="imagen.id" id="contenedor">
           <div class="elemento position-relative">
             <img
@@ -53,7 +50,7 @@ export default {
     return {
       imagenes: [],
       idUser: store.state.userData.idUser,
-      maxImagesAllowed: 2,
+      maxImagesAllowed: 1,
       loadedImages: 0,
     };
   },
