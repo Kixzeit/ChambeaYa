@@ -18,6 +18,7 @@ import ForbiddenView from "@/views/ForbiddenView";
 import UploadImageView from "@/views/UploadImageView"
 import UploadIneView from "@/views/UploadIneView";
 import UploadPrincipalView from "@/views/UploadPrincipalView"
+import MenuSidebarView from "@/views/MenuSidebarView";
 const routes = [
   {
     path: "/",
@@ -94,6 +95,11 @@ const routes = [
     path: "/ui/upload/Principal",
     name: "upload-Princiapl",
     component: UploadPrincipalView,
+  },
+  {
+    path: "/ui/menu",
+    name: "menu",
+    component: MenuSidebarView,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: PageNotFoundView },
 ];
