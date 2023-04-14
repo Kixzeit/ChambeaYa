@@ -1,6 +1,6 @@
 <template>
-  <div style="position: relative;">
-    <div class="nav p-2">
+  <div>
+    <div class="nav p-2" >
       <nav class="navbar">
         <div class="container-fluid">
           <a class="navbar-brand">
@@ -8,7 +8,6 @@
               src="../assets/chambeaya.png"
               alt=""
               class="logo">ChambeaYa!</a>
-          <SideBarComponent />
           <form class="d-flex" role="search">
             <input
               class="form-control me-3 px-5"
@@ -27,11 +26,10 @@
 </template>
 
 <script>
-import SideBarComponent from "@/components/sidebar/SideBarComponent.vue";
+
 
 export default {
   components: {
-    SideBarComponent,
   },
 };
 </script>
@@ -39,8 +37,8 @@ export default {
 <style scoped>
 .nav {
   background-color: #ffa31a;
-  z-index: 10;
-  position: relative;
+  margin-left: 55px;
+  
 }
 .logo {
   width: 60px;

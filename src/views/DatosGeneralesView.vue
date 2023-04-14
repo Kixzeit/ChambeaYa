@@ -20,8 +20,6 @@
       <div v-else>
         <div class="d-flex gap-3 flex-wrap m-5 justify-content-around divi">
           <div
-            v-for="imagen in imagenes"
-            v-bind:key="imagen.id"
             id="contenedor"
           >
             <div class="elemento position-relative">
@@ -166,13 +164,13 @@ export default {
   },
   data() {
     return {
-      imagenes: [],
+      imagen:{},
       idUser: store.state.userData.idUser,
       maxImagesAllowed: 1,
       loadedImages: 0,
     };
   },
-  mounted() {
+mounted() {
     this.carga();
   },
   methods: {
@@ -183,9 +181,9 @@ export default {
             this.idUser
         )
         .then((response) => {
-          this.imagenes = response.data;
-          this.loadedImages = this.imagenes.length;
-          console.log(this.imagenes);
+          this.imagen = response.data;
+          this.loadedImages = this.imagen.length;
+          console.log(this.imagen);
         })
         .catch((error) => {
           console.log(error);
@@ -193,13 +191,11 @@ export default {
     },
     elimina: function (imagen) {
       this.loader = "loader";
-      let tarjeta = document.querySelectorAll(".elemento");
+      let tarjeta = document.querySelector(".elemento");
       console.log("La imagen se ha eliminado correctamente");
       // Eliminar la imagen de la matriz de imágenes
-      const index = this.imagenes.indexOf(imagen);
       //this.imagenes.splice(index,1);
-      console.log(index);
-      tarjeta[index].textContent = "";
+      tarjeta.textContent = "";
       console.log(imagen.id);
       console.log("estoy llegando");
       const options = {
@@ -218,7 +214,6 @@ export default {
           this.loader = "none";
           console.log(response.data);
           this.delete = response.data;
-          location.reload();
         })
         .catch(function (error) {
           this.loader = "none";

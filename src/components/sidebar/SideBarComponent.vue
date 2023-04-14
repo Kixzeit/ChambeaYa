@@ -60,8 +60,7 @@ export default{
   height: 100%;
   min-height: 600px;
   position: fixed;
-  top: 6.3em;
-  left:0;
+  
 
   transition: 0.3s;
 
@@ -73,7 +72,7 @@ export default{
 
 .sidebar2{
   position: fixed;
-  top: 16em;
+  top: 5em;
 }
 
 .collapse-icon{
