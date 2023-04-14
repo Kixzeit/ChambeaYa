@@ -3,7 +3,6 @@
     <router-view />    
   </div>
 </template>
-hola
 <script>
   export default {
     name: 'App'
@@ -47,4 +46,11 @@ nav a.router-link-exact-active {
   filter: alpha(opacity=40);
 }
 
+body{
+  background-image:url('https://www.thestcgroup.co.uk/images/slider/Business-Presentation.jpg');
+  background-repeat:no-repeat;
+  background-size: cover;
+}
+
 </style>
+

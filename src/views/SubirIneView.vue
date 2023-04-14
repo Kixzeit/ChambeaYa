@@ -122,7 +122,11 @@ export default {
 }
 
 .bodi {
-  margin-left: 56px;
+background: rgba(0,0,0,0.8);
+-webkit-backdrop-filter: blur(1px);
+backdrop-filter: blur(1px);
+
+
 }
 .p {
   outline: red solid 2px;
@@ -136,6 +140,7 @@ div > img {
 img {
   width: 300px;
   height: 150px;
+  background-image: url("../assets/fondo.jpeg");
 }
 
 .divi {
