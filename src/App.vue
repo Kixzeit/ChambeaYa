@@ -47,4 +47,8 @@ nav a.router-link-exact-active {
   filter: alpha(opacity=40);
 }
 
+body{
+  background-image: url('');
+}
+
 </style>
