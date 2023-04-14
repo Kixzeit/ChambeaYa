@@ -48,7 +48,9 @@ nav a.router-link-exact-active {
 }
 
 body{
-  background-image: url('');
+  background-image: url('./assets/Business-Presentation.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 </style>

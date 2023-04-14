@@ -98,9 +98,10 @@ export default {
         .request(options)
         .then(function (response) {
           this.loader = "none";
+          this.loadedImages = this.imagenes.length;
           console.log(response.data);
           this.delete = response.data;
-          location.reload();
+          
         })
         .catch(function (error) {
           this.loader = "none";

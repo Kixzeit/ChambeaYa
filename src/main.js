@@ -6,12 +6,9 @@ import store from './store'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-import VueSidebarMenuAkahon from "vue-sidebar-menu-akahon";
-
 const app = createApp(App);
 app
   .component("MessageComponent", MessageComponent)
-  .component("vue-sidebar-menu-akahon", VueSidebarMenuAkahon)
   .use(Toast)
   .use(store)
   .use(router)
