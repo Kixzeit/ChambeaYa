@@ -191,7 +191,7 @@
             icon: 'bx-user',
           },
           {
-            link: '/ui/ine',
+            link: '/ui/upload/ine',
             name: 'Messages',
             tooltip: 'Messages',
             icon: 'bx-chat',
