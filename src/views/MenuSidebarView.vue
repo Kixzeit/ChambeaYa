@@ -1,6 +1,6 @@
 <template>
   <div>
-    <side-bar-component/>
+    <SideBarComponent/>
   </div>
 </template>
 

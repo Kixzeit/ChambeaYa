@@ -57,7 +57,7 @@ export default{
 }
 
 .link:hover {
-    background-color: var(--sidebar-item-hover);
+    background-color:#ffffff;
 }
 
 .link.active {
