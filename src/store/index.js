@@ -49,6 +49,9 @@ const store = createStore({
       state.nombreCompleto = nombreCompleto;
     },
   },
+  clearUserData(state) {
+    state.userData.nick = null;
+  },
   actions: {},
   modules: {},
   plugins: [createPersistedState()],

@@ -1,15 +1,14 @@
 <template>
     <div class="content">
-        <SidebarComponent />
         <h1>Forbidden</h1>
     </div>
 </template>
 
 <script>
-import SidebarComponent from '@/components/sidebar/SideBarComponent.vue'
+
 export default {
     components: {
-        SidebarComponent
+        
     }
 }
 </script>

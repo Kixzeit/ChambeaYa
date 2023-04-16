@@ -10,7 +10,6 @@
               class="logo"
             />ChambeaYa!</a
           >
-          <SideBarComponent />
           <form class="d-flex" role="search">
             <input
               class="form-control me-3 px-5"
@@ -29,11 +28,10 @@
 </template>
 
 <script>
-import SideBarComponent from "@/components/sidebar/SideBarComponent.vue";
 
 export default {
   components: {
-    SideBarComponent,
+    
   },
 };
 </script>

@@ -1,16 +1,16 @@
 <template>
   <div>
-    <SideBarComponent/>
+    <SideBarKixComponent/>
   </div>
 </template>
 
 
 <script>
-import SideBarComponent from '@/components/sidebar/SideBarComponent.vue';
+import SideBarKixComponent from '@/components/SideBarKixComponent.vue'
 
 export default {
   components: {
-    SideBarComponent
+    SideBarKixComponent
   }
 }
 
