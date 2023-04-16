@@ -2,12 +2,102 @@
   <div>
     <header>
       <div class="icon__menu">
-        <i  class="fa-solid fa-bars barras" id="btn_open" @mouseenter="abre" @mouseleave="cierra" :style="{ width: sidebarWidth }"></i>
+        <i
+          class="fa-solid fa-bars barras"
+          id="btn_open"
+          @mouseenter="abre"
+          @mouseleave="cierra"
+          :style="{ width: sidebarWidth3 }"
+        ></i>
+      </div>
+      <div class="d-flex w-100 justify-content-end me-5 gap-">
+        <span v-if="idUser > 0"
+          ><a href="" class="btn btn-primary" v-on:click="handleLogout"
+            >Logout</a
+          ></span
+        >
+        <span v-else><a href="/ui/login" class="btn btn-primary">Login</a>
+          <a href="/ui/register" class="btn btn-primary">Register</a>
+        </span>
       </div>
     </header>
-    <div class="menu__side" id="menu_side"  @mouseenter="abre" @mouseleave="cierra" :style="{ width: sidebarWidth }">
+    <!-- menu que solo se ve en desktop y tablets -->
+    <div
+      class="menu__side"
+      id="menu_side"
+      @mouseenter="abre"
+      @mouseleave="cierra"
+      :style="{ width: sidebarWidth }"
+    >
       <div class="name__page">
         <!-- aqui iria el logo -->
+        <img
+          src="../assets/chambeaya.png"
+          style="width: 35px; height: 35px"
+          alt=""
+        />
+        <i class="fa-solid fa-user-alien"></i>
+        <h4>ChambeaYa!</h4>
+      </div>
+      <!-- menu de opciones -->
+      <div class="options__menu">
+        <!-- aqui van los links -->
+        <a href="http://192.168.1.42:8080/" class="selected">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-house" title="Home"></i>
+            <h4>Home</h4>
+          </div>
+        </a>
+        <a href="/ui/datos">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-user" title="Perfil"></i>
+            <h4>Perfil</h4>
+          </div>
+        </a>
+        <a href="">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-address-card"></i>
+            <h4>Documento Oficial</h4>
+          </div>
+        </a>
+        <a href="">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <h4>Anuncio</h4>
+          </div>
+        </a>
+        <a href="">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <h4>{{ idUser }}</h4>
+          </div>
+        </a>
+        <a href="" v-on:click="handleLogout">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
+            <h4>Logout</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- menu que solo se ve en mobile -->
+    <div
+      class="menu__side movil"
+      id="menu_side"
+      @mouseenter="abre"
+      @mouseleave="cierra"
+      :style="{ width: sidebarWidth3 }"
+    >
+      <div class="name__page">
+        <!-- aqui iria el logo -->
+        <img
+          src="../assets/chambeaya.png"
+          style="width: 35px; height: 35px"
+          alt=""
+        />
         <i class="fa-solid fa-user-alien"></i>
         <h4>ChambeaYa!</h4>
       </div>
@@ -55,54 +145,83 @@
         </a>
       </div>
     </div>
+    <!-- menu que solo se ve en mobile -->
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
-import { computed } from 'vue'
+import { ref } from "vue";
+import { computed } from "vue";
 import { mapState, mapMutations } from "vuex";
-import store from '@/store';
-let collapsed = ref(true)
-console.log(collapsed.value)
+import store from "@/store";
+let collapsed = ref(true);
+let collapsed3 = ref(true);
+console.log(collapsed.value);
 
-const toggleSidebar = () => (collapsed.value = !collapsed.value)
-const abre = () => (collapsed.value = false)
-const cierra = () => (collapsed.value = true)
-const SIDEBAR_WIDTH = 250
-const SIDEBAR_WIDTH_COLLAPSED = 80
+const toggleSidebar = () => (collapsed.value = !collapsed.value);
+const abre = () => (collapsed.value = false);
+const cierra = () => (collapsed.value = true);
+const toggleSidebar3 = () => (collapsed3.value = !collapsed.value);
+const abre3 = () => (collapsed3.value = false);
+const cierra3 = () => (collapsed3.value = true);
+const SIDEBAR_WIDTH = 250;
+const SIDEBAR_WIDTH_COLLAPSED = 80;
 let sidebarWidth = computed(
-    () => `${collapsed.value ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH}px`
-)
-
+  () => `${collapsed.value ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH}px`
+);
+// en version mobile
+const SIDEBAR_WIDTH2 = 250;
+const SIDEBAR_WIDTH_COLLAPSED2 = 0;
+let sidebarWidth3 = computed(
+  () => `${collapsed.value ? SIDEBAR_WIDTH_COLLAPSED2 : SIDEBAR_WIDTH2}px`
+);
 
 export default {
-  setup(){
-    return { collapsed, toggleSidebar, sidebarWidth, abre, cierra }
+  setup() {
+    return {
+      collapsed,
+      collapsed3,
+      toggleSidebar,
+      toggleSidebar3,
+      sidebarWidth,
+      sidebarWidth3,
+      abre,
+      cierra,
+      abre3,
+      cierra3,
+    };
   },
   data() {
     return {
       sidebarWidth2: "250px",
-      idUser: store.state.userData.idUser
-    }
+      sidebarWidth4: "250px",
+      idUser: store.state.userData.idUser,
+    };
   },
   computed: {
-        ...mapState({
-            nick: (state) => state.userData.nick,
-        }),
-    },
+    ...mapState({
+      nick: (state) => state.userData.nick,
+    }),
+  },
   methods: {
-    collapsed2: function() {
-      return collapsed.value?this.sidebarWidth2="80px":this.sidebarWidth2
+    collapsed2: function () {
+      return collapsed.value
+        ? (this.sidebarWidth2 = "80px")
+        : this.sidebarWidth2;
+    },
+    collapsed4: function () {
+      return collapsed3.value
+        ? (this.sidebarWidth4 = "0px")
+        : this.sidebarWidth4;
     },
     ...mapMutations({
-            clearUserData: "clearUserData",
-        }),
-        handleLogout() {
-            this.clearUserData();
-            localStorage.clear();
-            this.$router.push({ name: 'login' })
-        },
+      clearUserData: "clearUserData",
+    }),
+    handleLogout() {
+      this.clearUserData();
+      localStorage.clear();
+      this.$router.push({ name: "login" });
+    },
   },
 };
 </script>
@@ -115,7 +234,7 @@ export default {
   font-family: sans-serif;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -128,15 +247,17 @@ body {
 header {
   width: 100%;
   height: 80px;
-  background-color: blueviolet;
-  /* 
-    propiedades par que sea transparente, cuando tenga internet se las agrego    
-    */
+  background: rgba(0, 0, 0, 0.95);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border: 5px solid rgba(0, 0, 0, 0.325);
+  border-left: 0px;
   display: flex;
   align-items: center;
   position: fixed;
   top: 0;
   z-index: 200;
+  color: #fff;
 }
 
 .icon__menu {
@@ -157,7 +278,11 @@ header {
 .menu__side {
   width: 80px;
   height: 100%;
-  background-color: coral;
+
+  background: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   position: fixed;
   top: 0;
   left: 0;
@@ -166,7 +291,7 @@ header {
   z-index: 300;
   overflow: hidden;
   overflow-y: scroll;
-  border-right: 20px solid coral;
+  border-right: 8px solid rgba(0, 0, 0, 0.5);
   transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
@@ -257,11 +382,11 @@ a.selected::before {
     margin-left: 0px;
   }
 
-  .menu__side{
-    width: 80px;
+  .menu__side {
+    display: none;
   }
 
-  header{
+  header {
     margin-left: -80px;
   }
 
@@ -269,10 +394,18 @@ a.selected::before {
     width: 80px;
     left: -80px;
   }
+
+  .movil {
+    display: block;
+  }
 }
 
 @media screen and (min-width: 768px) {
-  .barras{
+  .barras {
+    display: none;
+  }
+
+  .movil {
     display: none;
   }
 }

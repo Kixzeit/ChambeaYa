@@ -1,7 +1,9 @@
 <template>
   <div>
     <SideBarKixComponent/>
-      <p>Bienvenidos</p>
+      <div class="vidrio">
+        <h1 class="text-white">Busca lo que necesites!</h1>
+      </div>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavComponent />
+    <SideBarKixComponent/>
     <h1>
       Datos Personales<i
         class="fa-solid fa-circle-question fs-3 mx-1"
@@ -152,14 +152,14 @@
 </template>
 
 <script>
-import NavComponent from "@/components/NavComponent.vue";
+import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import axios from "axios";
 import store from "@/store";
 
 export default {
   components: {
-    NavComponent,
+    SideBarKixComponent,
     FooterComponent,
   },
   data() {

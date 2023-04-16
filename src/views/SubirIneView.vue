@@ -10,7 +10,7 @@
         >
       </div>
 
-      <div v-else>
+      <div v-else class="maximo">
         <h1>El máximo de imágenes permitido ha sido alcanzado</h1>
       </div>
 
@@ -84,6 +84,7 @@ export default {
       tarjeta[index].textContent = "";
       console.log(imagen.id);
       console.log("estoy llegando");
+      const actualiza = this;
       const options = {
         method: "DELETE",
         url: `https://upload.qbits.mx/api/up/delete-media/${imagen.id}`,
@@ -97,14 +98,17 @@ export default {
       axios
         .request(options)
         .then(function (response) {
-          this.loader = "none";
-          this.loadedImages = this.imagenes.length;
+          actualiza.loader = "none";
+          actualiza.loadedImages = actualiza.imagenes.length;
           console.log(response.data);
-          this.delete = response.data;
+          actualiza.delete = response.data;
+          let maximo = document.querySelector("maximo")
+          maximo.textContent = "";
+          location.reload();
           
         })
         .catch(function (error) {
-          this.loader = "none";
+          actualiza.loader = "none";
           console.error(error);
         });
     },
