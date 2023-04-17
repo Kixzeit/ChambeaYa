@@ -19,6 +19,9 @@ import UploadImageView from "@/views/UploadImageView"
 import UploadIneView from "@/views/UploadIneView";
 import UploadPrincipalView from "@/views/UploadPrincipalView"
 import MenuSidebarView from "@/views/MenuSidebarView";
+import CrearTarjetaView from "@/views/CrearTarjetaView"
+import FacturacionView from "@/views/FacturacionView"
+
 const routes = [
   {
     path: "/",
@@ -100,6 +103,16 @@ const routes = [
     path: "/ui/menu",
     name: "menu",
     component: MenuSidebarView,
+  },
+  {
+    path: "/ui/makecard",
+    name: "makecard",
+    component: CrearTarjetaView,
+  },
+  {
+    path: "/ui/factura",
+    name: "makecard",
+    component: FacturacionView,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: PageNotFoundView },
 ];

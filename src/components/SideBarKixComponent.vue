@@ -71,10 +71,11 @@
             <h4>Anuncio</h4>
           </div>
         </a>
-        <a href="">
+        <a href="/ui/pago">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <h4>{{ idUser }}</h4>
+            <i class="fa-regular fa-credit-card"></i>
+            <h4>Pago</h4>
           </div>
         </a>
         <a href="" v-on:click="handleLogout">
@@ -83,9 +84,25 @@
             <h4>Logout</h4>
           </div>
         </a>
+        <a href="/ui/factura">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
+            <i class="fa-sharp fa-solid fa-money-bill" title="Facturacion"></i>
+            <h4>Facturacion</h4>
+          </div>
+        </a>
+        <a href="/ui/menu">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
+            <i class="fa-solid fa-flask"></i>
+            <h4>Pruebas</h4>
+          </div>
+        </a>
       </div>
     </div>
     <!-- menu que solo se ve en mobile -->
+
+    <!-- para que jale ha que colocarle el mobile y el sidebarWidth3 -->
     <div
       class="menu__side movil"
       id="menu_side"
@@ -106,43 +123,59 @@
       <!-- menu de opciones -->
       <div class="options__menu">
         <!-- aqui van los links -->
-        <a href="" class="selected">
+        <a href="http://192.168.1.42:8080/" class="selected">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-house" title="Home"></i>
             <h4>Home</h4>
           </div>
         </a>
-        <a href="">
+        <a href="/ui/datos">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-user" title="Perfil"></i>
             <h4>Perfil</h4>
           </div>
         </a>
-        <a href="">
+        <a href="/ui/ine">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-address-card"></i>
-            <h4>Documento Oficial</h4>
+            <h4>Ine</h4>
           </div>
         </a>
-        <a href="">
+        <a href="/ui/anuncio">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-rectangle-ad"></i>
             <h4>Anuncio</h4>
           </div>
         </a>
-        <a href="">
+        <a href="/ui/pago">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <h4>{{ idUser }}</h4>
+            <i class="fa-regular fa-credit-card"></i>
+            <h4>Pago</h4>
           </div>
         </a>
         <a href="" v-on:click="handleLogout">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
             <h4>Logout</h4>
+          </div>
+        </a>
+        <a href="/ui/factura">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
+            <i class="fa-sharp fa-solid fa-money-bill"></i>
+            <h4>Facturacion</h4>
+          </div>
+        </a>
+        <a href="/ui/menu">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
+            <i class="fa-solid fa-flask"></i>
+            <h4>Pruebas</h4>
           </div>
         </a>
       </div>
@@ -241,7 +274,7 @@ a {
 }
 
 body {
-  margin-top:80px;
+  margin-top: 80px;
   margin-left: 80px;
   transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
@@ -298,16 +331,16 @@ header {
   transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-.logear{
-display: flex;
-width: 25%;
-gap:3rem;
-}
-
-.logeado{
+.logear {
   display: flex;
   width: 25%;
-  grid-area: 3rem;;
+  gap: 3rem;
+}
+
+.logeado {
+  display: flex;
+  width: 25%;
+  grid-area: 3rem;
 }
 
 /* hide scrollbar */
@@ -319,7 +352,6 @@ gap:3rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 
 .name__page {
   padding: 20px 30px;
@@ -394,8 +426,7 @@ a.selected::before {
 }
 
 @media screen and (max-width: 768px) {
-
-  body{
+  body {
     margin-left: -20px;
   }
   .menu__side {

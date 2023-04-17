@@ -1,12 +1,14 @@
 <template>
   <div>
-    <NavComponent />
-    <div class="bodi">
-      <div class="container text-center">
+    <SideBarKixComponent/>
+    <div class="container-fluid p-4 mx-3">
+      <div class="card card-body">
+        <div class="container text-center">
         <div class="row">
-          <div class="col-8 p-1">
+          <div class="col-sm-12 col-lg-8 p-1">
             <h3 class="mt-4">¿Como quieres pagar?</h3>
-            <h5 class="mt-5">Elige una forma de Pago</h5>
+            <p class="mt-5 fs-5">Elige una forma de Pago o Agrega</p>
+            <a href="/ui/makecard" class="btn btn-primary my-3" ><i class="fa-solid fa-plus mx-1"></i>Agregar tarjeta</a>
             <div>
               <!-- tarjetas -->
               <div
@@ -42,9 +44,9 @@
               </div>
               <!-- tarjetas -->
             </div>
-            <h4 class="mt-4 mb-4">Otras Formas de Pago</h4>
+            <!-- <h4 class="mt-4 mb-4">Otras Formas de Pago</h4> -->
             <!-- otras formas de pago -->
-            <div
+            <!-- <div
               class="d-flex justify-content-start align-items-center p-4 b mb-1 border rounded mb-2"
             >
               <input type="radio" name="seleccion" class="fs-3" />
@@ -58,9 +60,9 @@
                 </div>
                 <p class="verde"></p>
               </div>
-            </div>
+            </div> -->
 
-            <div
+            <!-- <div
                 class="d-flex justify-content-start align-items-center p-4 b mb-1 border rounded  mb-2"
               >
                 <input type="radio" name="seleccion" class="fs-3" />
@@ -74,7 +76,7 @@
                   </div>
                   <p class="verde">Santander, HSBC, 7-Eleven, Soriana, Circle K y otros</p>
                 </div>
-              </div>
+              </div> -->
             <!-- otras formas de pago -->
           </div>
           <div class="col-4 p-1 bordery">
@@ -98,6 +100,7 @@
                 <span>$ {{ totalPago }}</span>
               </div>
               <!------------------------------------------------->
+              <div class="d-flex justify-content-center"><a href="" class="btn btn-primary my-4 ">Pagar Ahora</a></div>
               <section class="drop">
                 <div class="dropdown-center mt-5">
                   <button
@@ -121,19 +124,18 @@
           </div>
         </div>
       </div>
+      </div>
+
     </div>
-    <FooterComponent />
   </div>
 </template>
 
 <script>
-import NavComponent from "@/components/NavComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+import SideBarKixComponent from '@/components/SideBarKixComponent.vue';
 
 export default {
   components: {
-    NavComponent,
-    FooterComponent,
+    SideBarKixComponent
   },
 };
 </script>

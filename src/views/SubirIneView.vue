@@ -1,50 +1,53 @@
 <template>
   <div>
-    <NavComponent />
-    <div class="bodi">
-      <h1>{{ idUser }}</h1>
-      <!-- div de imagenes -->
-      <div v-if="loadedImages < maxImagesAllowed" class="">
-        <a class="btn btn-primary" href="/ui/upload/ine"
-          >Subir archivos</a
-        >
-      </div>
-
-      <div v-else class="maximo">
-        <h1>El máximo de imágenes permitido ha sido alcanzado</h1>
-      </div>
-
-      <div class="d-flex gap-3 flex-wrap justify-content-around divi">
-        <div v-for="imagen in imagenes" v-bind:key="imagen.id" id="contenedor">
-          <div class="elemento position-relative">
-            <img
-              :src="une(imagen.fullHttpUploadUrl)"
-              alt=""
-              class="rounded img"
-            />
-            <i
-              class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
-              style="color: #ec091f"
-              @click="elimina(imagen)"
-            ></i>
-          </div>
+    <SideBarKixComponent />
+    <div class="container-fluid p-4 mx-3">
+      <div class="card card-body">
+        <h2>Sube tu Documento Oficial</h2>
+        <div v-if="loadedImages < maxImagesAllowed" class="">
+          <a class="btn btn-primary mb-4" href="/ui/upload/ine">Subir archivos</a>
         </div>
+
+        <div v-else class="maximo">
+          <h2 class="text-danger">El máximo de imágenes permitido ha sido alcanzado!</h2>
+        </div>
+
+          <div
+            v-for="imagen in imagenes"
+            v-bind:key="imagen.id"
+            id="contenedor"
+            class="d-flex flex-wrap justify-content-center ines bg-dark"
+          >
+            <div class="elemento">
+                <div class="">
+                  <img
+                :src="une(imagen.fullHttpUploadUrl)"
+                alt=""
+                class="mt-5 rounded"
+                style="width: 280px; height: 200px"
+              />
+                </div>
+              
+              <button class="btn btn-primary my-3"><i
+                class="fa-solid fa-trash  fa-2xl my-4"
+                style="color: #ec091f"
+                @click="elimina(imagen)"
+              ></i></button>
+            </div>
+          </div>
       </div>
-      <FooterComponent />
     </div>
   </div>
 </template>
 
 <script>
-import NavComponent from "@/components/NavComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
 import axios from "axios";
 import store from "@/store";
+import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
 
 export default {
   components: {
-    NavComponent,
-    FooterComponent,
+    SideBarKixComponent,
   },
   data() {
     return {
@@ -102,10 +105,9 @@ export default {
           actualiza.loadedImages = actualiza.imagenes.length;
           console.log(response.data);
           actualiza.delete = response.data;
-          let maximo = document.querySelector("maximo")
+          let maximo = document.querySelector("maximo");
           maximo.textContent = "";
           location.reload();
-          
         })
         .catch(function (error) {
           actualiza.loader = "none";
@@ -119,31 +121,6 @@ export default {
 };
 </script>
 
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<style>
 
-.bodi {
-  margin-left: 56px;
-}
-.p {
-  outline: red solid 2px;
-}
-
-div > img {
-  border: 3px solid black;
-  border-radius: 10px;
-}
-
-img {
-  width: 300px;
-  height: 150px;
-}
-
-.divi {
-  padding-bottom: 300px;
-}
 </style>

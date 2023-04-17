@@ -1,9 +1,10 @@
 <template>
   <div>
-    <NavComponent />
-    <div class="bodi p-3">
-      <h1><i class="fa-solid fa-rectangle-ad" style="color: #1d4cf2;"></i> Crea Tu Anuncio!</h1>
-      <form action="">
+    <SideBarKixComponent/>
+    <div class="container-fluid p-4 mx-3">
+      <div class="card card-body">
+        <h2><i class="fa-solid fa-rectangle-ad" style="color: #1d4cf2;"></i>Crea tu Anuncio!</h2>
+        <form action="">
         <div class="row">
           <div class="col-12-sm mb-4 col-6-lg">
           <label for="formGroupExampleInput" class="form-label"
@@ -39,7 +40,7 @@
           <div class="col-sm-12 col-lg-2 mb-4"><a href="/ui/upload/" class="btn btn-primary ">Insertar Imagen <i class="fa-solid fa-file-image" style="color: #ffffff;"></i></a></div>
           <div class="col-sm-12 col-lg-2"><button class="btn btn-primary">Insertar Video <i class="fa-regular fa-file-video" style="color: #ffffff;"></i></button></div>
         </div>
-        <h2>imagenes</h2>
+        <h2 class="my-4">imagenes</h2>
         <div class="d-flex gap-3 flex-wrap justify-content-around divi">
         <div v-for="imagen in imagenes" v-bind:key="imagen.id" id="contenedor">
           <div class="elemento position-relative">
@@ -56,7 +57,7 @@
           </div>
         </div>
       </div>
-        <h2>Videos</h2>
+        <h2 class="my-4">Videos</h2>
         <div>
           <img src="https://picsum.photos/125/125" alt="" class="m-1" />
           <img src="https://picsum.photos/125/125" alt="" class="m-1" />
@@ -94,21 +95,21 @@
         </div>
         </div>
       </form>
+      </div>
     </div>
-    <FooterComponent />
+
   </div>
 </template>
 
 <script>
-import NavComponent from "@/components/NavComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+
+import SideBarKixComponent from '@/components/SideBarKixComponent.vue';
 import axios from "axios";
 import store from "@/store";
 
 export default {
   components: {
-    NavComponent,
-    FooterComponent,
+    SideBarKixComponent,
   },
   data() {
     return {
@@ -179,14 +180,6 @@ export default {
 </script>
 
 <style>
-.bodi {
-  margin-left: 56px;
-
-}
-.p {
-  outline: red solid 2px;
-}
-
 img{
   width: 125px;
   height: 125px;

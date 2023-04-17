@@ -1,4 +1,4 @@
-<template>
+z<template>
   <!-- Carousel wrapper -->
   <div
     id="carouselExampleIndicators"
@@ -7,11 +7,11 @@
   >
     <!-- Slides -->
     <div class="carousel-inner mb-5">
-      <div style="height:400px;"
-        :class="selecciona(index)"
-        v-for="(arr,index) in arregloDeImagenes"
-        v-bind:key="index">
-        <img :src="une(arr)" class="d-block  alto" alt="..." style="height: 100%; width: 100%;"/>
+      <div style="height:400px;">
+        <img src="https://picsum.photos/400/400" class="d-block  alto" alt="..." style="height: 100%; width: 100%;"/>
+        <img src="https://picsum.photos/399/400" class="d-block  alto" alt="..." style="height: 100%; width: 100%;"/>
+        <img src="https://picsum.photos/398/400" class="d-block  alto" alt="..." style="height: 100%; width: 100%;"/>
+        <img src="https://picsum.photos/397/400" class="d-block  alto" alt="..." style="height: 100%; width: 100%;"/>
       </div>
     </div>
     <!-- Slides -->
@@ -39,7 +39,7 @@
 
     <!-- Thumbnails -->
     <div class="carousel-indicators overflow-scroll" style="margin-bottom:-200px">
-      <div v-for="(arr,index) in arregloDeImagenes" v-bind:key="index">
+      <div>
         <button
           type="button"
           data-bs-target="#carouselExampleIndicators"
@@ -47,7 +47,7 @@
           :class=selecciona2(index)
           style="width: 150px"
         >
-          <img class="d-block w-100 img-fluid " :src="une(arr)" />
+          <img class="d-block w-100 img-fluid " src="https://picsum.photos/100/100" />
         </button>
       </div>
     </div>
@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import info from "@/json/ProductoView.json";
 import axios from "axios";
 const inicio = "http://localhost/";
 
@@ -65,12 +64,7 @@ export default {
 
   data: function () {
     return {
-      img: info.imagenes,
-      //images
-      /**/ img1: inicio + "caja.webp",
-      img2: inicio + "xbox1.webp",
-      img3: inicio + "xbox2.webp",
-      libre: inicio + "m-libre.png" /**/,
+    
       carruselActivo: "carousel-item active",
       carruselInactivo: "carousel-item",
     };
