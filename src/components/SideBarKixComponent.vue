@@ -10,14 +10,15 @@
           :style="{ width: sidebarWidth3 }"
         ></i>
       </div>
-      <div class="d-flex w-100 justify-content-end me-5 gap-">
-        <span v-if="idUser > 0"
-          ><a href="" class="btn btn-primary" v-on:click="handleLogout"
+      <div class="d-flex w-100 justify-content-end">
+        <span v-if="idUser > 0" class="logeado"
+          ><a href="" class="btn btn-light" v-on:click="handleLogout"
             >Logout</a
           ></span
         >
-        <span v-else><a href="/ui/login" class="btn btn-primary">Login</a>
-          <a href="/ui/register" class="btn btn-primary">Register</a>
+        <span v-else class="logear">
+          <a href="/ui/login" class="btn btn-light">Login</a>
+          <a href="/ui/register" class="btn btn-light">Register</a>
         </span>
       </div>
     </header>
@@ -239,8 +240,8 @@ a {
 }
 
 body {
+  margin-top:80px;
   margin-left: 80px;
-  margin-top: 80px;
   transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
@@ -256,6 +257,7 @@ header {
   align-items: center;
   position: fixed;
   top: 0;
+  right: 0;
   z-index: 200;
   color: #fff;
 }
@@ -291,8 +293,20 @@ header {
   z-index: 300;
   overflow: hidden;
   overflow-y: scroll;
-  border-right: 8px solid rgba(0, 0, 0, 0.5);
+  border-right: 10px solid rgba(0, 0, 0, 0.5);
   transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.logear{
+display: flex;
+width: 25%;
+gap:3rem;
+}
+
+.logeado{
+  display: flex;
+  width: 25%;
+  grid-area: 3rem;;
 }
 
 /* hide scrollbar */
@@ -304,6 +318,7 @@ header {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 
 .name__page {
   padding: 20px 30px;
@@ -378,21 +393,16 @@ a.selected::before {
 }
 
 @media screen and (max-width: 768px) {
-  .body_move {
-    margin-left: 0px;
-  }
 
+  body{
+    margin-left: -20px;
+  }
   .menu__side {
     display: none;
   }
 
   header {
     margin-left: -80px;
-  }
-
-  .menu__side_move {
-    width: 80px;
-    left: -80px;
   }
 
   .movil {
