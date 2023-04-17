@@ -1,18 +1,19 @@
 <template>
   <div>
     <SideBarKixComponent/>
-    <h1>
+    <div class="container-fluid p-4 mx-3">
+      <div class="card">
+        <h2>
       Datos Personales<i
         class="fa-solid fa-circle-question fs-3 mx-1"
         style="color: #1d43f2"
       ></i>
-    </h1>
-    <div class="bodi">
-      <div v-if="loadedImages < maxImagesAllowed" class="">
-        <a href="/ui/upload/principal" class="btn btn-secondary p-2 mb-5">
+    </h2>
+    <div v-if="loadedImages < maxImagesAllowed" class="">
+        <a href="/ui/upload/principal" class="btn btn-secondary p-1 mb-5">
           <div>
             <img src="../assets/user.png" alt="" />
-            <h3>Selecciona una imagen de perfil</h3>
+            <h6 class="text-warning">Selecciona una imagen de perfil</h6>
           </div>
         </a>
       </div>
@@ -38,14 +39,15 @@
         </div>
       </div>
 
-      <form class="row g-3">
-        <div class="col-4">
+      <div class="card-body">
+        <form class="row g-3">
+        <div class="col-sm-12 col-lg-4">
           <label for="inputEmail4" class="form-label"
             >Nombre<i class="fa-solid fa-pen mx-2" style="color: #1d43f2"></i
           ></label>
           <input type="text" class="form-control" id="inputEmail4" />
         </div>
-        <div class="col-4">
+        <div class="col-sm-12 col-lg-4">
           <label for="inputPassword4" class="form-label"
             >Apellido Paterno<i
               class="fa-solid fa-pen mx-2"
@@ -54,7 +56,7 @@
           ></label>
           <input type="text" class="form-control" id="inputPassword4" />
         </div>
-        <div class="col-4">
+        <div class="col-sm-12 col-lg-4">
           <label for="inputPassword4" class="form-label"
             >Apellido Materno<i
               class="fa-solid fa-pen mx-2"
@@ -63,7 +65,7 @@
           ></label>
           <input type="text" class="form-control" id="inputPassword4" />
         </div>
-        <div class="col-6 mt-4">
+        <div class="col-sm-12 col-lg-6 mt-4">
           <label for="inputPassword4" class="form-label"
             >Telefono Personal<i
               class="fa-solid fa-phone mx-2"
@@ -72,7 +74,7 @@
           ></label>
           <input type="text" class="form-control" id="inputPassword4" />
         </div>
-        <div class="col-6 mt-4">
+        <div class="col-sm-12 col-lg-6 mt-4">
           <label for="inputPassword4" class="form-label"
             >Correo Personal<i
               class="fa-regular fa-at mx-2"
@@ -82,7 +84,7 @@
           <input type="text" class="form-control" id="inputPassword4" />
         </div>
 
-        <div class="col-4">
+        <div class="col-sm-12 col-lg-4">
           <label for="inputAddress2" class="form-label"
             >Fecha de nacimiento<i
               class="fa-solid fa-calendar-days mx-2"
@@ -96,7 +98,7 @@
             placeholder="12 enero 1987"
           />
         </div>
-        <div class="col-4">
+        <div class="col-sm-12 col-lg-4">
           <label for="inputCity" class="form-label"
             >Estado<i
               class="fa-solid fa-map-pin mx-2"
@@ -105,7 +107,7 @@
           ></label>
           <input type="text" class="form-control" id="inputCity" />
         </div>
-        <div class="col-4">
+        <div class="col-sm-12 col-lg-4">
           <label for="inputCity" class="form-label"
             >Municipio<i
               class="fa-solid fa-map-location-dot mx-2"
@@ -114,7 +116,7 @@
           ></label>
           <input type="text" class="form-control" id="inputCity" />
         </div>
-        <div class="col-6">
+        <div class="col-sm-12 col-lg-6">
           <label for="inputState" class="form-label"
             >Colonia<i
               class="fa-solid fa-location-arrow mx-2"
@@ -126,7 +128,7 @@
             <option>...</option>
           </select>
         </div>
-        <div class="col-6">
+        <div class="col-sm-12 col-lg-6">
           <label for="inputZip" class="form-label"
             >Codigo Postal<i
               class="fa-solid fa-envelopes-bulk mx-2"
@@ -146,21 +148,21 @@
           <button type="submit" class="btn btn-primary">Enviar</button>
         </div>
       </form>
+      </div>
+
+      </div>
     </div>
-    <FooterComponent />
   </div>
 </template>
 
 <script>
-import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
+import SideBarKixComponent from '@/components/SideBarKixComponent.vue';
 import axios from "axios";
 import store from "@/store";
 
 export default {
   components: {
-    SideBarKixComponent,
-    FooterComponent,
+    SideBarKixComponent
   },
   data() {
     return {
@@ -170,15 +172,18 @@ export default {
       loadedImages: 0,
     };
   },
-mounted() {
+  mounted() {
     this.carga();
   },
   methods: {
     carga() {
       axios
+      //   .get(
+      //     "https://upload.qbits.mx/api/up/get-user-pricipal-image/" +
+      //       this.idUser
+      // )
         .get(
-          "https://upload.qbits.mx/api/up/get-user-pricipal-image/" +
-            this.idUser
+          "https://upload.qbits.mx/api/up/get-user-pricipal-image/49"
         )
         .then((response) => {
           this.imagen = response.data;
@@ -224,22 +229,5 @@ mounted() {
       return `https://media.visitanos.net/image${Nombreimg}`;
     },
   },
-};
+}
 </script>
-
-<style scoped>
-.bodi {
-  margin-left: 56px;
-  padding: 200px;
-}
-.p {
-  outline: red solid 2px;
-}
-
-img {
-  width: 200px;
-  height: 200px;
-  border: 2px solid black;
-  border-radius: 5px;
-}
-</style>

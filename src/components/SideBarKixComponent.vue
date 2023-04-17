@@ -57,16 +57,17 @@
             <h4>Perfil</h4>
           </div>
         </a>
-        <a href="">
+        <a href="/ui/ine">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-address-card"></i>
-            <h4>Documento Oficial</h4>
+            <h4>Ine</h4>
           </div>
         </a>
-        <a href="">
+        <a href="/ui/anuncio">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-rectangle-ad"></i>
             <h4>Anuncio</h4>
           </div>
         </a>
