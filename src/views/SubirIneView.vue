@@ -1,7 +1,7 @@
 <template>
   <div>
     <SideBarKixComponent />
-    <div class="container-fluid p-4 mx-3">
+    <div class="container-fluid p-5 mx-3">
       <div class="card card-body">
         <h2>Sube tu Documento Oficial</h2>
         <div v-if="loadedImages < maxImagesAllowed" class="">
@@ -105,9 +105,9 @@ export default {
           actualiza.loadedImages = actualiza.imagenes.length;
           console.log(response.data);
           actualiza.delete = response.data;
+          location.reload();
           let maximo = document.querySelector("maximo");
           maximo.textContent = "";
-          location.reload();
         })
         .catch(function (error) {
           actualiza.loader = "none";

@@ -21,6 +21,7 @@ import UploadPrincipalView from "@/views/UploadPrincipalView"
 import MenuSidebarView from "@/views/MenuSidebarView";
 import CrearTarjetaView from "@/views/CrearTarjetaView"
 import FacturacionView from "@/views/FacturacionView"
+import ResultadosView from "@/views/ResultadosView"
 
 const routes = [
   {
@@ -111,8 +112,13 @@ const routes = [
   },
   {
     path: "/ui/factura",
-    name: "makecard",
+    name: "factura",
     component: FacturacionView,
+  },
+  {
+    path: "/ui/resultados",
+    name: "resultados",
+    component: ResultadosView,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: PageNotFoundView },
 ];

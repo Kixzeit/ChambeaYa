@@ -1,9 +1,9 @@
 <template>
-  <div class="content">
+  <div class="container-fluid p-4 mx-3">
     <UploadImageComponent
     class ="centra" 
     titulo="subir imagen para anuncios" 
-    radio="3/4" 
+    radio="1.66" 
     apiUrl="https://upload.qbits.mx/api/up/upload-image"
     returnUrl="/ui/anuncio"/>
     <FooterComponent class="down" />

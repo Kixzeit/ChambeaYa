@@ -152,3 +152,243 @@ export default {
   },
 };
 </script>
+
+
+<template>
+    <body>
+        <HeaderComponent />
+        <SideBarComponent />
+        <div class="container hoja">
+            <h1>AGREGA TUS IMAGENES</h1>
+            <h2>Galeria de imagenes</h2>
+            <div class="content">
+                <div class="image-space">
+                    <div class="image-grid pt-5">
+                        <div v-for="image in images" :key="image.id" class="image-container">
+                            <img :src="muestraimg(image.fullHttpUploadUrl)" alt="Image" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <a href="/ui/up-gallery"><button class="button">Subir Imagen</button></a>
+                </div>
+            </div>
+        </div>
+        <FooterComponent class="" />
+    </body>
+</template>
+
+<script>
+import axios from 'axios';
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
+import SideBarComponent from '@/components/SideBarComponent.vue';
+import store from '@/store';
+
+export default {
+    components: {
+        HeaderComponent,
+        FooterComponent,
+        SideBarComponent,
+    },
+    data() {
+        return {
+            imagenes: [],
+            maxImagesAllowed: 2,
+            loadedImages: 0,
+            idUser: store.state.userData.idUser,
+        }
+    },
+    mounted() {
+        this.carga();
+    },
+    methods: {
+        carga() {
+            axios
+                .get(
+                    "https://upload.qbits.mx/api/up/get-user-all-images/" +
+                    this.idUser
+                )
+                .then((response) => {
+                    this.imagenes = response.data;
+                    this.loadedImages = this.imagenes.length;
+                    console.log(this.imagenes);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        elimina: function (imagen) {
+            let tarjeta = document.querySelectorAll(".elemento");
+            console.log("La imagen se ha eliminado correctamente");
+
+            // Eliminar la imagen de la matriz de imágenes
+            const index = this.imagenes.indexOf(imagen);
+            //this.imagenes.splice(index,1);
+            console.log(index);
+            tarjeta[index].textContent = "";
+            console.log(imagen.id);
+            console.log("estoy llegando");
+
+            const vm = this;
+
+            const options = {
+                method: "DELETE",
+                url: `https://upload.qbits.mx/api/up/delete-media/${imagen.id}`,
+                headers: {
+                    idMedia: imagen.id,
+                    IdUser: store.state.userData.idUser,
+                    jwt: store.state.userData.jwt,
+                },
+            };
+            axios
+                .request(options)
+                .then(function (response) {
+
+                    vm.loader = "none";
+                    console.log(response.data);
+                    vm.delete = response.data;
+                    location.reload();
+                })
+                .catch(function (error) {
+                    vm.loader = "none";
+                    console.error(error);
+                });
+        },
+        muestraimg(Nombreimg) {
+            return `https://media.visitanos.net/image${Nombreimg}`;
+        },
+
+    },
+}
+</script>
+
+<style scoped>
+.hoja {
+    background: #a5a5a5dc;
+    width: 80%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F2F2F2;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: #003366;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.content {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.submenu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.submenu a {
+    color: #666;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.submenu a:hover {
+    background-color: #f0f0f0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #3e8e41;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+}
+
+.image-container img {
+    width: 100%;
+}
+
+/* Estilo para el espacio con las imágenes */
+
+.image-space {
+    background-color: #f9e7c9;
+    border: 2px solid #dda06f;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.image-space .image-container {
+    margin-bottom: 10px;
+    border: 1px solid #dda06f;
+    padding: 5px;
+}
+
+.image-space .image-container img {
+    width: 100%;
+}
+
+body {
+    background-image: url('../assets/oficios.jpg');
+    background-size: cover;
+    position: relative;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

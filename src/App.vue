@@ -48,14 +48,9 @@ nav a.router-link-exact-active {
 }
 
 body{
-background: 
-      linear-gradient(135deg,#0000 20.5%,#303737 0 29.5%,#0000 0) 0 15px,
-      linear-gradient( 45deg,#0000 8%,#303737 0 17%, #0000 0 58%) 30px 0,
-      linear-gradient(135deg,#0000 8%,#303737 0 17%, #0000 0 58%,#303737 0 67%,#0000 0),        
-      linear-gradient( 45deg,#0000 8%,#303737 0 17%, #0000 0 58%,#303737 0 67%,#0000 0 83%,#303737 0 92%,#0000 0),
-      #6b35b5;
-background-size: 60px 60px;
-
+background: #47a8ff;
+background: -webkit-radial-gradient(circle, #47a8ff 0%, #1b19ab 100%);
+background: radial-gradient(circle, #47a8ff 0%, #1b19ab 100%);
 }
 
 .vidrio{

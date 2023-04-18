@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="container-fluid p-4 mx-3">
     <UploadImageComponent
     class ="centra" 
     titulo="subir imagen de Perfil" 

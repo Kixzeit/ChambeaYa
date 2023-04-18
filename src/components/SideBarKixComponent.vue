@@ -34,7 +34,7 @@
         <!-- aqui iria el logo -->
         <img
           src="../assets/chambeaya.png"
-          style="width: 35px; height: 35px"
+          style="width: 50px; height: 50px; margin-left: -20px; margin-top: -10px;"
           alt=""
         />
         <i class="fa-solid fa-user-alien"></i>
@@ -282,7 +282,7 @@ body {
 header {
   width: 100%;
   height: 80px;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.65);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   border: 5px solid rgba(0, 0, 0, 0.325);
@@ -315,9 +315,9 @@ header {
   width: 80px;
   height: 100%;
 
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.65);
   -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
   border: 1px solid rgba(0, 0, 0, 0.25);
   position: fixed;
   top: 0;
@@ -380,7 +380,7 @@ header {
 }
 
 .options__menu a:hover {
-  color: #fff;
+  color: #2947c6;
 }
 
 .options__menu .option {

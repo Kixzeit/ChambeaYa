@@ -1,8 +1,8 @@
 <template>
   <div>
     <SideBarKixComponent/>
-    <div class="container-fluid p-4 mx-3">
-      <div class="card">
+    <div class="container-fluid p-5 mx-3">
+      <div class="card card-body">
         <h2>
       Datos Personales<i
         class="fa-solid fa-circle-question fs-3 mx-1"
@@ -178,13 +178,10 @@ export default {
   methods: {
     carga() {
       axios
-      //   .get(
-      //     "https://upload.qbits.mx/api/up/get-user-pricipal-image/" +
-      //       this.idUser
-      // )
         .get(
-          "https://upload.qbits.mx/api/up/get-user-pricipal-image/49"
-        )
+          "https://upload.qbits.mx/api/up/get-user-pricipal-image/" +
+            this.idUser
+      )
         .then((response) => {
           this.imagen = response.data;
           this.loadedImages = this.imagen.length;
@@ -203,6 +200,7 @@ export default {
       tarjeta.textContent = "";
       console.log(imagen.id);
       console.log("estoy llegando");
+      const actualiza = this;
       const options = {
         method: "DELETE",
         url: `https://upload.qbits.mx/api/up/delete-media/${imagen.id}`,
@@ -216,12 +214,13 @@ export default {
       axios
         .request(options)
         .then(function (response) {
-          this.loader = "none";
+          actualiza.loader = "none";
           console.log(response.data);
-          this.delete = response.data;
+          actualiza.delete = response.data;
+          location.reload();
         })
         .catch(function (error) {
-          this.loader = "none";
+          actualiza.loader = "none";
           console.error(error);
         });
     },
