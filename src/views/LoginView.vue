@@ -1,6 +1,5 @@
 <template>
   <div>
-    <SideBarKixComponent/>
     <div class="container-fluid p-4 mx-3 login">
       <div class="card ancho">
         <div class="card-body text-align-left">
@@ -68,11 +67,12 @@
         style="max-width: 600px"
       />
     </div>
+    <FooterComponent/>
   </div>
 </template>
 
 <script>
-import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 import axios from "axios";
 import store from "@/store";
 import router from "@/router";
@@ -85,7 +85,7 @@ const apiEndpoint = "https://access.qbits.mx/api/login";
 
 export default {
   components: {
-    SideBarKixComponent
+    FooterComponent
   },
   data: function () {
     return {

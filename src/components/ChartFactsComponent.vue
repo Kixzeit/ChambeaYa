@@ -36,9 +36,97 @@
 </template>
 
 <script>
+import axios from "axios";
+import store from "@/store";
 
+export default {
+  data() {
+    return {
+      idUser: store.state.userData.idUser,
+      values: [],
+      charBarsContainer: document.querySelector(".chart__bars-container")
+    }
+  },
+  mounted() {
+    this.getPays();
+  },
+  methods: {
+    getPays() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-allpays-byid",
+        params: { id: "49" },
+      };
+      axios
+        .request(options)
+        .then(function (response) {
+          let datos = response.data;
+          console.log(datos);
+          this.generajs();
+          datos.forEach((e) => {
+              this.values.push(e.monto);
+              this.charBarsContainer.innerHTML += `
+              <div class="chart__bar">
+                <div class="chart__bar--label">$${e.monto}</div>
+              <div class="chart__bar--day">${e.dia}</div>
+            </div>`;
+        });
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+    generajs: function () {
 
-// import data from "./data.json";
+// let values = [];
+
+// datos.forEach((e) => {
+//   values.push(e.monto);
+//   charBarsContainer.innerHTML += `
+//   <div class="chart__bar">
+//     <div class="chart__bar--label">$${e.amount}</div>
+//     <div class="chart__bar--day">${e.day}</div>
+//   </div>`;
+// });
+// /*--------------------------------------------------------------
+// # create the interactive labels
+// --------------------------------------------------------------*/
+let bars = document.querySelectorAll(".chart__bar");
+bars = [...bars];
+
+let maxHeightBar = 150;
+let maxValue = Math.max(...this.values);
+
+bars.forEach((bar) => {
+let newValue = parseFloat(bar.childNodes[1].innerText.slice(1));
+
+let actualHeight = (newValue * maxHeightBar) / maxValue;
+
+bar.style.height = `${actualHeight}px`;
+
+  if (newValue == maxValue) {
+    bar.style.backgroundColor = '#76b5bc';
+  }
+
+  bar.addEventListener("mouseover", (e) => {
+    if (e.target.className == 'chart__bar') {
+      let labelElement = e.target.childNodes[1];
+      labelElement.style.display = "block";
+    }
+  });
+  bar.addEventListener("mouseout", (e) => {
+    if (e.target.className == "chart__bar") {
+      let labelElement = e.target.childNodes[1];
+      labelElement.style.display = "none";
+    }
+  });
+});
+    }
+  },
+};
+
+// http://localhost:8080/api/get-allpays-byid?id=49
+// import data from "";
 // /*--------------------------------------------------------------
 // # Create Bars
 // --------------------------------------------------------------*/
@@ -46,8 +134,8 @@
 
 // let values = [];
 
-// data.forEach((e) => {
-//   values.push(e.amount);
+// datos.forEach((e) => {
+//   values.push(e.monto);
 //   charBarsContainer.innerHTML += `
 //   <div class="chart__bar">
 //     <div class="chart__bar--label">$${e.amount}</div>
@@ -64,11 +152,11 @@
 // let maxValue = Math.max(...values);
 
 // bars.forEach((bar) => {
-//   let newValue = parseFloat(bar.childNodes[1].innerText.slice(1));
+// let newValue = parseFloat(bar.childNodes[1].innerText.slice(1));
 
-//   let actualHeight = (newValue * maxHeightBar) / maxValue;
+// let actualHeight = (newValue * maxHeightBar) / maxValue;
 
-//   bar.style.height = `${actualHeight}px`;
+// bar.style.height = `${actualHeight}px`;
 
 //   if (newValue == maxValue) {
 //     bar.style.backgroundColor = '#76b5bc';
@@ -87,8 +175,6 @@
 //     }
 //   });
 // });
-
-
 </script>
 
 <style>
@@ -271,6 +357,4 @@ body {
 }
 
 /*# sourceMappingURL=styles.css.map */
-
-
 </style>

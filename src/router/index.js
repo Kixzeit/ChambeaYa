@@ -16,6 +16,7 @@ import ForgotPassView from "@/views/ForgotPassView"
 import ForgotConfirmView from "@/views/ForgotConfirmView";
 import ForbiddenView from "@/views/ForbiddenView";
 import UploadImageView from "@/views/UploadImageView"
+import UploadVideoView from "@/views/UploadVideoView";
 import UploadIneView from "@/views/UploadIneView";
 import UploadPrincipalView from "@/views/UploadPrincipalView"
 import MenuSidebarView from "@/views/MenuSidebarView";
@@ -89,6 +90,11 @@ const routes = [
     path: "/ui/upload",
     name: "upload",
     component: UploadImageView,
+  },
+  {
+    path: "/ui/upload-video",
+    name: "upload-video",
+    component: UploadVideoView,
   },
   {
     path: "/ui/upload/ine",

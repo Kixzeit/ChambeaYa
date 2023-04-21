@@ -52,7 +52,19 @@ mostrar foto perfil:
 https://upload.qbits.mx/api/up/get-user-pricipal-image/49
 
 
-
+{
+  "apMaterno": "string",
+  "apPaterno": "string",
+  "codigoPostal": "string",
+  "colonia": "string",
+  "correo": "string",
+  "estado": "string",
+  "fechaNacimiento": "string",
+  "id": 0,
+  "municipio": "string",
+  "nombre": "string",
+  "telefono": "string"
+}
 
 
 

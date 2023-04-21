@@ -53,12 +53,14 @@
               ></label>
               <input type="email" class="form-control mb-3" id="inputEmail4" />
             </div>
-
             <div class="col-sm-12 col-lg-6">
               <label for="inputText" class="form-label"
                 >Oficio <i class="fa-solid fa-hammer" style="color: #1d43f2"></i
               ></label>
-              <input type="text" class="form-control" id="inputPassword4" />
+              <select class="form-select" aria-label="Default select example">
+                <option v-for="oficio in oficios"
+                  v-bind:key="oficio.id">{{ oficio.nombre }}</option>
+              </select>
             </div>
             <div class="row mt-4 mb-4 justify-content-around">
               <div class="col-sm-12 col-lg-2 mb-4">
@@ -116,7 +118,12 @@
                 >Telefono del Negocio
                 <i class="fa-solid fa-map-pin" style="color: #1d43f2"></i
               ></label>
-              <input type="email" class="form-control mb-3" id="inputEmail4" placeholder="16541651651"/>
+              <input
+                type="email"
+                class="form-control mb-3"
+                id="inputEmail4"
+                placeholder="16541651651"
+              />
             </div>
 
             <div class="col-sm-12 col-lg-4">
@@ -187,6 +194,7 @@ export default {
   data() {
     return {
       imagenes: [],
+      oficios: [],
       idUser: store.state.userData.idUser,
       maxImagesAllowed: 1,
       loadedImages: 0,
@@ -194,8 +202,21 @@ export default {
   },
   mounted() {
     this.carga();
+    this.getOficces();
   },
   methods: {
+    getOficces() {
+      axios
+        .get("http://localhost:8080/api/get-oficces")
+        .then((response) => {
+          console.log(response.data);
+          this.oficios = response.data;
+          console.log(this.oficios);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     carga() {
       axios
         .get(
