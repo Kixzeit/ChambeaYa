@@ -7,7 +7,7 @@
           <i class="fa-solid fa-rectangle-ad" style="color: #1d4cf2"></i>Crea tu
           Anuncio!
         </h2>
-        <form action="">
+        <form action=""  v-on:submit.prevent="sendAds">
           <div class="row">
             <div class="col-12-sm mb-4 col-lg-6">
               <label for="formGroupExampleInput" class="form-label"
@@ -18,6 +18,7 @@
                 class="form-control mb-4"
                 id="formGroupExampleInput"
                 placeholder="Plomeros Don Roque"
+                v-model="anuncio.nombreNegocio"
               />
             </div>
             <div class="col-12-sm mb-4 col-lg-6">
@@ -29,6 +30,7 @@
                 class="form-control mb-4"
                 id="formGroupExampleInput"
                 placeholder="Hacemos los mejores trabajos y cobramos barato"
+                v-model="anuncio.descripcionPequeña"
               />
             </div>
             <div class="col-12-sm mb-4 col-6-lg">
@@ -41,6 +43,7 @@
                   placeholder="Leave a comment here"
                   id="floatingTextarea2"
                   style="height: 100px"
+                  v-model="anuncio.descripcionCompleta"
                 ></textarea>
                 <label for="floatingTextarea2">Descripcion completa:</label>
               </div>
@@ -51,14 +54,14 @@
                 >Codigo Postal
                 <i class="fa-solid fa-map-pin" style="color: #1d43f2"></i
               ></label>
-              <input type="email" class="form-control mb-3" id="inputEmail4" />
+              <input type="email" class="form-control mb-3" id="inputEmail4" v-model="anuncio.correoNegocio" />
             </div>
             <div class="col-sm-12 col-lg-6">
               <label for="inputText" class="form-label"
                 >Oficio <i class="fa-solid fa-hammer" style="color: #1d43f2"></i
               ></label>
-              <select class="form-select" aria-label="Default select example">
-                <option v-for="oficio in oficios"
+              <select class="form-select" aria-label="Default select example" v-model="anuncio.oficio" >
+                <option  v-for="oficio in oficios" 
                   v-bind:key="oficio.id">{{ oficio.nombre }}</option>
               </select>
             </div>
@@ -119,10 +122,11 @@
                 <i class="fa-solid fa-map-pin" style="color: #1d43f2"></i
               ></label>
               <input
-                type="email"
+                type="text"
                 class="form-control mb-3"
                 id="inputEmail4"
                 placeholder="16541651651"
+                v-model="anuncio.telefonoNegocio"
               />
             </div>
 
@@ -131,25 +135,16 @@
                 >Correo Electronico del negocio</label
               >
               <input
-                type="text"
+                type="email"
                 class="form-control"
                 id="inputCity"
                 placeholder="mi_negocio@example.com"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-4 mb-4">
-              <label for="inputCity" class="form-label">Nickname o apodo</label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputCity"
-                placeholder="Don chuy"
+                v-model="anuncio.correoNegocio"
               />
             </div>
             <div class="row d-flex justify-content-around mt-4 mb-4">
               <div class="col-sm-12 col-lg-3 mb-4">
-                <a href="http://localhost:8080/ui/ine" class="btn btn-primary"
-                  ><span
+                <a href="http://localhost:8080/ui/ine" class="btn btn-primary"><span
                     ><i
                       class="fa-solid fa-address-card mx-2"
                       style="color: #ffffff"
@@ -198,6 +193,7 @@ export default {
       idUser: store.state.userData.idUser,
       maxImagesAllowed: 1,
       loadedImages: 0,
+      anuncio:{}
     };
   },
   mounted() {
@@ -267,6 +263,48 @@ export default {
     },
     une(Nombreimg) {
       return `https://media.visitanos.net/image${Nombreimg}`;
+    },
+    sendAds: function () {
+      console.log(this.anuncio);
+      let anuncioEnviar = {
+        id: store.state.userData.idUser,
+        nombreNegocio: this.anuncio.nombreNegocio,
+        descripcionPequeña: this.anuncio.descripcionPequeña,
+        descripcionCompleta:this.anuncio.descripcionCompleta,
+        codigoPostal:this.anuncio.codigoPostal,
+        oficio:this.anuncio.oficio,
+        telefonoNegocio: this.anuncio.telefonoNegocio,
+        correoNegocio: this.correoNegocio,
+    
+      };
+      console.log(anuncioEnviar);
+      const options = {
+        method: "POST",
+        url: "http://localhost:8080/api/update-persons",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json;charset=utf-8",
+        },
+        data: {
+          id: store.state.userData.idUser,
+        nombreNegocio:anuncioEnviar.nombreNegocio,
+        descripcionPequeña:anuncioEnviar.descripcionPequeña,
+        descripcionCompleta:anuncioEnviar.descripcionCompleta,
+        codigoPostal:anuncioEnviar.codigoPostal,
+        oficio:anuncioEnviar.oficio,
+        telefonoNegocio:anuncioEnviar.telefonoNegocio,
+        correoNegocio:anuncioEnviar.correoNegocio,
+        },
+      };
+      axios
+        .request(options)
+        .then(function (response) {
+          console.log(response.data);
+          console.log("datos enviados correctamente")
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
     },
   },
 };

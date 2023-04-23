@@ -431,6 +431,7 @@ a.selected::before {
   }
   .menu__side {
     display: none;
+    
   }
 
   header {
@@ -439,6 +440,7 @@ a.selected::before {
 
   .movil {
     display: block;
+    border-right: 0px solid rgba(0, 0, 0, 0.5);
   }
 }
 

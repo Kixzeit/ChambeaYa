@@ -371,7 +371,15 @@ body {
 }
 </style>
 
-
+private int id;
+  private int idUser;
+  private String nombreNegocio;
+  private String descripcionPequeña;
+  private String descripcionCompleta;
+  private String codigoPostal;
+  private String oficio;
+  private String telefonoNegocio;
+  private String correoNegocio;
 
 
 
