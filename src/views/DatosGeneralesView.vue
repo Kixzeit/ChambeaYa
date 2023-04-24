@@ -2,297 +2,165 @@
   <div>
     <SideBarKixComponent />
     <div class="container-fluid p-5 mx-3">
-      <div class="card card-body">
-        <h2>
-          Datos Personales<i
-            class="fa-solid fa-circle-question fs-3 mx-1"
-            style="color: #1d43f2"
-          ></i>
-        </h2>
-        <div v-if="loadedImages < maxImagesAllowed" class="">
-          <a href="/ui/upload/principal" class="btn btn-secondary p-1 mb-5">
-            <div>
-              <img src="../assets/user.png" alt="" />
-              <h6 class="text-warning">Selecciona una imagen de perfil</h6>
-            </div>
-          </a>
-        </div>
-        <div v-else>
-          <div class="d-flex gap-3 flex-wrap m-5 justify-content-around divi">
-            <div id="contenedor">
-              <div class="elemento position-relative">
-                <img
-                  :src="une(imagen.fullHttpUploadUrl)"
-                  alt=""
-                  class="rounded img"
-                />
-                <i
-                  class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
-                  style="color: #ec091f"
-                  @click="elimina(imagen)"
-                ></i>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="card-body">
-          <form class="row g-3" v-on:submit.prevent="sendData">
-            <div class="col-sm-12 col-lg-4">
-              <label for="nombre" class="form-label"
-                >Nombre<i
-                  class="fa-solid fa-pen mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="text"
-                class="form-control"
-                name="nombre"
-                id="inputEmail4"
-                placeholder="Nombre"
-                v-model="persona.nombre"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-4">
-              <label for="inputPassword4" class="form-label"
-                >Apellido Paterno<i
-                  class="fa-solid fa-pen mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="text"
-                class="form-control"
-                id="inputPassword4"
-                placeholder="Apellido Paterno"
-                v-model="persona.apPaterno"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-4">
-              <label for="inputPassword4" class="form-label"
-                >Apellido Materno<i
-                  class="fa-solid fa-pen mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Apellido Materno"
-                id="inputPassword4"
-                v-model="persona.apMaterno"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-6 mt-4">
-              <label for="inputPassword4" class="form-label"
-                >Telefono Personal<i
-                  class="fa-solid fa-phone mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="012-345-67-89"
-                id="inputPassword4"
-                v-model="persona.telefono"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-4">
-              <label for="inputAddress2" class="form-label"
-                >Fecha de nacimiento<i
-                  class="fa-solid fa-calendar-days mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="date"
-                class="form-control"
-                id="inputAddress2"
-                placeholder="12 enero 1987"
-                v-model="persona.fechaNacimiento"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-4">
-              <label for="inputCity" class="form-label"
-                >Estado<i
-                  class="fa-solid fa-map-pin mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Estado"
-                id="inputCity"
-                v-model="persona.estado"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-4">
-              <label for="inputCity" class="form-label"
-                >Municipio<i
-                  class="fa-solid fa-map-location-dot mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Municipio"
-                id="inputCity"
-                v-model="persona.municipio"
-              />
-            </div>
-            <div class="col-sm-12 col-lg-6">
-              <label for="inputState" class="form-label"
-                >Colonia<i
-                  class="fa-solid fa-location-arrow mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <select
-                id="inputState"
-                class="form-select"
-                v-model="persona.colonia"
-              >
-                <option selected>Elegir colonia</option>
-              </select>
-            </div>
-            <div class="col-sm-12 col-lg-6">
-              <label for="inputZip" class="form-label"
-                >Codigo Postal<i
-                  class="fa-solid fa-envelopes-bulk mx-2"
-                  style="color: #1d43f2"
-                ></i
-              ></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Codigo Postal"
-                id="inputZip"
-                v-model="persona.codigoPostal"
-              />
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-sm-12 col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+      <div class="rounded bg-white mt-5 mb-5">
+        <div class="row">
+          <div class="col-sm-12 col-md-3 border-right">
+            <div
+              class="d-flex flex-column align-items-center text-center p-3 py-5"
+            >
               <div v-if="loadedImages < maxImagesAllowed" class="">
-          <a href="/ui/upload/principal" class=" p-1 mb-5">
-            <div>
-              <!-- <img src="../assets/user.png" alt="" /> -->
-              <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-              <h6 class="text-danger">Selecciona una imagen de perfil</h6>
-            </div>
-          </a>
-        </div>
-        <div v-else>
-          <div class="d-flex gap-3 flex-wrap m-5 justify-content-around divi">
-            <div id="contenedor">
-              <div class="elemento position-relative">
-                <img
-                  :src="une(imagen.fullHttpUploadUrl)"
-                  alt=""
-                  class="rounded img"
-                />
-                <i
-                  class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
-                  style="color: #ec091f"
-                  @click="elimina(imagen)"
-                ></i>
+                <a href="/ui/upload/principal" class="p-1 mb-5">
+                  <div>
+                    <!-- <img src="../assets/user.png" alt="" /> -->
+                    <img
+                      class="rounded-circle mt-5"
+                      width="150px"
+                      src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                    />
+                    <h6 class="text-danger">Selecciona una imagen de perfil</h6>
+                  </div>
+                </a>
               </div>
+              <div v-else>
+                <div
+                  class="d-flex gap-3 flex-wrap m-5 justify-content-around divi"
+                >
+                  <div id="contenedor">
+                    <div class="elemento position-relative">
+                      <img
+                        :src="une(imagen.fullHttpUploadUrl)"
+                        alt=""
+                        class="rounded-circle img"
+                      />
+                      <i
+                        class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
+                        style="color: #ec091f"
+                        @click="elimina(imagen)"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span class="font-weight-bold">{{ nick }}</span
+              ><span class="text-black-50">{{ email }}</span
+              ><span> </span>
             </div>
           </div>
-        </div>
-              <span class="font-weight-bold">{{ nick }}</span><span class="text-black-50">{{ email }}</span><span> </span></div>
-        </div>
-        <div class="col-md-5 border-right">
+          <div class="col-md-5 border-right">
             <div class="p-3 py-5">
-
-              <form action="">
+              <form action="" v-on:submit.prevent="sendData">
                 <h4 class="text-center">Mis Datos</h4>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
+                ></div>
                 <div class="row mt-2">
-                    <div class="col-md-6">
-                      <label class="labels">Nombre</label>
-                      <input type="text" class="form-control" placeholder="first name" value=""></div>
-                    <div class="col-md-6">
-                      <label class="labels">Surname</label>
-                      <input type="text" class="form-control" value="" placeholder="surname"></div>
+                  <div class="col-md-12">
+                    <label class="labels">Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nombre"
+                      v-model="persona.nombre"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Apellido Paterno</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      
+                      placeholder="Apellido Paterno"
+                      v-model="persona.apPaterno"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Apellido Materno</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      
+                      placeholder="Apellido Materno"
+                      v-model="persona.apMaterno"
+                    />
+                  </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                    <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                    <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value=""></div>
-                    <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                    <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
+                  <div class="col-md-12">
+                    <label class="labels">Telefono Personal</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="012 345 67 89"
+                      
+                      v-model="persona.telefono"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Fecha de nacimiento</label
+                    ><input
+                      type="date"
+                      class="form-control"
+                      placeholder="15 02 1999"
+                      v-model="persona.fechaNacimiento"
+                      
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Estado</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="Estado"
+                      
+                      v-model="persona.estado"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Municipio</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="enter address line 2"
+                      
+                      v-model="persona.municipio"
+                    />
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Colonia</label
+                    ><select
+                      id="inputState"
+                      class="form-select"
+                      v-model="persona.colonia"
+                    >
+                      <option selected>Elegir colonia</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Codigo Postal</label
+                    ><input
+                      type="text"
+                      class="form-control"
+                      placeholder="enter address line 2"
+                      
+                      v-model="persona.codigoPostal"
+                    />
+                  </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                <div class="mt-5 text-center">
+                  <button class="btn btn-primary profile-button" type="button">
+                    Guardar
+                  </button>
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-
               </form>
             </div>
-        </div>
-        <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </div>
     </div>
     <FooterComponent />
   </div>
@@ -407,7 +275,7 @@ export default {
           estado: datosEnviar.estado,
           fechaNacimiento: datosEnviar.fechaNacimiento,
           id: datosEnviar.id,
-          municipio:datosEnviar.municipio,
+          municipio: datosEnviar.municipio,
           nombre: datosEnviar.nombre,
           telefono: datosEnviar.telefono,
         },
@@ -416,7 +284,7 @@ export default {
         .request(options)
         .then(function (response) {
           console.log(response.data);
-          console.log("datos enviados correctamente")
+          console.log("datos enviados correctamente");
         })
         .catch(function (error) {
           console.error(error);
@@ -425,3 +293,46 @@ export default {
   },
 };
 </script>
+
+<style>
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+</style>

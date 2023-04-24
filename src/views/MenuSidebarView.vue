@@ -2,106 +2,96 @@
   <div>
     <SideBarKixComponent />
     <div class="container-fluid p-4 row mx-2 d-flex">
-      <section class="gradient-custom-2 col-sm-12">
-        <div class="container py-5 h-100">
-          <div
-            class="row d-flex justify-content-center align-items-center h-100"
-          >
-            <div class="col-sm-12 col-lg-10">
-              <div class="card">
-                <div
-                  class="rounded-top text-white d-flex flex-row"
-                  style="background-color: #000; height: 200px"
-                >
-                  <div
-                    class="ms-4 mt-5 d-flex flex-column"
-                    style="width: 150px"
-                  >
-                    <img
-                      :src="une(imagen.fullHttpUploadUrl)"
-                      alt="Generic placeholder image"
-                      class="img-fluid img-thumbnail mt-4 mb-2"
-                      style="width: 150px; z-index: 1"
-                    />
-                    <button
-                      type="button"
-                      class="btn btn-dark btn-outline-white"
-                      data-mdb-ripple-color="dark"
-                      style="z-index: 1"
-                    >
-                      Edit profile
-                    </button>
+      <section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="row d-flex justify-content-center pb-5">
+          <div class="col-md-7 col-xl-5 mb-4 mb-md-0">
+            <div class="py-4 d-flex flex-row">
+              <h5><span class="far fa-check-square pe-2"></span><b>Tarjetas</b> |</h5>
+              <span class="ps-2">Pago</span>
+            </div>
+          
+      
+            <hr />
+            <div class="pt-2">
+              <div class="d-flex pb-2">
+                <div>
+                  <p>
+                    <b>Mis tarjetas <span class="text-success"></span></b>
+                  </p>
+                </div>
+                <div class="ms-auto">
+                  <p class="text-primary">
+                    <i class="fas fa-plus-circle text-primary pe-1"></i>Administrar Tarjetas
+                  </p>
+                </div>
+              </div>
+              <form class="pb-3">
+                <div class="d-flex flex-row pb-3">
+                  <div class="d-flex align-items-center pe-2">
+                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                      value="" aria-label="..." checked />
                   </div>
-                  <div class="ms-3" style="margin-top: 130px">
-                    <h5>
-                      {{ perfil.nombre }} {{ perfil.apPaterno }}
-                      {{ perfil.apMaterno }}
-                    </h5>
-                    <p>{{ nick }}</p>
+                  <div class="rounded border d-flex w-100 p-3 align-items-center">
+                    <p class="mb-0">
+                      <i class="fab fa-cc-visa fa-lg text-primary pe-2"></i>Visa Debit
+                      Card
+                    </p>
+                    <div class="ms-auto">************3456</div>
                   </div>
                 </div>
-                <div class="p-4 text-black" style="background-color: #f8f9fa">
-                  <div class="mt-4">
-                    {{ email }}
-                    <br />
-                    {{ perfil.fechaNacimiento }}
-                  </div>
 
-                  <div class="d-flex justify-content-end text-center py-1">
-                    <div>
-                      <p class="small text-muted mb-0">Fotos</p>
-                      <p class="mb-1 h5">{{ loadedImages }}</p>
-                    </div>
-                    <div class="px-3">
-                      <p class="small text-muted mb-0">Documentos</p>
-                      <p class="mb-1 h5">{{ loadedInes }}</p>
-                    </div>
-                    <div>
-                      <p class="small text-muted mb-0">A pagar</p>
-                      <p class="mb-1 h5">$320</p>
-                    </div>
+                <div class="d-flex flex-row">
+                  <div class="d-flex align-items-center pe-2">
+                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
+                      value="" aria-label="..." />
+                  </div>
+                  <div class="rounded border d-flex w-100 p-3 align-items-center">
+                    <p class="mb-0">
+                      <i class="fab fa-cc-mastercard fa-lg text-dark pe-2"></i>Mastercard
+                      Office
+                    </p>
+                    <div class="ms-auto">************1038</div>
                   </div>
                 </div>
-                <div class="card-body p-4 text-black">
-                  <div class="mb-5">
-                    <p class="lead fw-normal mb-1 fw-bold">Sobre mi</p>
-                    <div class="p-4" style="background-color: #f8f9fa">
-                      <p class="font-italic mb-1">
-                        {{ perfil.estado }}, {{ perfil.municipio }},
-                        {{ perfil.colonia }}.
-                      </p>
-                      <p class="font-italic mb-0">{{ perfil.telefono }}</p>
-                      <p class="font-italic mb-0">{{ perfil.codigoPostal }}</p>
-                    </div>
-                  </div>
-                  <div class="d-flex justify-content-between align-items-center mb-4">
-                  </div>
-                  <div class="row g-2">
-                    <h2>Documentos: Oficiales</h2>
-                    <div class="d-flex justify-content-center gap-4 mb-4" >
-                      <img
-                      v-for="ine in ines" v-bind:key="ine.id"
-                        :src="une(ine.fullHttpUploadUrl)"
-                        alt="image 1"
-                        class="rounded-3 img-fluid w-25"
-                      />
-                    </div>
-                    <h2 class="mb-4">Mis Imagenes:</h2>
-                    <div class="d-flex justify-content-evenly mb-2" >
-                      <img
-                      v-for="img in images" v-bind:key="img.id"
-                        :src="une(img.fullHttpUploadUrl)"
-                        alt="image 1"
-                        class=" rounded-3"
-                      />
-                    </div>
-                  </div>
-                </div>
+              </form>
+              <input type="button" value="Pagar Ahora" class="btn btn-primary btn-block btn-lg" />
+            </div>
+          </div>
+
+          <div class="col-md-5 col-xl-4 offset-xl-1">
+            <div class="py-4 d-flex justify-content-end">
+              <h6><a href="#!">Cancelar y Regresar</a></h6>
+            </div>
+            <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;">
+              <div class="p-2 me-3">
+                <h4>Total a Pagar</h4>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Precio por click</div>
+                <div class="ms-auto">$20.0</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Total de clicks</div>
+                <div class="ms-auto">5</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Iva ( 16% )</div>
+                <div class="ms-auto">+ $0.00</div>
+              </div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8"><b>Total</b></div>
+                <div class="ms-auto"><b class="text-success">$120.00</b></div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
     <FooterComponent />
   </div>
