@@ -161,7 +161,7 @@
         <a href="" v-on:click="handleLogout">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
-            <h4>Logout</h4>
+            <h4>Logout {{  }}</h4>
           </div>
         </a>
         <a href="/ui/factura">
@@ -231,6 +231,8 @@ export default {
       sidebarWidth2: "250px",
       sidebarWidth4: "250px",
       idUser: store.state.userData.idUser,
+      email: store.state.userData.email,
+      nick: store.state.userData.nick
     };
   },
   computed: {

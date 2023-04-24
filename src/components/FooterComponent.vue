@@ -21,15 +21,15 @@
           <h1>Redes Sociales</h1>
 
           <div class="row">
-            <img  src="@/assets/icon/facebook.png" style="width: 15%;height: 15%;" />
+            <img  src="@/assets/icon/facebook.png" class="img-footer" style="width: 15%;height: 15%;" />
             <a href="">Siguenos en Facebook</a>
           </div>
           <div class="row">
-            <img src="@/assets/icon/twitter.png" style="width: 15%;height: 15%;"  />
+            <img src="@/assets/icon/twitter.png" class="img-footer" style="width: 15%;height: 15%;"  />
             <a href="">Siguenos en Twitter</a>
           </div>
           <div class="row">
-            <img src="@/assets/icon/instagram.png" style="width: 15%;height: 15%;" />
+            <img src="@/assets/icon/instagram.png" class="img-footer" style="width: 15%;height: 15%;" />
             <a href="">Siguenos en Instagram</a>
           </div>
         </div>
@@ -38,19 +38,19 @@
           <h1>Informacion Contactos</h1>
 
           <div class="row2">
-            <img src="@/assets/icon/house.png" style="width: 15%;height: 15%;" />
+            <img src="@/assets/icon/house.png" class="img-footer" style="width: 15%;height: 15%;" />
             <label
               >CDMX oficina 20</label
             >
           </div>
 
           <div class="row2">
-            <img src="@/assets/icon/smartphone.png" style="width: 15%;height: 15%;" />
+            <img src="@/assets/icon/smartphone.png" class="img-footer" style="width: 15%;height: 15%;" />
             <label>444 600 41 36</label>
           </div>
 
           <div class="row2">
-            <img src="@/assets/icon/contact.png" style="width: 15%;height: 15%;" />
+            <img src="@/assets/icon/contact.png" class="img-footer" style="width: 15%;height: 15%;" />
             <label>Chambeaya@gmail.com</label>
           </div>
         </div>
@@ -126,7 +126,7 @@ footer {
   display: flex;
 }
 
-.row img {
+.img-footer {
   width: 36px;
   height: 36px;
 }
