@@ -1,150 +1,209 @@
 <template>
   <div>
-    <SideBarKixComponent/>
-    <div class="container-fluid p-4 mx-3">
-      <div class="card card-body">
-        <div class="container text-center">
-        <div class="row">
-          <div class="col-sm-12 col-lg-8 p-1">
-            <h3 class="mt-4">¿Como quieres pagar?</h3>
-            <p class="mt-5 fs-5">Elige una forma de Pago o Agrega</p>
-            <a href="/ui/makecard" class="btn btn-primary my-3" ><i class="fa-solid fa-plus mx-1"></i>Agregar tarjeta</a>
-            <div>
-              <!-- tarjetas -->
-              <div
-                class="d-flex justify-content-start align-items-center p-4 b mb-1 border rounded mb-2"
-              >
-                <input type="radio" name="seleccion" class="fs-3" />
-                <div class="div-img mx-3">
-                  <img src="../assets/ico5.svg" alt="" class="icono" />
-                </div>
-                <div class="text-start mx-3 align-middle">
-                  <div class="d-flex">
-                    <p>Nueva tarjeta de crédito</p>
-                    <p>****0000</p>
-                  </div>
-                  <p class="verde">Hasta 6 meses sin intereses</p>
-                </div>
-              </div>
-
-              <div
-                class="d-flex justify-content-start align-items-center p-4 b mb-1 border rounded mb-2"
-              >
-                <input type="radio" name="seleccion" class="fs-3" />
-                <div class="div-img mx-3">
-                  <img src="../assets/ico6.svg" alt="" class="icono" />
-                </div>
-                <div class="text-start mx-3 align-middle">
-                  <div class="d-flex">
-                    <p>Nueva tarjeta de Debito</p>
-                    <p>****0000</p>
-                  </div>
-                  <p class="verde"></p>
-                </div>
-              </div>
-              <!-- tarjetas -->
+    <SideBarKixComponent />
+    <div class="container-fluid p-4 row mx-2 d-flex">
+      <section>
+  <div class="container py-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="row d-flex justify-content-center pb-5">
+          <div class="col-md-7 col-xl-5 mb-4 mb-md-0">
+            <div class="py-4 d-flex flex-row">
+              <h5><span class="far fa-check-square pe-2"></span><b>Tarjetas</b> |</h5>
+              <span class="ps-2">Pago</span>
             </div>
-            <!-- <h4 class="mt-4 mb-4">Otras Formas de Pago</h4> -->
-            <!-- otras formas de pago -->
-            <!-- <div
-              class="d-flex justify-content-start align-items-center p-4 b mb-1 border rounded mb-2"
-            >
-              <input type="radio" name="seleccion" class="fs-3" />
-              <div class="div-img mx-3">
-                <img src="../assets/ico7.svg" alt="" class="icono" />
-              </div>
-              <div class="text-start mx-3 align-middle">
-                <div class="d-flex">
-                  <p>Transferencia electronica</p>
-                  <p></p>
+          
+      
+            <hr />
+            <div class="pt-2">
+              <div class="d-flex pb-2">
+                <div>
+                  <p>
+                    <b>Mis tarjetas <span class="text-success"></span></b>
+                  </p>
                 </div>
-                <p class="verde"></p>
-              </div>
-            </div> -->
-
-            <!-- <div
-                class="d-flex justify-content-start align-items-center p-4 b mb-1 border rounded  mb-2"
-              >
-                <input type="radio" name="seleccion" class="fs-3" />
-                <div class="div-img mx-3">
-                  <img src="../assets/ico8.svg" alt="" class="icono" />
+                <div class="ms-auto">
+                  <p class="text-primary">
+                    <a href="/ui/makecard"><i class="fas fa-plus-circle text-primary pe-1"></i>Administrar Tarjetas</a>
+                  </p>
                 </div>
-                <div class="text-start mx-3 align-middle">
-                  <div class="d-flex">
-                    <p>Efectivo en puntos de pago</p>
-                    <p></p>
+              </div>
+              <form class="pb-3">
+                <div class="d-flex flex-row pb-3">
+                  <div class="d-flex align-items-center pe-2">
+                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
+                      value="" aria-label="..." checked />
                   </div>
-                  <p class="verde">Santander, HSBC, 7-Eleven, Soriana, Circle K y otros</p>
+                  <div class="rounded border d-flex w-100 p-3 align-items-center">
+                    <p class="mb-0">
+                      <i class="fab fa-cc-visa fa-lg text-primary pe-2"></i>Visa Debito
+                      
+                    </p>
+                    <div class="ms-auto">************3456</div>
+                  </div>
                 </div>
-              </div> -->
-            <!-- otras formas de pago -->
+
+                <div class="d-flex flex-row">
+                  <div class="d-flex align-items-center pe-2">
+                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
+                      value="" aria-label="..." />
+                  </div>
+                  <div class="rounded border d-flex w-100 p-3 align-items-center">
+                    <p class="mb-0">
+                      <i class="fab fa-cc-mastercard fa-lg text-dark pe-2"></i>Mastercard
+                    </p>
+                    <div class="ms-auto">************1038</div>
+                  </div>
+                </div>
+              </form>
+              <input type="button" value="Pagar Ahora" class="btn btn-primary btn-block btn-lg" />
+            </div>
           </div>
-          <div class="col-4 p-1 bordery">
-            <!-- pago -->
-            <div class="px-1 b main">
-              <h6 class="pt-5 mx-3 text-start bordeAbajo">Resumen de compra</h6>
-              <div class="py-3">
-                <div class="mx-3 d-flex justify-content-between">
-                  <span>productos({{ cantidadProducto }})</span>
-                  <span>$ {{ totalProductos }}</span>
-                </div>
-                <div
-                  class="mx-3 d-flex justify-content-between bordeAbajo pb-3"
-                >
-                  <span>Envio</span>
-                  <span>$ {{ costoEnvio }}</span>
-                </div>
-              </div>
-              <div class="mx-3 d-flex justify-content-between">
-                <span>Pagas</span>
-                <span>$ {{ totalPago }}</span>
-              </div>
-              <!------------------------------------------------->
-              <div class="d-flex justify-content-center"><a href="" class="btn btn-primary my-4 ">Pagar Ahora</a></div>
-              <section class="drop">
-                <div class="dropdown-center mt-5">
-                  <button
-                    class="btn btn-white dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fa-solid fa-ticket"></i>
-                    Ingresar un cupon de descuento
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">10%</a></li>
-                    <li><a class="dropdown-item" href="#">30%</a></li>
-                    <li><a class="dropdown-item" href="#">50%</a></li>
-                  </ul>
-                </div>
-              </section>
-            </div>
-            <!-- pago -->
 
+          <div class="col-md-5 col-xl-4 offset-xl-1">
+            <div class="py-4 d-flex justify-content-end">
+              <h6><a href="/ui/">Cancelar y Regresar</a></h6>
+            </div>
+            <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;">
+              <div class="p-2 me-3">
+                <h4>Total a Pagar</h4>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Precio por click</div>
+                <div class="ms-auto">$20.0</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Total de clicks</div>
+                <div class="ms-auto">5</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Iva ( 16% )</div>
+                <div class="ms-auto">+ $0.00</div>
+              </div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8"><b>Total</b></div>
+                <div class="ms-auto"><b class="text-success">$120.00</b></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-
     </div>
+  </div>
+</section>
+    </div>
+    <FooterComponent />
   </div>
 </template>
 
+<!-- <img :src="une(imagen.fullHttpUploadUrl)" class="img-fluid rounded-start 75" alt="..."> -->
+<!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
+<!-- <img src="https://picsum.photos/200/200" class="img-fluid rounded-start" alt="..."> -->
 <script>
-import SideBarKixComponent from '@/components/SideBarKixComponent.vue';
+import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
+// import CarruselComponent2 from "@/components/CarruselComponent2.vue";
+import store from "@/store";
+import axios from "axios";
 
 export default {
   components: {
-    SideBarKixComponent
+    SideBarKixComponent,
+    FooterComponent,
+    // CarruselComponent2
+  },
+  data: function () {
+    return {
+      idUser: store.state.userData.idUser,
+      email: store.state.userData.email,
+      nick: store.state.userData.nick,
+      loadedImages: 0,
+      loadedInes: 0,
+      imagen: {},
+      images: [],
+      ines:[],
+      perfil: {},
+    };
+  },
+  mounted() {
+    this.carga();
+    this.getProfileData();
+    this.getAdsImg();
+    this.getInes();
+  },
+  methods: {
+    carga() {
+      axios
+        .get(
+          "https://upload.qbits.mx/api/up/get-user-pricipal-image/" +
+            this.idUser
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.imagen = response.data;
+          
+          console.log(this.imagen);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    une(Nombreimg) {
+      return `https://media.visitanos.net/image${Nombreimg}`;
+    },
+    getProfileData() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-persons-byid",
+        params: { id: this.idUser },
+      };
+
+      axios
+        .request(options)
+        .then((response) => {
+          console.log(response.data);
+          this.perfil = response.data;
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+    getAdsImg() {
+      axios
+        .get(
+          "https://upload.qbits.mx/api/up/get-user-all-images/" + this.idUser
+        )
+        .then((response) => {
+          this.images = response.data;
+          this.loadedImages = this.images.length;
+          console.log(this.images);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getInes() {
+      axios
+        .get(
+          "https://upload.qbits.mx/api/up/get-user-identification-images/" +
+            this.idUser
+        )
+        .then((response) => {
+          this.ines = response.data;
+          this.loadedInes = this.ines.length;
+          console.log(this.imagenes);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
 
-<style scoped>
-.bodi {
-  margin-left: 56px;
-}
-.p {
-  outline: red solid 2px;
+<style>
+* {
+  margin: 0;
+  padding: 0;
 }
 </style>

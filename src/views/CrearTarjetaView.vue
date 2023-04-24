@@ -58,19 +58,19 @@
                 <div class="form-outline">
                   <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
                     placeholder="MM/YYYY" />
-                  <label class="form-label" for="formControlLgExpk">Expire</label>
+                  <label class="form-label" for="formControlLgExpk">Expira</label>
                 </div>
               </div>
               <div class="col-2">
                 <div class="form-outline">
                   <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
                     placeholder="CVV" />
-                  <label class="form-label" for="formControlLgcvv">Cvv</label>
+                  <label class="form-label" for="formControlLgcvv">CVV</label>
                 </div>
               </div>
             </div>
 
-            <button class="btn btn-success btn-lg btn-block">Add card</button>
+            <button class="btn btn-success btn-lg btn-block">Agregar Tarjeta</button>
           </form>
         </div>
       </div>
