@@ -121,7 +121,7 @@
                     ><input
                       type="text"
                       class="form-control"
-                      placeholder="enter address line 2"
+                      placeholder="Municipio"
                       
                       v-model="persona.municipio"
                     />
@@ -141,14 +141,14 @@
                     ><input
                       type="text"
                       class="form-control"
-                      placeholder="enter address line 2"
+                      placeholder="86690"
                       
                       v-model="persona.codigoPostal"
                     />
                   </div>
                 </div>
                 <div class="mt-5 text-center">
-                  <button class="btn btn-primary profile-button" type="button">
+                  <button class="btn btn-primary profile-button" type="submit" target="/ui/miperfil">
                     Guardar
                   </button>
                 </div>
@@ -162,6 +162,14 @@
         </div>
       </div>
     </div>
+    <MessageComponent
+        ref="message01"
+        alertType="3"
+        duration="4000"
+        :text="errorText"
+        iconType="1"
+        style="max-width: 600px"
+      />
     <FooterComponent />
   </div>
 </template>
@@ -285,6 +293,7 @@ export default {
         .then(function (response) {
           console.log(response.data);
           console.log("datos enviados correctamente");
+          this.$refs.message01.presenta();
         })
         .catch(function (error) {
           console.error(error);

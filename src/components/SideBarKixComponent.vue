@@ -34,7 +34,12 @@
         <!-- aqui iria el logo -->
         <img
           src="../assets/chambeaya.png"
-          style="width: 50px; height: 50px; margin-left: -20px; margin-top: -10px;"
+          style="
+            width: 50px;
+            height: 50px;
+            margin-left: -20px;
+            margin-top: -10px;
+          "
           alt=""
         />
         <i class="fa-solid fa-user-alien"></i>
@@ -43,20 +48,39 @@
       <!-- menu de opciones -->
       <div class="options__menu">
         <!-- aqui van los links -->
-        <a href="http://192.168.1.42:8080/" class="selected">
+        <a href="" class="selected">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-house" title="Home"></i>
             <h4>Home</h4>
           </div>
         </a>
-        <a href="/ui/datos">
+        <a href="/ui/buscar">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-magnifying-glass" title="Buscar"></i>
+            <h4>Buscar</h4>
+          </div>
+        </a>
+
+        <div class="d-flex dropdown">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-user" title="Perfil"></i>
-            <h4>Perfil</h4>
+            <h4
+              class="dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+              >
+              Perfil
+            </h4>
+            <ul class="dropdown-menu bg-dark">
+              
+              <li><a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="/ui/datos">Editar Perfil</a></li>
+              <li><a class="dropdown-item" v-on:click="handleLogout">Cerrar Sesion</a></li>
+            </ul>
           </div>
-        </a>
+        </div>
+
         <a href="/ui/ine">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
@@ -78,19 +102,12 @@
             <h4>Pago</h4>
           </div>
         </a>
-        <a href="" v-on:click="handleLogout">
+        <!-- <a href="/ui/factura">
           <div class="option">
-            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
-            <h4>Logout</h4>
-          </div>
-        </a>
-        <a href="/ui/factura">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
             <i class="fa-sharp fa-solid fa-money-bill" title="Facturacion"></i>
             <h4>Facturacion</h4>
           </div>
-        </a>
+        </a> -->
         <a href="/ui/menu">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
@@ -123,20 +140,40 @@
       <!-- menu de opciones -->
       <div class="options__menu">
         <!-- aqui van los links -->
-        <a href="http://192.168.1.42:8080/" class="selected">
+        <a href="" class="selected">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-house" title="Home"></i>
             <h4>Home</h4>
           </div>
         </a>
-        <a href="/ui/datos">
+        <a href="/ui/buscar">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-magnifying-glass" title="Buscar"></i>
+            <h4>Buscar</h4>
+          </div>
+        </a>
+
+        <div class="d-flex dropdown">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-user" title="Perfil"></i>
-            <h4>Perfil</h4>
+            <h4
+              class="dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+              >
+              Perfil
+            </h4>
+            <ul class="dropdown-menu bg-dark">
+              
+              <li><a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="/ui/datos">Editar Perfil</a></li>
+              <li><a class="dropdown-item" v-on:click="handleLogout">Cerrar Sesion</a></li>
+
+            </ul>
           </div>
-        </a>
+        </div>
+
         <a href="/ui/ine">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
@@ -158,19 +195,12 @@
             <h4>Pago</h4>
           </div>
         </a>
-        <a href="" v-on:click="handleLogout">
+        <!-- <a href="/ui/factura">
           <div class="option">
-            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
-            <h4>Logout {{  }}</h4>
-          </div>
-        </a>
-        <a href="/ui/factura">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
-            <i class="fa-sharp fa-solid fa-money-bill"></i>
+            <i class="fa-sharp fa-solid fa-money-bill" title="Facturacion"></i>
             <h4>Facturacion</h4>
           </div>
-        </a>
+        </a> -->
         <a href="/ui/menu">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
@@ -232,12 +262,12 @@ export default {
       sidebarWidth4: "250px",
       idUser: store.state.userData.idUser,
       email: store.state.userData.email,
-      nick: store.state.userData.nick
+      nick: store.state.userData.nick,
     };
   },
   computed: {
     ...mapState({
-      nick: (state) => state.userData.nick,
+      nick:(state) => state.userData.nick,
     }),
   },
   methods: {
@@ -433,7 +463,6 @@ a.selected::before {
   }
   .menu__side {
     display: none;
-    
   }
 
   header {

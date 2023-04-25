@@ -13,26 +13,28 @@
         </div>
 
           <div
-            v-for="imagen in imagenes"
-            v-bind:key="imagen.id"
+            
             id="contenedor"
-            class="d-flex flex-wrap justify-content-center ines bg-dark"
+            class="d-flex flex-wrap justify-content-center gap-3"
           >
-            <div class="elemento">
+            <div v-for="imagen in imagenes"
+            v-bind:key="imagen.id">
+              <div class="elemento">
                 <div class="">
                   <img
                 :src="une(imagen.fullHttpUploadUrl)"
                 alt=""
                 class="mt-5 rounded"
-                style="width: 280px; height: 200px"
+                style="width: 250px; height: 170px"
               />
                 </div>
               
               <button class="btn btn-primary my-3"><i
-                class="fa-solid fa-trash  fa-2xl my-4"
+                class="fa-solid fa-trash  fa-xl"
                 style="color: #ec091f"
                 @click="elimina(imagen)"
               ></i></button>
+            </div>
             </div>
           </div>
       </div>

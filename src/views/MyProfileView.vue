@@ -24,12 +24,13 @@
                       style="width: 150px; z-index: 1"
                     />
                     <button
+                    hre
                       type="button"
                       class="btn btn-dark btn-outline-white"
                       data-mdb-ripple-color="dark"
                       style="z-index: 1"
                     >
-                      Edit profile
+                      <a href="/ui/datos">Edit profile</a>
                     </button>
                   </div>
                   <div class="ms-3" style="margin-top: 130px">
@@ -67,8 +68,8 @@
                     <p class="lead fw-normal mb-1 fw-bold">Sobre mi</p>
                     <div class="p-4" style="background-color: #f8f9fa">
                       <p class="font-italic mb-1">
-                        {{ perfil.estado }}, {{ perfil.municipio }},
-                        {{ perfil.colonia }}.
+                        {{ perfil.estado }} {{ perfil.municipio }}
+                        {{ perfil.colonia }}
                       </p>
                       <p class="font-italic mb-0">{{ perfil.telefono }}</p>
                       <p class="font-italic mb-0">{{ perfil.codigoPostal }}</p>
@@ -87,12 +88,12 @@
                       />
                     </div>
                     <h2 class="mb-4">Mis Imagenes:</h2>
-                    <div class="d-flex justify-content-evenly mb-2" >
+                    <div class="d-flex flex-wrap justify-content-evenly mb-2 gap-5" >
                       <img
                       v-for="img in images" v-bind:key="img.id"
                         :src="une(img.fullHttpUploadUrl)"
                         alt="image 1"
-                        class=" rounded-3"
+                        class=" rounded-3 img"
                       />
                     </div>
                   </div>

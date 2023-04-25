@@ -23,6 +23,8 @@ import MenuSidebarView from "@/views/MenuSidebarView";
 import CrearTarjetaView from "@/views/CrearTarjetaView"
 import FacturacionView from "@/views/FacturacionView"
 import ResultadosView from "@/views/ResultadosView"
+import MyProfileView from "@/views/MyProfileView";
+import BusquedaView from "@/views/BusquedaView";
 
 const routes = [
   {
@@ -125,6 +127,16 @@ const routes = [
     path: "/ui/resultados",
     name: "resultados",
     component: ResultadosView,
+  },
+  {
+    path: "/ui/miperfil",
+    name: "miperfil",
+    component: MyProfileView,
+  },
+  {
+    path: "/ui/buscar",
+    name: "buscar",
+    component: BusquedaView,
   },
   { path: "/:pathMatch(.*)*", name: "NotFound", component: PageNotFoundView },
 ];

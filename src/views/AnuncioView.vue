@@ -56,6 +56,9 @@
               ></label>
               <input type="email" class="form-control mb-3" id="inputEmail4" v-model="anuncio.correoNegocio" />
             </div>
+
+
+            
             <div class="col-sm-12 col-lg-6">
               <label for="inputText" class="form-label"
                 >Oficio <i class="fa-solid fa-hammer" style="color: #1d43f2"></i
@@ -65,25 +68,20 @@
                   v-bind:key="oficio.id">{{ oficio.nombre }}</option>
               </select>
             </div>
-            <div class="row mt-4 mb-4 justify-content-around">
-              <div class="col-sm-12 col-lg-2 mb-4">
+
+
+            <div v-if="loadedImages < maxImagesAllowed" class="row mt-4 mb-4 justify-content-around">
+              <div class=" mb-4">
                 <a href="/ui/upload/" class="btn btn-primary"
                   >Insertar Imagen
                   <i class="fa-solid fa-file-image" style="color: #ffffff"></i
                 ></a>
               </div>
-              <div class="col-sm-12 col-lg-2">
-                <button class="btn btn-primary">
-                  Insertar Video
-                  <i
-                    class="fa-regular fa-file-video"
-                    style="color: #ffffff"
-                  ></i>
-                </button>
-              </div>
             </div>
+            <h2 v-else class="text-danger">Limite de Imagenes Alcanzado</h2>
+
             <h2 class="my-4">imagenes</h2>
-            <div class="d-flex gap-3 flex-wrap justify-content-around divi">
+            <div class="d-flex gap-4 flex-wrap justify-content-center">
               <div
                 v-for="imagen in imagenes"
                 v-bind:key="imagen.id"
@@ -104,6 +102,14 @@
               </div>
             </div>
             <h2 class="my-4">Videos</h2>
+            <div class="row mt-4 mb-4 justify-content-around">
+              <div class=" mb-4">
+                <a href="/ui/upload/" class="btn btn-primary"
+                  >Insertar Videos
+                  <i class="fa-solid fa-file-image" style="color: #ffffff"></i
+                ></a>
+              </div>
+            </div>
             <div>
               <img src="https://picsum.photos/125/125" alt="" class="m-1" />
               <img src="https://picsum.photos/125/125" alt="" class="m-1" />
@@ -116,7 +122,9 @@
               Datos del negocio
               <i class="fa-solid fa-house" style="color: #1d43f2"></i>
             </h4>
-            <div class="col-sm-12 col-lg-4">
+
+            <div class="row d-flex justify-content-around">
+              <div class="col-sm-12 col-lg-4">
               <label for="inputEmail4" class="form-label"
                 >Telefono del Negocio
                 <i class="fa-solid fa-map-pin" style="color: #1d43f2"></i
@@ -142,26 +150,28 @@
                 v-model="anuncio.correoNegocio"
               />
             </div>
+            </div>
+
             <div class="row d-flex justify-content-around mt-4 mb-4">
-              <div class="col-sm-12 col-lg-3 mb-4">
-                <a href="http://localhost:8080/ui/ine" class="btn btn-primary"><span
+              <div class="col-sm-6 col-lg-3 mb-4">
+                <a href="/ui/ine" class="btn btn-primary"><span
                     ><i
                       class="fa-solid fa-address-card mx-2"
                       style="color: #ffffff"
                     ></i
                   ></span>
-                  Credencial INE</a
+                  Ine</a
                 >
               </div>
-              <div class="col-sm-12 col-lg-3 mb-4">
-                <a href="http://localhost:8080/ui/pago" class="btn btn-primary"
+              <div class="col-sm-6 col-lg-3 mb-4">
+                <a href="/ui/makecard" class="btn btn-primary"
                   ><span
                     ><i
                       class="fa-solid fa-credit-card mx-2"
                       style="color: #ffffff"
                     ></i
                   ></span>
-                  Agregar forma de pago</a
+                  Card</a
                 >
               </div>
             </div>
@@ -191,8 +201,9 @@ export default {
       imagenes: [],
       oficios: [],
       idUser: store.state.userData.idUser,
-      maxImagesAllowed: 1,
+      maxImagesAllowed: 4,
       loadedImages: 0,
+      
       anuncio:{}
     };
   },

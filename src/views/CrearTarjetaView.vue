@@ -2,101 +2,210 @@
   <div>
     <SideBarKixComponent />
     <div class="container-fluid p-4 mx-3">
-      <section class="p-4 p-md-5" style="" >
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-10 col-lg-8 col-xl-5">
-      <div class="card rounded-3">
-        <div class="card-body p-4">
-          <div class="text-center mb-4">
-            <h3>Configuracion de Tarjetas</h3>
-            <h6>Pagos</h6>
+      <section class="p-4 p-md-5" style="">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-5">
+            <div class="card rounded-3">
+              <div class="card-body p-4">
+                <div class="text-center mb-4">
+                  <h3>Configuracion de Tarjetas</h3>
+                  <h6>Pagos</h6>
+                </div>
+                <form action="">
+                  <p class="fw-bold mb-4 pb-2">Tarjetas Guardadas:</p>
+
+                  <div id="contenedor">
+                    <div
+                      class="d-flex flex-row align-items-center mb-4 pb-1 align-items-center elemento"
+                      v-for="card in cards"
+                      v-bind:key="card.id"
+                    >
+                      <div class="flex-fill mx-3">
+                        <div class="form-outline">
+                          <label
+                            class="form-label fw-bold"
+                            for="formControlLgXc"
+                            >DETALLES</label
+                          >
+                          <div
+                            class="rounded border border-primary d-flex flex-wrap justify-content-evenly py-3"
+                          >
+                            <span class="text-primary fw-bold">{{
+                              card.nombre
+                            }}</span>
+                            <span class="text-success">{{ card.company }}</span
+                            >{{ card.numero }}
+                          </div>
+                          <a
+                            href="#!"
+                            class="my-3 text-danger"
+                            @click="elimina(card)"
+                            >Eliminar Tarjeta</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="fw-bold mb-4">Agregar Nueva Tarjeta:</p>
+
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="formControlLgXsd"
+                      class="form-control form-control-lg"
+                      value="Josue Gonzalez"
+                    />
+                    <label class="form-label" for="formControlLgXsd"
+                      >Nombre Completo</label
+                    >
+                  </div>
+
+                  <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="form-outline">
+                        <input
+                          type="text"
+                          id="formControlLgXM"
+                          class="form-control form-control-lg"
+                          value="1234 5678 1234 5678"
+                        />
+                        <label class="form-label" for="formControlLgXM"
+                          >Numero De Tarjeta</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-outline">
+                        <input
+                          type="text"
+                          id="formControlLgXM"
+                          class="form-control form-control-lg"
+                          value="Visa"
+                          placeholder="Visa"
+                        />
+                        <label class="form-label" for="formControlLgXM"
+                          >Compañia</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-outline">
+                        <input
+                          type="password"
+                          id="formControlLgExpk"
+                          class="form-control form-control-lg"
+                          placeholder="MM/YYYY"
+                        />
+                        <label class="form-label" for="formControlLgExpk"
+                          >Expira</label
+                        >
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-outline">
+                        <input
+                          type="password"
+                          id="formControlLgcvv"
+                          class="form-control form-control-lg"
+                          placeholder="CVV"
+                        />
+                        <label class="form-label" for="formControlLgcvv"
+                          >CVV</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-success btn-lg btn-block">
+                    Agregar Tarjeta
+                  </button>
+                </form>
+                <a href="/ui/pago">
+                  <button class="btn btn-danger btn-block mt-2">
+                    Cancelar
+                  </button>
+                </a>
+              </div>
+            </div>
           </div>
-          <form action="">
-            <p class="fw-bold mb-4 pb-2">Tarjetas Guardadas:</p>
-
-            <div class="d-flex flex-row align-items-center mb-4 pb-1">
-              <img class="img-fluid" src="../assets/ico3.svg" />
-              <div class="flex-fill mx-3">
-                <div class="form-outline">
-                  <input type="text" id="formControlLgXc" class="form-control form-control-lg"
-                    value="**** **** **** 3193" />
-                  <label class="form-label" for="formControlLgXc">Numero de Tarjeta</label>
-                </div>
-              </div>
-              <a href="#!">Eliminar Tarjeta</a>
-            </div>
-
-            <div class="d-flex flex-row align-items-center mb-4 pb-1">
-              <img class="img-fluid" src="../assets/ico4.svg" />
-              <div class="flex-fill mx-3">
-                <div class="form-outline">
-                  <input type="text" id="formControlLgXs" class="form-control form-control-lg"
-                    value="**** **** **** 4296" />
-                  <label class="form-label" for="formControlLgXs">Numero de Tarjeta</label>
-                </div>
-              </div>
-              <a href="#!">Eliminar Tarjeta</a>
-            </div>
-
-            <p class="fw-bold mb-4">Agregar Nueva Tarjeta:</p>
-
-            <div class="form-outline mb-4">
-              <input type="text" id="formControlLgXsd" class="form-control form-control-lg"
-                value="Josue Gonzalez" />
-              <label class="form-label" for="formControlLgXsd">Nombre Completo</label>
-            </div>
-
-            <div class="row mb-4">
-              <div class="col-7">
-                <div class="form-outline">
-                  <input type="text" id="formControlLgXM" class="form-control form-control-lg"
-                    value="1234 5678 1234 5678" />
-                  <label class="form-label" for="formControlLgXM">Numero De Tarjeta</label>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="form-outline">
-                  <input type="password" id="formControlLgExpk" class="form-control form-control-lg"
-                    placeholder="MM/YYYY" />
-                  <label class="form-label" for="formControlLgExpk">Expira</label>
-                </div>
-              </div>
-              <div class="col-2">
-                <div class="form-outline">
-                  <input type="password" id="formControlLgcvv" class="form-control form-control-lg"
-                    placeholder="CVV" />
-                  <label class="form-label" for="formControlLgcvv">CVV</label>
-                </div>
-              </div>
-            </div>
-
-            <button class="btn btn-success btn-lg btn-block">Agregar Tarjeta</button>
-          </form>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
+import store from "@/store";
+import axios from "axios";
 import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
 
 export default {
+  data() {
+    return {
+      cards: [],
+      idUser: store.state.userData.idUser,
+    };
+  },
   components: {
     SideBarKixComponent,
+  },
+  mounted() {
+    this.carga();
+  },
+  methods: {
+    carga() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-allcards-byid",
+        params: { id: this.idUser },
+      };
+      axios
+        .request(options)
+        .then((response) => {
+          console.log(response.data);
+          this.cards = response.data;
+          console.log(this.cards);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+    elimina: function (card) {
+      this.loader = "loader";
+      let tarjeta = document.querySelectorAll(".elemento");
+      console.log("La imagen se ha eliminado correctamente");
+      // Eliminar la imagen de la matriz de imágenes
+      const index = this.cards.indexOf(card);
+      //this.imagenes.splice(index,1);
+      console.log(index);
+      tarjeta[index].textContent = "";
+      console.log(card.id);
+      console.log("estoy llegando");
+
+      const options = {
+        method: "DELETE",
+        url: "http://localhost:8080/api/delete-cards-byid",
+        params: { id: card.id },
+      };
+
+      axios
+        .request(options)
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
   },
 };
 </script>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 </style>
-
