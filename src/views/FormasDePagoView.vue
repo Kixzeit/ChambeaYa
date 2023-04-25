@@ -68,7 +68,7 @@
 
                 <div class="col-md-5 col-xl-4 offset-xl-1">
                   <div class="py-4 d-flex justify-content-end">
-                    <h6><a href="/ui/">Cancelar y Regresar</a></h6>
+                    <h6><a href="/">Cancelar y Regresar</a></h6>
                   </div>
                   <div
                     class="rounded d-flex flex-column p-2"

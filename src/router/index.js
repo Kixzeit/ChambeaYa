@@ -31,7 +31,6 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView,
-    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/login",
@@ -62,76 +61,91 @@ const routes = [
     path: "/ui/edit",
     name: "edit",
     component: EditImagesView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/ine",
     name: "ine",
     component: SubirIneView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/pago",
     name: "pago",
     component: FormasDePagoView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/anuncio",
     name: "Anuncio",
     component: AnuncioView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/datos",
     name: "datos",
     component: DatosGeneralesView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/forbiden",
     name: "forbiden",
     component: ForbiddenView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/upload",
     name: "upload",
     component: UploadImageView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/upload-video",
     name: "upload-video",
     component: UploadVideoView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/upload/ine",
     name: "upload-ine",
     component: UploadIneView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/upload/Principal",
     name: "upload-Princiapl",
     component: UploadPrincipalView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/menu",
     name: "menu",
     component: MenuSidebarView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/makecard",
     name: "makecard",
     component: CrearTarjetaView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/factura",
     name: "factura",
     component: FacturacionView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/resultados",
     name: "resultados",
     component: ResultadosView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/miperfil",
     name: "miperfil",
     component: MyProfileView,
+    meta: { allowedRoles: ["admin", "regular"] },
   },
   {
     path: "/ui/buscar",
@@ -203,7 +217,7 @@ router.beforeEach((to, from, next) => {
       store.state.userData.jwt == undefined
     ) {
       store.commit("setDestination", to.fullPath);
-      router.push("/ui/login");
+      router.push("/");
       return;
     }
     // SI estoy autenticado actualmente, asi que solo voy a checar si mi rol es el adecuado:

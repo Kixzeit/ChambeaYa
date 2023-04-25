@@ -3,6 +3,9 @@
     <div class="container-fluid p-4 mx-3">
       <div class="card ancho forgot">
         <div class="card-header">
+          <div class="py-4 d-flex justify-content-end">
+                    <h6><a href="/">Cancelar y Regresar</a></h6>
+                  </div>
           <h1>Recuperación de clave</h1>
         </div>
         <div class="card-body">
@@ -75,7 +78,7 @@ export default {
     AvisoWindow,
   },
   mounted() {
-    store.commit("setDestination", "/ui/results");
+    store.commit("setDestination", "/");
   },
   methods: {
     enviar: function () {

@@ -44,7 +44,7 @@ export default {
             })
             .then(response => {
                 response;
-                store.commit('setDestination', '/ui/results')
+                store.commit('setDestination', '/')
                 this.msg = 'Felicidades. Registro Completo. Ahora ya puedes ingresaar al sistema con las credenciales que proporciionaste.'
                 this.destino = '/ui/login'
                 this.$refs.avisoWindow.openModal()

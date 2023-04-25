@@ -164,7 +164,7 @@
                 >
               </div>
               <div class="col-sm-6 col-lg-3 mb-4">
-                <a href="/ui/makecard" class="btn btn-primary"
+                <a href="/ui/pago" class="btn btn-primary"
                   ><span
                     ><i
                       class="fa-solid fa-credit-card mx-2"

@@ -82,7 +82,7 @@ export default {
             })
             .then(response => {
                 response;
-                store.commit('setDestination', '/ui/results')
+                store.commit('setDestination', '/')
                 this.msg = 'Felicidades. Tu clave ha sido cambiada exitosamente.'
                 this.destino = '/ui/login'
                 this.$refs.avisoWindow.openModal()

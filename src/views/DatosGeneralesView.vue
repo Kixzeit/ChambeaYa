@@ -2,7 +2,6 @@
   <div>
     <SideBarKixComponent />
     <div class="container-fluid p-5 mx-3">
-
       <div class="rounded bg-white mt-5 mb-5">
         <div class="row">
           <div class="col-sm-12 col-md-3 border-right">
@@ -61,7 +60,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Nombre"
-                      v-model="persona.nombre"
+                      v-model="nombre"
                     />
                   </div>
                   <div class="col-md-6">
@@ -69,9 +68,8 @@
                     <input
                       type="text"
                       class="form-control"
-                      
                       placeholder="Apellido Paterno"
-                      v-model="persona.apPaterno"
+                      v-model="apPaterno"
                     />
                   </div>
                   <div class="col-md-6">
@@ -79,9 +77,8 @@
                     <input
                       type="text"
                       class="form-control"
-                      
                       placeholder="Apellido Materno"
-                      v-model="persona.apMaterno"
+                      v-model="apMaterno"
                     />
                   </div>
                 </div>
@@ -92,8 +89,7 @@
                       type="text"
                       class="form-control"
                       placeholder="012 345 67 89"
-                      
-                      v-model="persona.telefono"
+                      v-model="telefono"
                     />
                   </div>
                   <div class="col-md-12">
@@ -102,8 +98,7 @@
                       type="date"
                       class="form-control"
                       placeholder="15 02 1999"
-                      v-model="persona.fechaNacimiento"
-                      
+                      v-model="fechaNacimiento"
                     />
                   </div>
                   <div class="col-md-12">
@@ -112,8 +107,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Estado"
-                      
-                      v-model="persona.estado"
+                      v-model="estado"
                     />
                   </div>
                   <div class="col-md-12">
@@ -122,8 +116,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Municipio"
-                      
-                      v-model="persona.municipio"
+                      v-model="municipio"
                     />
                   </div>
                   <div class="col-md-12">
@@ -131,7 +124,7 @@
                     ><select
                       id="inputState"
                       class="form-select"
-                      v-model="persona.colonia"
+                      v-model="colonia"
                     >
                       <option selected>Elegir colonia</option>
                     </select>
@@ -142,34 +135,37 @@
                       type="text"
                       class="form-control"
                       placeholder="86690"
-                      
-                      v-model="persona.codigoPostal"
+                      v-model="codigoPostal"
                     />
                   </div>
                 </div>
                 <div class="mt-5 text-center">
-                  <button class="btn btn-primary profile-button" type="submit" target="/ui/miperfil">
+                  <a
+                    class="btn btn-primary profile-button"
+                    type="submit"
+                    href="/ui/miperfil"
+                    @click="sendData"
+                  >
                     Guardar
-                  </button>
+                  </a>
                 </div>
               </form>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="p-3 py-5">
-            </div>
+            <div class="p-3 py-5"></div>
           </div>
         </div>
       </div>
     </div>
     <MessageComponent
-        ref="message01"
-        alertType="3"
-        duration="4000"
-        :text="errorText"
-        iconType="1"
-        style="max-width: 600px"
-      />
+      ref="message01"
+      alertType="3"
+      duration="4000"
+      :text="errorText"
+      iconType="1"
+      style="max-width: 600px"
+    />
     <FooterComponent />
   </div>
 </template>
@@ -190,14 +186,24 @@ export default {
       imagen: {},
       idUser: store.state.userData.idUser,
       nick: store.state.userData.nick,
-      email: store.state.userData.email,
+      correo: store.state.userData.email,
       maxImagesAllowed: 1,
       loadedImages: 0,
-      persona: {},
+      nombre: "",
+      apMaterno: "",
+      apPaterno: "",
+      codigoPostal: "",
+      colonia: "",
+      estado: "",
+      fechaNacimiento: "",
+      id: "",
+      municipio: "",
+      telefono: "",
     };
   },
   mounted() {
     this.carga();
+    this.getUserData();
   },
   methods: {
     carga() {
@@ -213,6 +219,32 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+        });
+    },
+    getUserData() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-persons-byid",
+        params: { id: this.idUser },
+      };
+
+      axios
+        .request(options)
+        .then((response) => {
+          console.log(response.data);
+          this.nombre = response.data.nombre;
+          this.apPaterno = response.data.apPaterno;
+          this.apMaterno = response.data.apMaterno;
+          this.codigoPostal = response.data.codigoPostal;
+          this.colonia = response.data.colonia;
+          this.fechaNacimiento = response.data.fechaNacimiento;
+          this.id = this.idUser
+          this.municipio = response.data.municipio;
+          this.telefono = response.data.telefono;
+
+        })
+        .catch(function (error) {
+          console.error(error);
         });
     },
     elimina: function (imagen) {
@@ -252,21 +284,6 @@ export default {
       return `https://media.visitanos.net/image${Nombreimg}`;
     },
     sendData: function () {
-      console.log(this.persona);
-      let datosEnviar = {
-        id: store.state.userData.idUser,
-        nombre: this.persona.nombre,
-        apPaterno: this.persona.apPaterno,
-        apMaterno: this.persona.apMaterno,
-        telefono: this.persona.telefono,
-        correo: this.persona.correo,
-        fechaNacimiento: this.persona.fechaNacimiento,
-        estado: this.persona.estado,
-        municipio: this.persona.municipio,
-        colonia: this.persona.colonia,
-        codigoPostal: this.persona.codigoPostal,
-      };
-      console.log(datosEnviar);
       const options = {
         method: "POST",
         url: "http://localhost:8080/api/update-persons",
@@ -275,17 +292,17 @@ export default {
           Accept: "application/json;charset=utf-8",
         },
         data: {
-          apMaterno: datosEnviar.apMaterno,
-          apPaterno: datosEnviar.apPaterno,
-          codigoPostal: datosEnviar.codigoPostal,
-          colonia: datosEnviar.colonia,
-          correo: datosEnviar.correo,
-          estado: datosEnviar.estado,
-          fechaNacimiento: datosEnviar.fechaNacimiento,
-          id: datosEnviar.id,
-          municipio: datosEnviar.municipio,
-          nombre: datosEnviar.nombre,
-          telefono: datosEnviar.telefono,
+          apMaterno: this.apMaterno,
+          apPaterno: this.apPaterno,
+          codigoPostal: this.codigoPostal,
+          colonia: this.colonia,
+          correo:this.email,
+          estado: this.estado,
+          fechaNacimiento:this.fechaNacimiento,
+          id: this.idUser,
+          municipio:this.municipio,
+          nombre: this.nombre,
+          telefono:this.telefono,
         },
       };
       axios
@@ -304,44 +321,43 @@ export default {
 </script>
 
 <style>
-
 .form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
+  box-shadow: none;
+  border-color: #ba68c8;
 }
 
 .profile-button {
-    box-shadow: none;
-    border: none
+  box-shadow: none;
+  border: none;
 }
 
 .profile-button:hover {
-    background: #682773
+  background: #682773;
 }
 
 .profile-button:focus {
-    background: #682773;
-    box-shadow: none
+  background: #682773;
+  box-shadow: none;
 }
 
 .profile-button:active {
-    background: #682773;
-    box-shadow: none
+  background: #682773;
+  box-shadow: none;
 }
 
 .back:hover {
-    color: #682773;
-    cursor: pointer
+  color: #682773;
+  cursor: pointer;
 }
 
 .labels {
-    font-size: 11px
+  font-size: 11px;
 }
 
 .add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
+  background: #ba68c8;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #ba68c8;
 }
 </style>

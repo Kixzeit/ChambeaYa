@@ -32,7 +32,8 @@
     >
       <div class="name__page">
         <!-- aqui iria el logo -->
-        <img
+        <a href="/">
+          <img
           src="../assets/chambeaya.png"
           style="
             width: 50px;
@@ -42,13 +43,14 @@
           "
           alt=""
         />
+        </a>
         <i class="fa-solid fa-user-alien"></i>
         <h4>ChambeaYa!</h4>
       </div>
       <!-- menu de opciones -->
       <div class="options__menu">
         <!-- aqui van los links -->
-        <a href="" class="selected">
+        <a href="/" class="selected">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-house" title="Home"></i>
@@ -76,6 +78,7 @@
               
               <li><a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a></li>
               <li><a class="dropdown-item" href="/ui/datos">Editar Perfil</a></li>
+              <li><a class="dropdown-item" href="/ui/forgot">Cambiar Contraseña</a></li>
               <li><a class="dropdown-item" v-on:click="handleLogout">Cerrar Sesion</a></li>
             </ul>
           </div>
@@ -140,7 +143,7 @@
       <!-- menu de opciones -->
       <div class="options__menu">
         <!-- aqui van los links -->
-        <a href="" class="selected">
+        <a href="/" class="selected">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-house" title="Home"></i>
