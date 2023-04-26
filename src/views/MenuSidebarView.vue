@@ -2,96 +2,6 @@
   <div>
     <SideBarKixComponent />
     <div class="container-fluid p-4 row mx-2 d-flex">
-      <section style="background-color: #eee;">
-  <div class="container py-5">
-    <div class="card">
-      <div class="card-body">
-        <div class="row d-flex justify-content-center pb-5">
-          <div class="col-md-7 col-xl-5 mb-4 mb-md-0">
-            <div class="py-4 d-flex flex-row">
-              <h5><span class="far fa-check-square pe-2"></span><b>Tarjetas</b> |</h5>
-              <span class="ps-2">Pago</span>
-            </div>
-          
-      
-            <hr />
-            <div class="pt-2">
-              <div class="d-flex pb-2">
-                <div>
-                  <p>
-                    <b>Mis tarjetas <span class="text-success"></span></b>
-                  </p>
-                </div>
-                <div class="ms-auto">
-                  <p class="text-primary">
-                    <i class="fas fa-plus-circle text-primary pe-1"></i>Administrar Tarjetas
-                  </p>
-                </div>
-              </div>
-              <form class="pb-3">
-                <div class="d-flex flex-row pb-3">
-                  <div class="d-flex align-items-center pe-2">
-                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1"
-                      value="" aria-label="..." checked />
-                  </div>
-                  <div class="rounded border d-flex w-100 p-3 align-items-center">
-                    <p class="mb-0">
-                      <i class="fab fa-cc-visa fa-lg text-primary pe-2"></i>Visa Debit
-                      Card
-                    </p>
-                    <div class="ms-auto">************3456</div>
-                  </div>
-                </div>
-
-                <div class="d-flex flex-row">
-                  <div class="d-flex align-items-center pe-2">
-                    <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2"
-                      value="" aria-label="..." />
-                  </div>
-                  <div class="rounded border d-flex w-100 p-3 align-items-center">
-                    <p class="mb-0">
-                      <i class="fab fa-cc-mastercard fa-lg text-dark pe-2"></i>Mastercard
-                      Office
-                    </p>
-                    <div class="ms-auto">************1038</div>
-                  </div>
-                </div>
-              </form>
-              <input type="button" value="Pagar Ahora" class="btn btn-primary btn-block btn-lg" />
-            </div>
-          </div>
-
-          <div class="col-md-5 col-xl-4 offset-xl-1">
-            <div class="py-4 d-flex justify-content-end">
-              <h6><a href="#!">Cancelar y Regresar</a></h6>
-            </div>
-            <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;">
-              <div class="p-2 me-3">
-                <h4>Total a Pagar</h4>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">Precio por click</div>
-                <div class="ms-auto">$20.0</div>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">Total de clicks</div>
-                <div class="ms-auto">5</div>
-              </div>
-              <div class="p-2 d-flex">
-                <div class="col-8">Iva ( 16% )</div>
-                <div class="ms-auto">+ $0.00</div>
-              </div>
-              <div class="p-2 d-flex pt-3">
-                <div class="col-8"><b>Total</b></div>
-                <div class="ms-auto"><b class="text-success">$120.00</b></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
     </div>
     <FooterComponent />
   </div>
@@ -117,13 +27,7 @@ export default {
     return {
       idUser: store.state.userData.idUser,
       email: store.state.userData.email,
-      nick: store.state.userData.nick,
-      loadedImages: 0,
-      loadedInes: 0,
-      imagen: {},
-      images: [],
-      ines:[],
-      perfil: {},
+      
     };
   },
   mounted() {

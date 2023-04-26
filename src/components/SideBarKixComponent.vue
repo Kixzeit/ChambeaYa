@@ -265,7 +265,7 @@ export default {
       sidebarWidth4: "250px",
       idUser: store.state.userData.idUser,
       email: store.state.userData.email,
-      nick: store.state.userData.nick,
+      // nick: store.state.userData.nick,
     };
   },
   computed: {

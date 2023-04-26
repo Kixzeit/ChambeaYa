@@ -7,7 +7,7 @@
           <i class="fa-solid fa-rectangle-ad" style="color: #1d4cf2"></i>Crea tu
           Anuncio!
         </h2>
-        <form action=""  v-on:submit.prevent="sendAds">
+        <form action="">
           <div class="row">
             <div class="col-12-sm mb-4 col-lg-6">
               <label for="formGroupExampleInput" class="form-label"
@@ -18,7 +18,7 @@
                 class="form-control mb-4"
                 id="formGroupExampleInput"
                 placeholder="Plomeros Don Roque"
-                v-model="anuncio.nombreNegocio"
+                v-model="nombreNegocio"
               />
             </div>
             <div class="col-12-sm mb-4 col-lg-6">
@@ -30,7 +30,7 @@
                 class="form-control mb-4"
                 id="formGroupExampleInput"
                 placeholder="Hacemos los mejores trabajos y cobramos barato"
-                v-model="anuncio.descripcionPequeña"
+                v-model="descripcionPequeña"
               />
             </div>
             <div class="col-12-sm mb-4 col-6-lg">
@@ -40,12 +40,12 @@
               <div class="form-floating">
                 <textarea
                   class="form-control mt-4"
-                  placeholder="Leave a comment here"
+                  placeholder="Descripcion Completa"
                   id="floatingTextarea2"
                   style="height: 100px"
-                  v-model="anuncio.descripcionCompleta"
+                  v-model="descripcionCompleta"
                 ></textarea>
-                <label for="floatingTextarea2">Descripcion completa:</label>
+                <label for="floatingTextarea2"></label>
               </div>
             </div>
             <!-- 1er -->
@@ -54,24 +54,34 @@
                 >Codigo Postal
                 <i class="fa-solid fa-map-pin" style="color: #1d43f2"></i
               ></label>
-              <input type="email" class="form-control mb-3" id="inputEmail4" v-model="anuncio.correoNegocio" />
+              <input
+                type="email"
+                class="form-control mb-3"
+                id="inputEmail4"
+                v-model="codigoPostal"
+              />
             </div>
 
-
-            
             <div class="col-sm-12 col-lg-6">
               <label for="inputText" class="form-label"
                 >Oficio <i class="fa-solid fa-hammer" style="color: #1d43f2"></i
               ></label>
-              <select class="form-select" aria-label="Default select example" v-model="anuncio.oficio" >
-                <option  v-for="oficio in oficios" 
-                  v-bind:key="oficio.id">{{ oficio.nombre }}</option>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                v-model="oficio"
+              >
+                <option v-for="oficioc in oficios" v-bind:key="oficioc.id">
+                  {{ oficioc.nombre }}
+                </option>
               </select>
             </div>
 
-
-            <div v-if="loadedImages < maxImagesAllowed" class="row mt-4 mb-4 justify-content-around">
-              <div class=" mb-4">
+            <div
+              v-if="loadedImages < maxImagesAllowed"
+              class="row mt-4 mb-4 justify-content-around"
+            >
+              <div class="mb-4">
                 <a href="/ui/upload/" class="btn btn-primary"
                   >Insertar Imagen
                   <i class="fa-solid fa-file-image" style="color: #ffffff"></i
@@ -103,7 +113,7 @@
             </div>
             <h2 class="my-4">Videos</h2>
             <div class="row mt-4 mb-4 justify-content-around">
-              <div class=" mb-4">
+              <div class="mb-4">
                 <a href="/ui/upload/" class="btn btn-primary"
                   >Insertar Videos
                   <i class="fa-solid fa-file-image" style="color: #ffffff"></i
@@ -125,36 +135,37 @@
 
             <div class="row d-flex justify-content-around">
               <div class="col-sm-12 col-lg-4">
-              <label for="inputEmail4" class="form-label"
-                >Telefono del Negocio
-                <i class="fa-solid fa-map-pin" style="color: #1d43f2"></i
-              ></label>
-              <input
-                type="text"
-                class="form-control mb-3"
-                id="inputEmail4"
-                placeholder="16541651651"
-                v-model="anuncio.telefonoNegocio"
-              />
-            </div>
+                <label for="inputEmail4" class="form-label"
+                  >Telefono del Negocio
+                  <i class="fa-solid fa-map-pin" style="color: #1d43f2"></i
+                ></label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  id="inputEmail4"
+                  placeholder="16541651651"
+                  v-model="telefonoNegocio"
+                />
+              </div>
 
-            <div class="col-sm-12 col-lg-4">
-              <label for="inputCity" class="form-label"
-                >Correo Electronico del negocio</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                id="inputCity"
-                placeholder="mi_negocio@example.com"
-                v-model="anuncio.correoNegocio"
-              />
-            </div>
+              <div class="col-sm-12 col-lg-4">
+                <label for="inputCity" class="form-label"
+                  >Correo Electronico del negocio</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="inputCity"
+                  placeholder="mi_negocio@example.com"
+                  v-model="correoNegocio"
+                />
+              </div>
             </div>
 
             <div class="row d-flex justify-content-around mt-4 mb-4">
               <div class="col-sm-6 col-lg-3 mb-4">
-                <a href="/ui/ine" class="btn btn-primary"><span
+                <a href="/ui/ine" class="btn btn-primary"
+                  ><span
                     ><i
                       class="fa-solid fa-address-card mx-2"
                       style="color: #ffffff"
@@ -176,9 +187,9 @@
               </div>
             </div>
             <div class="col-sm-12">
-              <button type="submit" class="btn btn-primary my-4">
+              <a class="btn btn-primary my-4" @click="sendAds">
                 Enviar Datos y Crear Anuncio
-              </button>
+              </a>
             </div>
           </div>
         </form>
@@ -203,13 +214,21 @@ export default {
       idUser: store.state.userData.idUser,
       maxImagesAllowed: 4,
       loadedImages: 0,
-      
-      anuncio:{}
+
+      id: "",
+      nombreNegocio:"",
+      descripcionCompleta: "",
+      descripcionPequeña: "",
+      codigoPostal: "",
+      oficio: "",
+      telefonoNegocio: "",
+      correoNegocio: "",
     };
   },
   mounted() {
     this.carga();
     this.getOficces();
+    this.getAds();
   },
   methods: {
     getOficces() {
@@ -236,6 +255,28 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+        });
+    },
+    getAds: function () {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-ads-byid/" + this.idUser,
+      };
+
+      axios
+        .request(options)
+        .then((response)=> {
+          console.log(response.data);
+          this.nombreNegocio = response.data.nombreNegocio;
+          this.descripcionPequeña = response.data.descripcionPequeña;
+          this.descripcionCompleta = response.data.descripcionCompleta;
+          this.codigoPostal = response.data.codigoPostal;
+          this.oficio = response.data.oficio;
+          this.telefonoNegocio = response.data.telefonoNegocio;
+          this.correoNegocio = response.data.correoNegocio;
+        })
+        .catch(function (error) {
+          console.error(error);
         });
     },
     elimina: function (imagen) {
@@ -276,42 +317,31 @@ export default {
       return `https://media.visitanos.net/image${Nombreimg}`;
     },
     sendAds: function () {
-      console.log(this.anuncio);
-      let anuncioEnviar = {
-        id: store.state.userData.idUser,
-        nombreNegocio: this.anuncio.nombreNegocio,
-        descripcionPequeña: this.anuncio.descripcionPequeña,
-        descripcionCompleta:this.anuncio.descripcionCompleta,
-        codigoPostal:this.anuncio.codigoPostal,
-        oficio:this.anuncio.oficio,
-        telefonoNegocio: this.anuncio.telefonoNegocio,
-        correoNegocio: this.correoNegocio,
-    
-      };
-      console.log(anuncioEnviar);
       const options = {
         method: "POST",
-        url: "http://localhost:8080/api/update-persons",
+        url: "http://localhost:8080/api/update-ads",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json;charset=utf-8",
+          "Content-Type": "application/json",
+          idUser: store.state.userData.idUser,
+          jwt: store.state.userData.jwt,
         },
         data: {
-          id: store.state.userData.idUser,
-        nombreNegocio:anuncioEnviar.nombreNegocio,
-        descripcionPequeña:anuncioEnviar.descripcionPequeña,
-        descripcionCompleta:anuncioEnviar.descripcionCompleta,
-        codigoPostal:anuncioEnviar.codigoPostal,
-        oficio:anuncioEnviar.oficio,
-        telefonoNegocio:anuncioEnviar.telefonoNegocio,
-        correoNegocio:anuncioEnviar.correoNegocio,
+          codigoPostal: this.codigoPostal,
+          correoNegocio: this.correoNegocio,
+          descripcionCompleta: this.descripcionCompleta,
+          descripcionPequeña: this.descripcionPequeña,
+          id: this.idUser,
+          nombreNegocio: this.nombreNegocio,
+          oficio: this.oficio,
+          telefonoNegocio: this.telefonoNegocio,
         },
       };
+
       axios
         .request(options)
         .then(function (response) {
           console.log(response.data);
-          console.log("datos enviados correctamente")
         })
         .catch(function (error) {
           console.error(error);
