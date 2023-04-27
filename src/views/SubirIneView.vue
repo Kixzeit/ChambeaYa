@@ -20,11 +20,11 @@
             <div v-for="imagen in imagenes"
             v-bind:key="imagen.id">
               <div class="elemento">
-                <div class="">
+                <div class="d-flex justify-content-around gap-4">
                   <img
                 :src="une(imagen.fullHttpUploadUrl)"
                 alt=""
-                class="mt-5 rounded"
+                class="mt-2 rounded"
                 style="width: 250px; height: 170px"
               />
                 </div>
@@ -36,6 +36,9 @@
               ></i></button>
             </div>
             </div>
+          </div>
+          <div>
+            <a href="/" class="btn btn-success mt-3">Guardar</a>
           </div>
       </div>
     </div>

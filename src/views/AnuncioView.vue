@@ -42,7 +42,7 @@
                   class="form-control mt-4"
                   placeholder="Descripcion Completa"
                   id="floatingTextarea2"
-                  style="height: 100px"
+                  style="height: 200px"
                   v-model="descripcionCompleta"
                 ></textarea>
                 <label for="floatingTextarea2"></label>
@@ -77,56 +77,10 @@
               </select>
             </div>
 
-            <div
-              v-if="loadedImages < maxImagesAllowed"
-              class="row mt-4 mb-4 justify-content-around"
-            >
-              <div class="mb-4">
-                <a href="/ui/upload/" class="btn btn-primary"
-                  >Insertar Imagen
-                  <i class="fa-solid fa-file-image" style="color: #ffffff"></i
-                ></a>
-              </div>
-            </div>
-            <h2 v-else class="text-danger">Limite de Imagenes Alcanzado</h2>
-
-            <h2 class="my-4">imagenes</h2>
-            <div class="d-flex gap-4 flex-wrap justify-content-center">
-              <div
-                v-for="imagen in imagenes"
-                v-bind:key="imagen.id"
-                id="contenedor"
-              >
-                <div class="elemento position-relative">
-                  <img
-                    :src="une(imagen.fullHttpUploadUrl)"
-                    alt=""
-                    class="rounded img"
-                  />
-                
-                    <i
-                    class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
-                    style="color: #ec091f"
-                    @click="elimina(imagen)"
-                  ></i>
-                  
-                </div>
-              </div>
-            </div>
-            <h2 class="my-4">Videos</h2>
-            <div class="row mt-4 mb-4 justify-content-around">
-              <div class="mb-4">
-                <a href="/ui/upload/" class=""
-                  >
-                  <!-- <i class="fa-solid fa-file-image" style="color: #ffffff"></i> -->
-                  </a>
-              </div>
-            </div>
             <h4 class="my-5">
               Datos del negocio
               <i class="fa-solid fa-house" style="color: #1d43f2"></i>
             </h4>
-
             <div class="row d-flex justify-content-around">
               <div class="col-sm-12 col-lg-4">
                 <label for="inputEmail4" class="form-label"
@@ -155,34 +109,80 @@
                 />
               </div>
             </div>
-
-            <div class="row d-flex justify-content-around mt-4 mb-4">
-              <div class="col-sm-6 col-lg-3 mb-4">
-                <a href="/ui/ine" class="btn btn-primary"
-                  ><span
-                    ><i
-                      class="fa-solid fa-address-card mx-2"
-                      style="color: #ffffff"
-                    ></i
-                  ></span>
-                  Ine</a
-                >
+            <div class="mb-4">
+                <a href="#" @click="sendAds" class="btn btn-success"
+                  >Guardar Datos
+                  
+              </a>
               </div>
-              <div class="col-sm-6 col-lg-3 mb-4">
-                <a href="/ui/pago" class="btn btn-primary"
-                  ><span
-                    ><i
-                      class="fa-solid fa-credit-card mx-2"
-                      style="color: #ffffff"
-                    ></i
-                  ></span>
-                  Card</a
-                >
+
+
+            
+
+            <h2 class="my-4">imagenes</h2>
+            <div class="d-flex gap-4 flex-wrap justify-content-center">
+              <div
+                v-for="imagen in imagenes"
+                v-bind:key="imagen.id"
+                id="contenedor"
+              >
+                <div class="elemento position-relative">
+                  <img
+                    :src="une(imagen.fullHttpUploadUrl)"
+                    alt=""
+                    class="rounded img"
+                  />
+                
+                    <i
+                    class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
+                    style="color: #ec091f"
+                    @click="elimina(imagen)"
+                  ></i>
+                  
+                </div>
+              </div>
+              
+            </div>
+            <div
+              v-if="loadedImages < maxImagesAllowed"
+              class="row mt-4 mb-4 justify-content-around"
+            >
+            <div>
+              <a href="/ui/upload/" class="btn btn-primary mt-5"
+                  >Insertar Imagen
+                  <i class="fa-solid fa-file-image" style="color: #ffffff"></i
+                ></a>
+            </div>
+              
+            </div>
+            <h4 v-else class="text-danger mt-3">Limite de Imagenes Alcanzado</h4>
+
+
+            
+            <!-- <h2 class="my-4">Videos</h2> -->
+            <div class="row mt-4 mb-4 justify-content-around">
+              <div class="mb-4">
+                <a href="/ui/upload/" class=""
+                  >
+                  <!-- <i class="fa-solid fa-file-image" style="color: #ffffff"></i> -->
+                  </a>
               </div>
             </div>
+            
+
+            
+
+            <!-- <div class="row d-flex justify-content-around mt-4 mb-4">
+              <div class="col-sm-6 col-lg-3 mb-4">
+              </div>
+              <div class="col-sm-6 col-lg-3 mb-4">
+              </div>
+            </div> -->
+
             <div class="col-sm-12">
-              <a class="btn btn-primary my-4" @click="sendAds">
+              <a class="btn btn-primary my-4" href="/ui/mianuncio">
                 Enviar Datos y Crear Anuncio
+                <i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i>
               </a>
             </div>
           </div>
@@ -206,7 +206,7 @@ export default {
       imagenes: [],
       oficios: [],
       idUser: store.state.userData.idUser,
-      maxImagesAllowed: 4,
+      maxImagesAllowed: 8,
       loadedImages: 0,
 
       id: "",
@@ -350,5 +350,9 @@ export default {
 img {
   width: 125px;
   height: 125px;
+}
+
+textarea{
+  resize: none;
 }
 </style>

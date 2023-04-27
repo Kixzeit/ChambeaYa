@@ -100,7 +100,26 @@
                       placeholder="15 02 1999"
                       v-model="fechaNacimiento"
                     />
+                    <form
+                    class="row g-3 d-flex justify-content-center px-4"
+                    v-on:submit.prevent="getColonies">
+            
+
+                    <label class="labels">Codigo Postal</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputsearch"
+                      placeholder="86987"
+                      v-model="codigo.codigo"
+                    />
+                    <button type="submit" class="btn btn-primary mx-5">
+                      Enviar
+                    </button>
+
+                  </form>
                   </div>
+                  
                   <div class="col-md-12">
                     <label class="labels">Estado</label
                     ><input
@@ -128,15 +147,6 @@
                     >
                       <option selected>Elegir colonia</option>
                     </select>
-                  </div>
-                  <div class="col-md-12">
-                    <label class="labels">Codigo Postal</label
-                    ><input
-                      type="text"
-                      class="form-control"
-                      placeholder="86690"
-                      v-model="codigoPostal"
-                    />
                   </div>
                 </div>
                 <div class="mt-5 text-center">
@@ -199,11 +209,13 @@ export default {
       id: "",
       municipio: "",
       telefono: "",
+      codigo: {},
     };
   },
   mounted() {
     this.carga();
     this.getUserData();
+    this.getColonies();
   },
   methods: {
     carga() {
@@ -238,10 +250,9 @@ export default {
           this.codigoPostal = response.data.codigoPostal;
           this.colonia = response.data.colonia;
           this.fechaNacimiento = response.data.fechaNacimiento;
-          this.id = this.idUser
+          this.id = this.idUser;
           this.municipio = response.data.municipio;
           this.telefono = response.data.telefono;
-
         })
         .catch(function (error) {
           console.error(error);
@@ -297,13 +308,13 @@ export default {
           apPaterno: this.apPaterno,
           codigoPostal: this.codigoPostal,
           colonia: this.colonia,
-          correo:this.email,
+          correo: this.email,
           estado: this.estado,
-          fechaNacimiento:this.fechaNacimiento,
+          fechaNacimiento: this.fechaNacimiento,
           id: this.idUser,
-          municipio:this.municipio,
+          municipio: this.municipio,
           nombre: this.nombre,
-          telefono:this.telefono,
+          telefono: this.telefono,
         },
       };
       axios
@@ -312,6 +323,21 @@ export default {
           console.log(response.data);
           console.log("datos enviados correctamente");
           this.$refs.message01.presenta();
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+    getColonies() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-all-colonies/86690",
+      };
+
+      axios
+        .request(options)
+        .then(function (response) {
+          console.log(response.data);
         })
         .catch(function (error) {
           console.error(error);

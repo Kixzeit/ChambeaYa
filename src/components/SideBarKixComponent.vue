@@ -100,6 +100,14 @@
             <h4>Anuncio</h4>
           </div>
         </a>
+
+        <a href="/ui/mianuncio">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-hammer"></i>
+            <h4>Mi Anuncio</h4>
+          </div>
+        </a>
         
         <!-- <a href="/ui/factura">
           <div class="option">
@@ -200,8 +208,15 @@
         <a href="/ui/anuncio">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-rectangle-ad"></i>
+            <i class="fa-solid fa-hammer"></i>
             <h4>Anuncio</h4>
+          </div>
+        </a>
+        <a href="/ui/mianuncio">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-rectangle-ad"></i>
+            <h4>Mi Anuncio</h4>
           </div>
         </a>
         <!-- <a href="/ui/factura">
