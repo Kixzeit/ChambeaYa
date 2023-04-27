@@ -38,7 +38,7 @@
         <div class="card card-body">
             <h3 class="fw-bold">{{ trabajo.oficio }}</h3>
             <!-- <CarruselComponent2 /> -->
-            <img src="https://picsum.photos/300/300" class="d-block  alto" alt="..." style="height: 100%; width: 100%;">
+            <!-- <img src="https://picsum.photos/300/300" class="d-block  alto" alt="..." style="height: 100%; width: 100%;"> -->
             
             <div class="card-body">
               <h5 class="card-title fw-bold">{{ trabajo.nombreNegocio }}</h5>

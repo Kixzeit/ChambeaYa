@@ -41,9 +41,8 @@
                   </div>
                 </div>
               </div>
-              <span class="font-weight-bold">{{ nick }}</span
-              ><span class="text-black-50">{{ email }}</span
-              ><span> </span>
+              <span class="font-weight-bold">{{ nick }}</span>
+              <span> </span>
             </div>
           </div>
           <div class="col-md-5 border-right">
@@ -93,70 +92,94 @@
                     />
                   </div>
                   <div class="col-md-12">
-                    <label class="labels">Fecha de nacimiento</label
+                    <label class="">Fecha de nacimiento</label
                     ><input
                       type="date"
                       class="form-control"
                       placeholder="15 02 1999"
                       v-model="fechaNacimiento"
                     />
+                    <hr class="my-5" />
+                    <h5 class="text-dark mt-4">Busqueda por Codigo postal</h5>
                     <form
-                    class="row g-3 d-flex justify-content-center px-4"
-                    v-on:submit.prevent="getColonies">
-            
+                      class="row g-3 d-flex justify-content-center px-4"
+                      v-on:submit.prevent="getColonies"
+                    >
+                      <div class="d-flex gap-3">
+                        <input
+                        
+                          type="text"
+                          class="form-control sm-col-12"
+                          id="inputsearch"
+                          placeholder="86987"
+                          v-model="codigo.codigo"
+                        />
+                        <button type="submit" class="btn btn-primary mx-1">
+                          Enviar
+                        </button>
+                      </div>
+                    </form>
+                  </div>
 
-                    <label class="labels">Codigo Postal</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputsearch"
-                      placeholder="86987"
-                      v-model="codigo.codigo"
-                    />
-                    <button type="submit" class="btn btn-primary mx-5">
-                      Enviar
-                    </button>
-
-                  </form>
-                  </div>
-                  
-                  <div class="col-md-12">
-                    <label class="labels">Estado</label
-                    ><input
-                      type="text"
-                      class="form-control"
-                      placeholder="Estado"
-                      v-model="estado"
-                    />
-                  </div>
-                  <div class="col-md-12">
-                    <label class="labels">Municipio</label
-                    ><input
-                      type="text"
-                      class="form-control"
-                      placeholder="Municipio"
-                      v-model="municipio"
-                    />
-                  </div>
-                  <div class="col-md-12">
-                    <label class="labels">Colonia</label
-                    ><select
-                      id="inputState"
+                  <div class="col-md-11 m-auto">
+                    <label class="">Colonia</label>
+                    <select
+                    required
+                      @click="sayHola"
                       class="form-select"
+                      aria-label="Default select example"
                       v-model="colonia"
                     >
-                      <option selected>Elegir colonia</option>
+                      <option
+                      
+                        v-for="colonia in colonias"
+                        v-bind:key="colonia.id"
+                        :value="colonia.nombre"
+                      >
+                        {{ colonia.nombre }}
+                      </option>
                     </select>
+                  </div>
+                  <div class="d-flex row m-auto">
+                    <div class="col-md-12 col-lg-4">
+                      <label class="">Municipio</label
+                      ><input
+                        readonly
+                        type="text"
+                        class="form-control"
+                        placeholder="Municipio"
+                        v-model="municipio"
+                      />
+                    </div>
+
+                    <div class="col-md-12 col-lg-4 mt-2">
+                      <label class="labels">Estado</label
+                      ><input
+                        type="text"
+                        class="form-control"
+                        placeholder="Estado"
+                        v-model="estado"
+                      />
+                    </div>
+
+                    <div class="col-md-12 col-lg-4">
+                      <label class="">Codigo Postal</label
+                      ><input
+                        type="text"
+                        class="form-control"
+                        placeholder="Estado"
+                        v-model="codigoPostal"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div class="mt-5 text-center">
                   <a
                     class="btn btn-primary profile-button"
-                    type="submit"
                     href="/ui/miperfil"
                     @click="sendData"
                   >
-                    Guardar
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                   </a>
                 </div>
               </form>
@@ -196,26 +219,29 @@ export default {
       imagen: {},
       idUser: store.state.userData.idUser,
       nick: store.state.userData.nick,
-      correo: store.state.userData.email,
+
       maxImagesAllowed: 1,
       loadedImages: 0,
       nombre: "",
       apMaterno: "",
       apPaterno: "",
       codigoPostal: "",
-      colonia: "",
-      estado: "",
       fechaNacimiento: "",
       id: "",
-      municipio: "",
       telefono: "",
       codigo: {},
+      colonias: [],
+      // vacios
+      colonia: "",
+      municipio: "",
+      estado: "",
+      //para llenar
+      obtenMunicipio: "",
     };
   },
   mounted() {
     this.carga();
     this.getUserData();
-    this.getColonies();
   },
   methods: {
     carga() {
@@ -227,10 +253,9 @@ export default {
         .then((response) => {
           this.imagen = response.data;
           this.loadedImages = this.imagen.length;
-          console.log(this.imagen);
         })
         .catch((error) => {
-          console.log(error);
+          console.log("la imagen de perfil no cargo" + error);
         });
     },
     getUserData() {
@@ -243,7 +268,6 @@ export default {
       axios
         .request(options)
         .then((response) => {
-          console.log(response.data);
           this.nombre = response.data.nombre;
           this.apPaterno = response.data.apPaterno;
           this.apMaterno = response.data.apMaterno;
@@ -251,22 +275,20 @@ export default {
           this.colonia = response.data.colonia;
           this.fechaNacimiento = response.data.fechaNacimiento;
           this.id = this.idUser;
+          this.estado = response.data.estado;
           this.municipio = response.data.municipio;
           this.telefono = response.data.telefono;
         })
         .catch(function (error) {
-          console.error(error);
+          console.error("la info del usuario no pudo ser cargada" + error);
         });
     },
     elimina: function (imagen) {
       this.loader = "loader";
       let tarjeta = document.querySelector(".elemento");
-      console.log("La imagen se ha eliminado correctamente");
       // Eliminar la imagen de la matriz de imágenes
       //this.imagenes.splice(index,1);
       tarjeta.textContent = "";
-      console.log(imagen.id);
-      console.log("estoy llegando");
       const actualiza = this;
       const options = {
         method: "DELETE",
@@ -277,12 +299,10 @@ export default {
           jwt: store.state.userData.jwt,
         },
       };
-      console.log("estoy llegando");
       axios
         .request(options)
         .then(function (response) {
           actualiza.loader = "none";
-          console.log(response.data);
           actualiza.delete = response.data;
           location.reload();
         })
@@ -308,7 +328,6 @@ export default {
           apPaterno: this.apPaterno,
           codigoPostal: this.codigoPostal,
           colonia: this.colonia,
-          correo: this.email,
           estado: this.estado,
           fechaNacimiento: this.fechaNacimiento,
           id: this.idUser,
@@ -321,7 +340,6 @@ export default {
         .request(options)
         .then(function (response) {
           console.log(response.data);
-          console.log("datos enviados correctamente");
           this.$refs.message01.presenta();
         })
         .catch(function (error) {
@@ -329,10 +347,9 @@ export default {
         });
     },
     getColonies() {
-      console.log(this.codigo);
       let codigoEnviar = { codigo: this.codigo.codigo };
-      let codEnv = codigoEnviar.codigo
-      console.log(codEnv);
+      let codEnv = codigoEnviar.codigo;
+      this.codigoPostal = codigoEnviar.codigo;
       const options = {
         method: "GET",
         url: "http://localhost:8080/api/get-all-colonies/" + codEnv,
@@ -340,12 +357,38 @@ export default {
 
       axios
         .request(options)
-        .then(function (response) {
-          console.log(response.data);
+        .then((response) => {
+          this.colonias = response.data;
+          console.log("traje las colonias");
+          console.log(this.colonias);
+          this.obtenMunicipio = response.data[0].municipio;
+          console.log(this.obtenMunicipio);
         })
         .catch(function (error) {
           console.error(error);
         });
+    },
+    sayHola: function () {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/obten-municipios",
+        params: { id: this.obtenMunicipio },
+      };
+
+      axios
+        .request(options)
+        .then((response) => {
+          console.log(response.data);
+          this.municipio = response.data[0].nombre;
+          console.log(this.municipio);
+          this.getEstado();
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+    getEstado: function () {
+
     },
   },
 };

@@ -1,17 +1,21 @@
 <template>
-    <div class="content">
+    <div class="container-fluid p-4 row mx-2 d-flex">
         
-        <div class="card ancho">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card ancho">
             <div class="card-header">
                 <h1>Confirmación</h1>
             </div>
             <div class="card-body">
-                <p>Para concluir tu registro, captura el token eniado a tu correo</p>
+                <p>Para concluir tu registro, captura el token enviado a tu correo</p>
                 <input type="text" v-model="token" />
             </div>
             <div class="card-footer">
                 <button class="btn btn-success" @click="enviar">Enviar</button>
             </div>
+        </div>
+          </div>
         </div>
 
         <AvisoWindow 
@@ -20,7 +24,7 @@
             :avisoMsg=msg
             :target=destino  />
 
-        <FooterComponent class="down" />
+        <FooterComponent  />
     </div>
 </template>
 
@@ -28,7 +32,12 @@
 import axios from 'axios'
 import store from '@/store'
 
+import AvisoWindow from '@/components/AvisoWindow.vue';
+
 export default {
+    components: {
+        AvisoWindow,
+    },
     data() {
         return {
             token:'',
@@ -45,7 +54,7 @@ export default {
             .then(response => {
                 response;
                 store.commit('setDestination', '/')
-                this.msg = 'Felicidades. Registro Completo. Ahora ya puedes ingresaar al sistema con las credenciales que proporciionaste.'
+                this.msg = 'Felicidades. Registro Completo. Ahora ya puedes ingresaar al sistema con las credenciales que proporcionaste.'
                 this.destino = '/ui/login'
                 this.$refs.avisoWindow.openModal()
             })

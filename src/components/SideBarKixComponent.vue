@@ -92,6 +92,13 @@
             <h4>Ine</h4>
           </div>
         </a>
+        <a href="/ui/pago">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-regular fa-credit-card"></i>
+            <h4>Pago</h4>
+          </div>
+        </a>
         
         <a href="/ui/anuncio">
           <div class="option">
@@ -115,13 +122,12 @@
             <h4>Facturacion</h4>
           </div>
         </a> -->
-        <a href="/ui/menu">
+        <!-- <a href="/ui/menu">
           <div class="option">
-            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
             <i class="fa-solid fa-flask"></i>
             <h4>Pruebas</h4>
           </div>
-        </a>
+        </a> -->
       </div>
 
       <div v-else>
@@ -225,13 +231,13 @@
             <h4>Facturacion</h4>
           </div>
         </a> -->
-        <a href="/ui/menu">
+        <!-- <a href="/ui/menu">
           <div class="option">
-            <!-- aqui va el icono : ejemplo el del logout  le colocamos title:home -->
+            
             <i class="fa-solid fa-flask"></i>
             <h4>Pruebas</h4>
           </div>
-        </a>
+        </a> -->
 </div>
 
 <div v-else>

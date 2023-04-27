@@ -253,7 +253,7 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
-          router.push("/ui/registerconfirm");
+          router.push("/ui/rc");
         })
         .catch((error) => {
           if (error.response) {

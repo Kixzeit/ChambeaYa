@@ -12,13 +12,14 @@
           <p>Captura tu correo</p>
           <input type="text" v-model="email" />
           <br />
-          <div class="row">
+          <div class="d-flex justify-content-center p-4">
             <vue-recaptcha
               id="solvecaptcha"
               ref="recaptcha"
               sitekey="6LetXssSAAAAAF7WikI044mAdOiyyKPUxkklqMtN"
               @expired="onCaptchaExpired"
               @verify="onCaptchaVerified"
+              
             />
           </div>
         </div>

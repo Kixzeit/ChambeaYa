@@ -217,6 +217,8 @@ export default {
       oficio: "",
       telefonoNegocio: "",
       correoNegocio: "",
+
+      
     };
   },
   mounted() {

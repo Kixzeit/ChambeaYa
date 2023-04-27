@@ -1,7 +1,7 @@
 <template>
   <div>
     <SideBarKixComponent />
-    <div class="container-fluid p-4 row mx-2 d-flex">
+    <div class="container-fluid  row m-auto ">
       <section>
         <div class="container py-5">
           <div class="card">
