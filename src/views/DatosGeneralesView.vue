@@ -329,9 +329,13 @@ export default {
         });
     },
     getColonies() {
+      console.log(this.codigo);
+      let codigoEnviar = { codigo: this.codigo.codigo };
+      let codEnv = codigoEnviar.codigo
+      console.log(codEnv);
       const options = {
         method: "GET",
-        url: "http://localhost:8080/api/get-all-colonies/86690",
+        url: "http://localhost:8080/api/get-all-colonies/" + codEnv,
       };
 
       axios
