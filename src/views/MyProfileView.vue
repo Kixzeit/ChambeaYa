@@ -23,15 +23,15 @@
                       class="img-fluid img-thumbnail mt-4 mb-2"
                       style="width: 150px; z-index: 1"
                     />
-                    <button
-                    hre
+                    <a
+                      href="/ui/datos"
                       type="button"
                       class="btn btn-dark btn-outline-white"
                       data-mdb-ripple-color="dark"
                       style="z-index: 1"
                     >
-                      <a href="/ui/datos">Edit profile</a>
-                    </button>
+                    Editar Perfil
+                    </a>
                   </div>
                   <div class="ms-3" style="margin-top: 130px">
                     <h5>
@@ -42,7 +42,7 @@
                   </div>
                 </div>
                 <div class="p-4 text-black" style="background-color: #f8f9fa">
-                  <div class="mt-4">
+                  <div class="mt-5">
                     {{ email }}
                     <br />
                     {{ perfil.fechaNacimiento }}

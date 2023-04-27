@@ -290,6 +290,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json;charset=utf-8",
+          jwt: store.state.userData.jwt,
         },
         data: {
           apMaterno: this.apMaterno,

@@ -65,6 +65,7 @@
           </div>
         </a>
 
+        <div  v-if="idUser > 0">
         <div class="d-flex dropdown">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
@@ -91,6 +92,7 @@
             <h4>Ine</h4>
           </div>
         </a>
+        
         <a href="/ui/anuncio">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
@@ -98,13 +100,7 @@
             <h4>Anuncio</h4>
           </div>
         </a>
-        <a href="/ui/pago">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-regular fa-credit-card"></i>
-            <h4>Pago</h4>
-          </div>
-        </a>
+        
         <!-- <a href="/ui/factura">
           <div class="option">
             <i class="fa-sharp fa-solid fa-money-bill" title="Facturacion"></i>
@@ -119,7 +115,13 @@
           </div>
         </a>
       </div>
+
+      <div v-else>
+        </div>
     </div>
+        </div>
+
+
     <!-- menu que solo se ve en mobile -->
 
     <!-- para que jale ha que colocarle el mobile y el sidebarWidth3 -->
@@ -158,6 +160,9 @@
           </div>
         </a>
 
+
+<div v-if="idUser > 0">
+
         <div class="d-flex dropdown">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
@@ -184,18 +189,19 @@
             <h4>Ine</h4>
           </div>
         </a>
-        <a href="/ui/anuncio">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-rectangle-ad"></i>
-            <h4>Anuncio</h4>
-          </div>
-        </a>
+        
         <a href="/ui/pago">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-regular fa-credit-card"></i>
             <h4>Pago</h4>
+          </div>
+        </a>
+        <a href="/ui/anuncio">
+          <div class="option">
+            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+            <i class="fa-solid fa-rectangle-ad"></i>
+            <h4>Anuncio</h4>
           </div>
         </a>
         <!-- <a href="/ui/factura">
@@ -211,6 +217,14 @@
             <h4>Pruebas</h4>
           </div>
         </a>
+</div>
+
+<div v-else>
+  <!-- esto es para que no muestre datos a los no logueados -->
+</div>
+
+
+
       </div>
     </div>
     <!-- menu que solo se ve en mobile -->
@@ -290,7 +304,7 @@ export default {
     handleLogout() {
       this.clearUserData();
       localStorage.clear();
-      this.$router.push({ name: "login" });
+      this.$router.push({ name: "Home" });
     },
   },
 };

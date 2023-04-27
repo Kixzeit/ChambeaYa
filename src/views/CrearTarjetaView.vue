@@ -175,6 +175,7 @@ import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
 export default {
   data() {
     return {
+      
       tarjeta: {},
       cards: [],
       idUser: store.state.userData.idUser,
@@ -246,6 +247,7 @@ export default {
         headers: {
           Accept: "application/json;charset=utf-8",
           "Content-Type": "application/json",
+          jwt: store.state.userData.jwt,
         },
         data: {
           anio:this.anio,

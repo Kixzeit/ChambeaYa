@@ -151,7 +151,6 @@
           jwt: this.jwt,
           idUser: store.state.userData.idUser,
         };
-  
         axios
           .post("https://upload.qbits.mx/api/up/upload-image", formd, { headers })
           .then((response) => {

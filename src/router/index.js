@@ -24,6 +24,7 @@ import CrearTarjetaView from "@/views/CrearTarjetaView"
 import FacturacionView from "@/views/FacturacionView"
 import ResultadosView from "@/views/ResultadosView"
 import MyProfileView from "@/views/MyProfileView";
+import MiAnuncioView from "@/views/MiAnuncioView"
 import BusquedaView from "@/views/BusquedaView";
 
 const routes = [
@@ -145,6 +146,12 @@ const routes = [
     path: "/ui/miperfil",
     name: "miperfil",
     component: MyProfileView,
+    meta: { allowedRoles: ["admin", "regular"] },
+  },
+  {
+    path: "/ui/mianuncio",
+    name: "mianuncio",
+    component: MiAnuncioView,
     meta: { allowedRoles: ["admin", "regular"] },
   },
   {

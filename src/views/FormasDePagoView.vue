@@ -26,10 +26,16 @@
                       </div>
                       <div class="ms-auto">
                         <p class="text-primary">
-                          <a href="/ui/makecard"
+
+                          <a v-if="tarjetasActuales<cantidadTarjetas"
+                          href="/ui/makecard"
                             ><i class="fas fa-plus-circle text-primary pe-1"></i
-                            >Administrar Tarjetas</a
-                          >
+                            >Administrar Tarjetas</a>
+
+                          <a v-else href="/ui/makecard" >
+                            <i class="fas fa-plus-circle text-primary pe-1">
+                            </i>Agregar Tarjeta</a>
+
                         </p>
                       </div>
                     </div>
@@ -58,11 +64,14 @@
                         </div>
                       </div>
                     </form>
-                    <button
+                    <button v-if="tarjetasActuales > cantidadTarjetas"
                       type="button"
                       value="Pagar Ahora"
                       class="btn btn-primary btn-block btn-lg"
                     >Pagar Ahora</button>
+                    <div v-else>
+
+                    </div>
                   </div>
                 </div>
 
@@ -129,6 +138,8 @@ export default {
       idUser: store.state.userData.idUser,
       email: store.state.userData.email,
       nick: store.state.userData.nick,
+      cantidadTarjetas:0,
+      tarjetasActuales:0,
     };
   },
   mounted() {
@@ -147,6 +158,7 @@ export default {
         .then((response)=> {
           console.log(response.data);
           this.cards = response.data
+          this.tarjetasActuales = this.cards.length;
           console.log(this.cards)
         })
         .catch(function (error) {

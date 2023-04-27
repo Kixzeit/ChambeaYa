@@ -103,30 +103,24 @@
                     alt=""
                     class="rounded img"
                   />
-                  <i
+                
+                    <i
                     class="fa-solid fa-circle-xmark fa-bounce fa-2xl position-absolute top-0 end-0 border border-light"
                     style="color: #ec091f"
                     @click="elimina(imagen)"
                   ></i>
+                  
                 </div>
               </div>
             </div>
             <h2 class="my-4">Videos</h2>
             <div class="row mt-4 mb-4 justify-content-around">
               <div class="mb-4">
-                <a href="/ui/upload/" class="btn btn-primary"
-                  >Insertar Videos
-                  <i class="fa-solid fa-file-image" style="color: #ffffff"></i
-                ></a>
+                <a href="/ui/upload/" class=""
+                  >
+                  <!-- <i class="fa-solid fa-file-image" style="color: #ffffff"></i> -->
+                  </a>
               </div>
-            </div>
-            <div>
-              <img src="https://picsum.photos/125/125" alt="" class="m-1" />
-              <img src="https://picsum.photos/125/125" alt="" class="m-1" />
-              <img src="https://picsum.photos/125/125" alt="" class="m-1" />
-              <img src="https://picsum.photos/125/125" alt="" class="m-1" />
-              <img src="https://picsum.photos/125/125" alt="" class="m-1" />
-              <img src="https://picsum.photos/125/125" alt="" class="m-1" />
             </div>
             <h4 class="my-5">
               Datos del negocio
@@ -216,7 +210,7 @@ export default {
       loadedImages: 0,
 
       id: "",
-      nombreNegocio:"",
+      nombreNegocio: "",
       descripcionCompleta: "",
       descripcionPequeña: "",
       codigoPostal: "",
@@ -265,7 +259,7 @@ export default {
 
       axios
         .request(options)
-        .then((response)=> {
+        .then((response) => {
           console.log(response.data);
           this.nombreNegocio = response.data.nombreNegocio;
           this.descripcionPequeña = response.data.descripcionPequeña;
@@ -290,6 +284,7 @@ export default {
       tarjeta[index].textContent = "";
       console.log(imagen.id);
       console.log("estoy llegando");
+      const actualiza = this;
       const options = {
         method: "DELETE",
         url: `https://upload.qbits.mx/api/up/delete-media/${imagen.id}`,
@@ -303,13 +298,13 @@ export default {
       axios
         .request(options)
         .then(function (response) {
-          this.loader = "none";
+          actualiza.loader = "none";
           console.log(response.data);
-          this.delete = response.data;
+          actualiza.delete = response.data;
           location.reload();
         })
         .catch(function (error) {
-          this.loader = "none";
+          actualiza.loader = "none";
           console.error(error);
         });
     },

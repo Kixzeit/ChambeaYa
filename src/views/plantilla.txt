@@ -70,3 +70,405 @@ https://upload.qbits.mx/api/up/get-user-pricipal-image/49
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <template>
+  <div>
+    <SideBarKixComponent />
+    <div class="container-fluid p-4 row mx-2">
+      <div class="card card-body">
+
+        <div class="container">
+          <ul class="slides">
+            <li id="slide1" class="slide img-fluid">
+              <img src="https://picsum.photos/500/495" alt="" />
+            </li>
+            <li id="slide2" class="slide">
+              <img src="https://picsum.photos/500/496" alt="" />
+            </li>
+            <li id="slide3" class="slide">
+              <img src="https://picsum.photos/500/497" alt="" />
+            </li>
+            <li id="slide4" class="slide">
+              <img src="https://picsum.photos/500/498" alt="" />
+            </li>
+            <li id="slide5" class="slide">
+              <img src="https://picsum.photos/500/499" alt="" />
+            </li>
+          </ul>
+          <ul class="tumbnails">
+            <li>
+              <a href="#slide1"
+                ><img src="https://picsum.photos/300/99" class="img-thumbnail" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#slide2"
+                ><img src="https://picsum.photos/300/298" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#slide3"
+                ><img src="https://picsum.photos/300/297" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#slide4"
+                ><img src="https://picsum.photos/300/296" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#slide5"
+                ><img src="https://picsum.photos/300/295" alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <FooterComponent />
+  </div>
+</template>
+
+<img :src="une(imagen.fullHttpUploadUrl)" class="img-fluid rounded-start 75" alt="..."> -->
+<!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
+<!-- <img src="https://picsum.photos/200/200" class="img-fluid rounded-start" alt="..."> -->
+
+<!-- 
+<script>
+import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
+// import CarruselComponent2 from "@/components/CarruselComponent2.vue";
+import store from "@/store";
+import axios from "axios";
+
+export default {
+  components: {
+    SideBarKixComponent,
+    FooterComponent,
+    // CarruselComponent2
+  },
+  data: function () {
+    return {
+      idUser: store.state.userData.idUser,
+    };
+  },
+  mounted() {
+    this.getAdsImg();
+  },
+  methods: {
+    une(Nombreimg) {
+      return `https://media.visitanos.net/image${Nombreimg}`;
+    },
+
+    getAdsImg() {
+      axios
+        .get(
+          "https://upload.qbits.mx/api/up/get-user-all-images/" + this.idUser
+        )
+        .then((response) => {
+          this.images = response.data;
+          this.loadedImages = this.images.length;
+          console.log(this.images);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
+</script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.tumbnails{
+  display: flex;
+  flex-direction: column;
+  line-height: 0;
+}
+
+.tumbnails li {
+  flex:auto;
+  list-style: none;
+}
+
+.tumbnails li a {
+  display: block;
+}
+
+.tumbnails img{
+  object-fit: cover;
+  object-position: top;
+}
+
+.slides{
+  overflow: hidden;
+}
+
+.slides li {
+  position: absolute;
+  z-index: 1;
+  list-style: none;
+}
+
+.slides img{
+  object-fit: cover;
+  object-position: top;
+}
+
+.slides li:target{
+  z-index: 3;
+  -webkit-animation: slide 1s 1;
+}
+
+@keyframes slide {
+  0%{
+    transform:  translateY(-100%);
+  }
+  100%{
+    translateY:(0%);
+  }
+}
+
+@keyframes hidden {
+  0%{
+    z-index:2;
+  }
+  10%{
+    z-index: 2;
+  }
+  
+}
+
+
+
+
+</style> --> 
