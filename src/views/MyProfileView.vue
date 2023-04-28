@@ -67,16 +67,17 @@
                   <div class="mb-5">
                     <p class="lead fw-normal mb-1 fw-bold">Sobre mi</p>
                     <div class="p-4" style="background-color: #f8f9fa">
-                      <p class="font-italic mb-1">
-                        {{ perfil.estado }} {{ perfil.municipio }}
-                        {{ perfil.colonia }}
+                      <p class=" mb-1">
+                        Estado: {{ perfil.estado }}<br> Municipio: {{ perfil.municipio }}<br>
+                        Colonia: {{ perfil.colonia }}
                       </p>
-                      <p class="font-italic mb-0">{{ perfil.telefono }}</p>
-                      <p class="font-italic mb-0">{{ perfil.codigoPostal }}</p>
+                      <p class="font-italic mb-0">Telefono: {{ perfil.telefono }}</p>
+                      <p class="font-italic mb-0">Codigo Postal: {{ perfil.codigoPostal }}</p>
                     </div>
                   </div>
                   <div class="d-flex justify-content-between align-items-center mb-4">
                   </div>
+                  <hr>
                   <div class="row g-2">
                     <h2>Documentos: Oficiales</h2>
                     <div class="d-flex justify-content-center gap-4 mb-4" >
@@ -87,6 +88,7 @@
                         class="rounded-3 img-fluid w-25"
                       />
                     </div>
+                    <hr>
                     <h2 class="mb-4">Mis Imagenes:</h2>
                     <div class="d-flex flex-wrap justify-content-evenly mb-2 gap-5" >
                       <img

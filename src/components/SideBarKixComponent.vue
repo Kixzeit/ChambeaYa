@@ -85,20 +85,25 @@
           </div>
         </div>
 
-        <a href="/ui/ine">
+        <!-- verificamos que el perfil sea creado -->
+        <a href="/ui/ine" v-if="usuarioCreado>0">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-address-card"></i>
             <h4>Ine</h4>
           </div>
         </a>
-        <a href="/ui/pago">
+        <div v-else></div>
+
+        <!-- verificamos que las ines sean subidas -->
+        <a href="/ui/pago" v-if="inesSubidas>=2">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-regular fa-credit-card"></i>
             <h4>Pago</h4>
           </div>
         </a>
+        <div v-else></div>
         
         <a href="/ui/anuncio">
           <div class="option">
@@ -190,19 +195,21 @@
               
               <li><a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a></li>
               <li><a class="dropdown-item" href="/ui/datos">Editar Perfil</a></li>
+              <li><a class="dropdown-item" href="/ui/forgot">Cambiar Contraseña</a></li>
               <li><a class="dropdown-item" v-on:click="handleLogout">Cerrar Sesion</a></li>
 
             </ul>
           </div>
         </div>
 
-        <a href="/ui/ine">
+        <a href="/ui/ine" v-if="usuarioCreado>0">
           <div class="option">
             <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
             <i class="fa-solid fa-address-card"></i>
             <h4>Ine</h4>
           </div>
         </a>
+        <div v-else></div>
         
         <a href="/ui/pago">
           <div class="option">
@@ -257,6 +264,8 @@ import { ref } from "vue";
 import { computed } from "vue";
 import { mapState, mapMutations } from "vuex";
 import store from "@/store";
+import axios from "axios";
+
 let collapsed = ref(true);
 let collapsed3 = ref(true);
 console.log(collapsed.value);
@@ -301,12 +310,21 @@ export default {
       idUser: store.state.userData.idUser,
       email: store.state.userData.email,
       // nick: store.state.userData.nick,
+
+      // verificacion de llenado
+      usuarioCreado: 0,
+      inesSubidas:0,
     };
   },
   computed: {
     ...mapState({
       nick:(state) => state.userData.nick,
     }),
+  },
+  mounted() {
+    this.compruebaPerfil()
+    this.compruebaIne()
+
   },
   methods: {
     collapsed2: function () {
@@ -327,6 +345,39 @@ export default {
       localStorage.clear();
       this.$router.push({ name: "Home" });
     },
+    // metodos de verificacion de llenados de archivos
+
+    // verificamos si ya llenaron su perfil
+    compruebaPerfil() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-persons-byid",
+        params: { id: this.idUser },
+      };
+      axios
+        .request(options)
+        .then((response) => {
+          this.usuarioCreado=response.data.id
+        })
+        .catch(function (error) {
+          console.error("la info del usuario no pudo ser cargada" + error);
+        });
+    },
+    compruebaIne(){
+      axios
+        .get(
+          "https://upload.qbits.mx/api/up/get-user-identification-images/" +
+            this.idUser
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.inesSubidas=response.data.length;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
   },
 };
 </script>

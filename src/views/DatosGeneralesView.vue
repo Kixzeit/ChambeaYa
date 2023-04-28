@@ -107,7 +107,6 @@
                     >
                       <div class="d-flex gap-3">
                         <input
-                        
                           type="text"
                           class="form-control sm-col-12"
                           id="inputsearch"
@@ -124,14 +123,13 @@
                   <div class="col-md-11 m-auto">
                     <label class="">Colonia</label>
                     <select
-                    required
+                      required
                       @click="sayHola"
                       class="form-select"
                       aria-label="Default select example"
                       v-model="colonia"
                     >
                       <option
-                      
                         v-for="colonia in colonias"
                         v-bind:key="colonia.id"
                         :value="colonia.nombre"
@@ -179,7 +177,9 @@
                     href="/ui/miperfil"
                     @click="sendData"
                   >
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    
+                      Guardar
+                    
                   </a>
                 </div>
               </form>
@@ -237,6 +237,7 @@ export default {
       estado: "",
       //para llenar
       obtenMunicipio: "",
+      obtenEstado: ""
     };
   },
   mounted() {
@@ -380,15 +381,32 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.municipio = response.data[0].nombre;
+          this.obtenEstado = response.data[0].estado;
           console.log(this.municipio);
-          this.getEstado();
+          console.log(this.obtenEstado);
+          this.getEstado(this.obtenEstado)
+
         })
         .catch(function (error) {
           console.error(error);
         });
     },
-    getEstado: function () {
+    getEstado: function (id) {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/obten-estado",
+        params: { id },
+      };
 
+      axios
+        .request(options)
+        .then( (response)=> {
+          console.log(response.data);
+          this.estado=response.data.nombre
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
     },
   },
 };
