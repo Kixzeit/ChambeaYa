@@ -47,7 +47,7 @@
               </p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item text-start">Ciudad de del negocio<p class="card-text">
+              <li class="list-group-item text-start">{{ trabajo.descripcionCompleta }}<p class="card-text">
                 <small class="text-body-secondary">Last updated 3 mins ago</small>
               </p>
               </li>

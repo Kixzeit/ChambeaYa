@@ -55,7 +55,7 @@
                   <p class="fs-5">
                     {{ ads.descripcionCompleta }}
                   </p>
-                  <h6><a href="/" class="btn btn-primary">guardar</a></h6>
+                  <h6><a href="/" class="btn btn-primary">Salir</a></h6>
                 </div>
               </div>
             </div>

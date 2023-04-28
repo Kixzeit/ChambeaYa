@@ -98,6 +98,9 @@
                         class=" rounded-3 img"
                       />
                     </div>
+                    <div>
+                      <a href="/" class="btn btn-success">Guardar</a>
+                    </div>
                   </div>
                 </div>
               </div>

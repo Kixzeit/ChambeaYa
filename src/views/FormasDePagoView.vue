@@ -27,7 +27,7 @@
                       <div class="ms-auto">
                         <p class="text-primary">
 
-                          <a v-if="tarjetasActuales<cantidadTarjetas"
+                          <a v-if="tarjetasActuales>cantidadTarjetas"
                           href="/ui/makecard"
                             ><i class="fas fa-plus-circle text-primary pe-1"></i
                             >Administrar Tarjetas</a>
@@ -69,7 +69,7 @@
                       value="Pagar Ahora"
                       class="btn btn-primary btn-block btn-lg"
                     >Pagar Ahora</button>
-                    <div v-else>
+                    <div v-else >
 
                     </div>
                   </div>

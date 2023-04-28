@@ -95,8 +95,8 @@
                         >
                         <input
                           type="text"
-                          id=""
-                          class="form-control form-control-lg"
+                          id="companyasdf"
+                          class="form-control"
                           placeholder="visa , masterCard ,americanExpress"
                           v-model="company"
                         />
@@ -105,7 +105,7 @@
                     <div class="col-4">
                       <div class="form-outline">
                         <input
-                          type="password"
+                          type="text"
                           id="formControlLgExpk"
                           class="form-control form-control-lg"
                           placeholder="MM"
@@ -119,7 +119,7 @@
                     <div class="col-4">
                       <div class="form-outline">
                         <input
-                          type="password"
+                          type="text"
                           id="formControlLgExpk"
                           class="form-control form-control-lg"
                           placeholder="YYYY"

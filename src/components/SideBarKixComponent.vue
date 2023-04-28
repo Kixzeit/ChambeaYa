@@ -34,15 +34,15 @@
         <!-- aqui iria el logo -->
         <a href="/">
           <img
-          src="../assets/chambeaya.png"
-          style="
-            width: 50px;
-            height: 50px;
-            margin-left: -20px;
-            margin-top: -10px;
-          "
-          alt=""
-        />
+            src="../assets/chambeaya.png"
+            style="
+              width: 50px;
+              height: 50px;
+              margin-left: -20px;
+              margin-top: -10px;
+            "
+            alt=""
+          />
         </a>
         <i class="fa-solid fa-user-alien"></i>
         <h4>ChambeaYa!</h4>
@@ -65,81 +65,131 @@
           </div>
         </a>
 
-        <div  v-if="idUser > 0">
-        <div class="d-flex dropdown">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-user" title="Perfil"></i>
-            <h4
-              class="dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+        <div v-if="idUser > 0">
+
+          <div class="d-flex dropdown" v-if="usuarioCreado>0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-user" title="Perfil"></i>
+              <h4
+                class="dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
               >
-              Perfil
-            </h4>
-            <ul class="dropdown-menu bg-dark">
-              
-              <li><a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a></li>
-              <li><a class="dropdown-item" href="/ui/datos">Editar Perfil</a></li>
-              <li><a class="dropdown-item" href="/ui/forgot">Cambiar Contraseña</a></li>
-              <li><a class="dropdown-item" v-on:click="handleLogout">Cerrar Sesion</a></li>
-            </ul>
+                Perfil
+              </h4>
+              <ul class="dropdown-menu bg-dark">
+                <li>
+                  <a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/ui/datos">Editar Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/ui/forgot"
+                    >Cambiar Contraseña</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" v-on:click="handleLogout"
+                    >Cerrar Sesion</a
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+          <!-- se activa al crear perfil -->
+          <div class="d-flex dropdown" v-else>
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-user" title="Perfil"></i>
+              <h4
+                class="dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
+              >
+                Perfil
+              </h4>
+              <ul class="dropdown-menu bg-dark">
+                
+                <li>
+                  <a class="dropdown-item" href="/ui/datos">Crear Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/ui/forgot"
+                    >Cambiar Contraseña</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" v-on:click="handleLogout"
+                    >Cerrar Sesion</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
 
-        <!-- verificamos que el perfil sea creado -->
-        <a href="/ui/ine" v-if="usuarioCreado>0">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-address-card"></i>
-            <h4>Ine</h4>
-          </div>
-        </a>
-        <div v-else></div>
+          <!-- verificamos que el perfil sea creado -->
+          <a href="/ui/ine" v-if="usuarioCreado > 0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-address-card"></i>
+              <h4>Ine</h4>
+            </div>
+          </a>
+          <div v-else></div>
 
-        <!-- verificamos que las ines sean subidas -->
-        <a href="/ui/pago" v-if="inesSubidas>=2">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-regular fa-credit-card"></i>
-            <h4>Pago</h4>
-          </div>
-        </a>
-        <div v-else></div>
-        
-        <a href="/ui/anuncio">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-rectangle-ad"></i>
-            <h4>Anuncio</h4>
-          </div>
-        </a>
+          <!-- verificamos que las ines sean subidas -->
+          <a href="/ui/pago" v-if="inesSubidas >= 2">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-regular fa-credit-card"></i>
+              <h4>Pago</h4>
+            </div>
+          </a>
+          <div v-else></div>
 
-        <a href="/ui/mianuncio">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-hammer"></i>
-            <h4>Mi Anuncio</h4>
-          </div>
-        </a>
-        
-        <!-- <a href="/ui/factura">
+          <!-- verificamos que exista un metodo de pago -->
+
+          <a href="/ui/anuncio" v-if="tarjetas>0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-rectangle-ad"></i>
+              <h4>Anuncio</h4>
+            </div>
+          </a>
+          <div v-else></div>
+
+          <a href="/ui/mianuncio" v-if="anunciocreado>0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-hammer"></i>
+              <h4>Mi Anuncio</h4>
+            </div>
+          </a>
+          <div v-else ></div>
+
+          <!-- <a href="/ui/factura">
           <div class="option">
             <i class="fa-sharp fa-solid fa-money-bill" title="Facturacion"></i>
             <h4>Facturacion</h4>
           </div>
         </a> -->
-        <!-- <a href="/ui/menu">
+          <!-- <a href="/ui/menu">
           <div class="option">
             <i class="fa-solid fa-flask"></i>
             <h4>Pruebas</h4>
           </div>
         </a> -->
+        </div>
+
+        <div v-else></div>
       </div>
-
-      <div v-else>
-        </div>
     </div>
-        </div>
-
 
     <!-- menu que solo se ve en mobile -->
 
@@ -179,80 +229,161 @@
           </div>
         </a>
 
+        <div v-if="idUser > 0">
 
-<div v-if="idUser > 0">
-
-        <div class="d-flex dropdown">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-user" title="Perfil"></i>
-            <h4
-              class="dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"
+          <div class="d-flex dropdown" v-if="usuarioCreado>0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-user" title="Perfil"></i>
+              <h4
+                class="dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
               >
-              Perfil
-            </h4>
-            <ul class="dropdown-menu bg-dark">
-              
-              <li><a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a></li>
-              <li><a class="dropdown-item" href="/ui/datos">Editar Perfil</a></li>
-              <li><a class="dropdown-item" href="/ui/forgot">Cambiar Contraseña</a></li>
-              <li><a class="dropdown-item" v-on:click="handleLogout">Cerrar Sesion</a></li>
+                Perfil
+              </h4>
+              <ul class="dropdown-menu bg-dark">
+                <li>
+                  <a class="dropdown-item" href="/ui/miperfil">Mi Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/ui/datos">Editar Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/ui/forgot"
+                    >Cambiar Contraseña</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" v-on:click="handleLogout"
+                    >Cerrar Sesion</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- se activa al crear perfil -->
+          <div class="d-flex dropdown" v-else>
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-user" title="Perfil"></i>
+              <h4
+                class="dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
+              >
+                Perfil
+              </h4>
+              <ul class="dropdown-menu bg-dark">
+                <li>
+                  <a class="dropdown-item" href="/ui/datos">Crear Perfil</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/ui/forgot"
+                    >Cambiar Contraseña</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" v-on:click="handleLogout"
+                    >Cerrar Sesion</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
 
-            </ul>
-          </div>
-        </div>
 
-        <a href="/ui/ine" v-if="usuarioCreado>0">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-address-card"></i>
-            <h4>Ine</h4>
-          </div>
-        </a>
-        <div v-else></div>
-        
-        <a href="/ui/pago">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-regular fa-credit-card"></i>
-            <h4>Pago</h4>
-          </div>
-        </a>
-        <a href="/ui/anuncio">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-hammer"></i>
-            <h4>Anuncio</h4>
-          </div>
-        </a>
-        <a href="/ui/mianuncio">
-          <div class="option">
-            <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
-            <i class="fa-solid fa-rectangle-ad"></i>
-            <h4>Mi Anuncio</h4>
-          </div>
-        </a>
-        <!-- <a href="/ui/factura">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <a href="/ui/ine" v-if="usuarioCreado > 0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-address-card"></i>
+              <h4>Ine</h4>
+            </div>
+          </a>
+          <div v-else></div>
+
+          <a href="/ui/pago" v-if="inesSubidas >= 2">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-regular fa-credit-card"></i>
+              <h4>Pago</h4>
+            </div>
+          </a>
+          <div v-else></div>
+
+          <a href="/ui/anuncio" v-if="tarjetas>0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-rectangle-ad"></i>
+              <h4>Anuncio</h4>
+            </div>
+          </a>
+          <div v-else></div>
+
+
+
+          <a href="/ui/mianuncio" v-if="anunciocreado>0">
+            <div class="option">
+              <!-- aqui va el icono : ejemplo el del home  le colocamos title:home -->
+              <i class="fa-solid fa-hammer"></i>
+              <h4>Mi Anuncio</h4>
+            </div>
+          </a>
+          <div v-else ></div>
+
+          <!-- <a href="/ui/factura">
           <div class="option">
             <i class="fa-sharp fa-solid fa-money-bill" title="Facturacion"></i>
             <h4>Facturacion</h4>
           </div>
         </a> -->
-        <!-- <a href="/ui/menu">
+          <!-- <a href="/ui/menu">
           <div class="option">
             
             <i class="fa-solid fa-flask"></i>
             <h4>Pruebas</h4>
           </div>
         </a> -->
-</div>
+        </div>
 
-<div v-else>
-  <!-- esto es para que no muestre datos a los no logueados -->
-</div>
-
-
-
+        <div v-else>
+          <!-- esto es para que no muestre datos a los no logueados -->
+        </div>
       </div>
     </div>
     <!-- menu que solo se ve en mobile -->
@@ -313,18 +444,21 @@ export default {
 
       // verificacion de llenado
       usuarioCreado: 0,
-      inesSubidas:0,
+      inesSubidas: 0,
+      tarjetas: 0,
+      anunciocreado:0,
     };
   },
   computed: {
     ...mapState({
-      nick:(state) => state.userData.nick,
+      nick: (state) => state.userData.nick,
     }),
   },
   mounted() {
-    this.compruebaPerfil()
-    this.compruebaIne()
-
+    this.compruebaPerfil();
+    this.compruebaIne();
+    this.compruebaTarjeta();
+    this.compruebaAnuncio();
   },
   methods: {
     collapsed2: function () {
@@ -357,13 +491,13 @@ export default {
       axios
         .request(options)
         .then((response) => {
-          this.usuarioCreado=response.data.id
+          this.usuarioCreado = response.data.id;
         })
         .catch(function (error) {
           console.error("la info del usuario no pudo ser cargada" + error);
         });
     },
-    compruebaIne(){
+    compruebaIne() {
       axios
         .get(
           "https://upload.qbits.mx/api/up/get-user-identification-images/" +
@@ -371,13 +505,43 @@ export default {
         )
         .then((response) => {
           console.log(response.data);
-          this.inesSubidas=response.data.length;
+          this.inesSubidas = response.data.length;
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+    compruebaTarjeta() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-allcards-byid",
+        params: { id: this.idUser },
+      };
+      axios
+        .request(options)
+        .then((response) => {
+          console.log(response.data);
+          this.tarjetas = response.data.length;
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
+    compruebaAnuncio() {
+      const options = {
+        method: "GET",
+        url: "http://localhost:8080/api/get-ads-byid/" + this.idUser,
+      };
+      axios
+        .request(options)
+        .then((response) => {
+          console.log(response.data);
+          this.anunciocreado=response.data.id
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
     }
-
   },
 };
 </script>
