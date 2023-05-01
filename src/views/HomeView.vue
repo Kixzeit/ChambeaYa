@@ -88,16 +88,19 @@
         
 
       </div>
+      <FooterComponent/>
   </div>
 </template>
 
 <script>
 import SideBarKixComponent from '@/components/SideBarKixComponent.vue'
+import FooterComponent from '@/components/FooterComponent.vue';
 
 
 export default {
   components: {
-    SideBarKixComponent
+    SideBarKixComponent,
+    FooterComponent
   }
 }
 

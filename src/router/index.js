@@ -30,7 +30,7 @@ import BusquedaView from "@/views/BusquedaView";
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeView,
   },
   {

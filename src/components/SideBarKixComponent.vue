@@ -93,7 +93,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" v-on:click="handleLogout"
+                  <a href="" class="dropdown-item" v-on:click="handleLogout"
                     >Cerrar Sesion</a
                   >
                 </li>
@@ -125,7 +125,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" v-on:click="handleLogout"
+                  <a href="" class="dropdown-item" v-on:click="handleLogout"
                     >Cerrar Sesion</a
                   >
                 </li>
@@ -257,9 +257,8 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" v-on:click="handleLogout"
-                    >Cerrar Sesion</a
-                  >
+                  <a href="" class="dropdown-item" v-on:click="handleLogout"
+                    >Cerrar Sesion</a>
                 </li>
               </ul>
             </div>
@@ -288,7 +287,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" v-on:click="handleLogout"
+                  <a href="" class="dropdown-item" v-on:click="handleLogout"
                     >Cerrar Sesion</a
                   >
                 </li>
@@ -477,7 +476,7 @@ export default {
     handleLogout() {
       this.clearUserData();
       localStorage.clear();
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "home" });
     },
     // metodos de verificacion de llenados de archivos
 

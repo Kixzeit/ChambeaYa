@@ -21,11 +21,13 @@
             <div class="card-body">
               <div v-if="idUser > 0">
                 <a href="#" class="card-link">Ver Datos De contacto</a>
+                
               </div>
               <div v-else >
                 <a href="/ui/login" class="btn btn-primary">Ver Datos De contacto</a>
               </div>
             </div>
+            
           </div>
           
         </div>

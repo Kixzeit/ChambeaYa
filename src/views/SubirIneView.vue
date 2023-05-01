@@ -42,6 +42,7 @@
           </div>
       </div>
     </div>
+    <FooterComponent/>
   </div>
 </template>
 
@@ -49,10 +50,13 @@
 import axios from "axios";
 import store from "@/store";
 import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
+
 
 export default {
   components: {
     SideBarKixComponent,
+    FooterComponent
   },
   data() {
     return {

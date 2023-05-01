@@ -2,7 +2,7 @@
   <div>
     <SideBarKixComponent />
     <div class="container-fluid p-4 mx-3 row">
-      <div class="card card-body">
+      <div class="card card-body mb-5">
         <h1>¡Necesitas ayuda con algo?</h1>
         <h3>¡Encuentralo Aqui Mismo!</h3>
         <div>
@@ -34,7 +34,7 @@
         </div>
         <div class="d-flex flex-wrap gap-4 justify-content-center" >
           
-          <div class="col-sm-12 col-lg-3 jover" v-for="trabajo in oficios" v-bind:key="trabajo.id">
+          <div class="col-sm-12 col-lg-3 " v-for="trabajo in oficios" v-bind:key="trabajo.id">
         <div class="card card-body">
             <h3 class="fw-bold">{{ trabajo.oficio }}</h3>
             <!-- <CarruselComponent2 /> -->
@@ -52,10 +52,32 @@
               </p>
               </li>
             </ul>
-            
+
             <div class="card-body">
               <div v-if="idUser > 0">
-                <a href="#" class="card-link">Ver Datos De contacto</a>
+                <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver Datos De contacto</a>
+                <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Datos de contacto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><span class="fw-bold text-success">Oficio: </span>{{trabajo.oficio }}</p>
+        <p><span class="fw-bold">Negocio: </span>{{ trabajo.nombreNegocio }}</p>
+        <p><span class="fw-bold">Correo Electronico: </span>{{ trabajo.correoNegocio }}</p>
+        <p><span class="fw-bold">Numero de Telefono:</span> {{ trabajo.telefonoNegocio }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
               </div>
               <div v-else >
                 <a href="/ui/login" class="btn btn-primary">Ver Datos De contacto</a>
@@ -68,7 +90,7 @@
         </div>
       </div>
     </div>
-    <FooterComponent />
+    <FooterComponent class="mt-5" />
   </div>
 </template>
 

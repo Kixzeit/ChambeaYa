@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SideBarKixComponent/>
     <div class="container-fluid p-4 mx-3 login">
       <div class="card ancho">
         <div class="card-body text-align-left">
@@ -73,9 +74,11 @@
 
 <script>
 import FooterComponent from "@/components/FooterComponent.vue";
+import SideBarKixComponent from "@/components/SideBarKixComponent.vue";
 import axios from "axios";
 import store from "@/store";
 import router from "@/router";
+
 
 const emaiRegex = new RegExp(
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -85,7 +88,8 @@ const apiEndpoint = "https://access.qbits.mx/api/login";
 
 export default {
   components: {
-    FooterComponent
+    FooterComponent,
+    SideBarKixComponent
   },
   data: function () {
     return {
