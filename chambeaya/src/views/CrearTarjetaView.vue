@@ -39,7 +39,7 @@
                           href="#!"
                           class="my-3 text-danger"
                           @click="elimina(card)"
-                          >Eliminar Tarjetassssssssssssssssssssss</a
+                          >Eliminar Tarjeta</a
                         >
                       </div>
                     </div>
