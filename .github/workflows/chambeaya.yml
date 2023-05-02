@@ -1,0 +1,54 @@
+  name: CD chambeaya-front
+
+  on:
+    workflow_dispatch:
+
+    push:
+      branches: [ "main"]
+      paths: 
+        - 'chambeaya/**'
+      
+  jobs:
+
+    build_vue:
+      name: Build docker image an push Vuejs image(01)
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: checkout for source code(02)
+      - uses: actions/checkout@v3
+
+      - name: setting up node 16 (03)
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: setup for cache (04)
+      - uses: actions/cache@v3
+        id: cache
+        with:
+          path: chamabeaya/node_modules/
+          key: chambeaya-${{hashfiles('chambeaya/package.json') }}
+
+      - name: Install all dependencies (05)
+        run: |
+          cd chambeaya
+          npm install --save
+          npm run build
+
+      - name: Prepare Buider Action (06)
+      - uses: docker/setup-buildx-action@v1
+
+      - name: Login to Docker Hub (07)
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ git.actor }}
+          password: ${{ secrets.GHCR_PAT }}
+
+      - name: Build and push (08)
+        uses: docker/build-push-action@v4
+        with:
+          context: ./chambeaya/
+          push: true
+          tags: ghcr.io/kixzeit/dockerized-chambeaya:latest
