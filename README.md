@@ -1,3 +1,14 @@
+[![.github/workflows/deploy-chambeaya.yml](https://github.com/Kixzeit/ChambeaYa/actions/workflows/deploy-chambeaya.yml/badge.svg)](https://github.com/Kixzeit/ChambeaYa/actions/workflows/deploy-chambeaya.yml)
+
+
+
+
+
+
+
+
+
+
 # my-first-project
 
 In order to run this project you need to install vueJs, clone this repo, install dependencies and run it.
