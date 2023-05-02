@@ -6,6 +6,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-10 col-lg-10 col-xl-5">
             <div class="card rounded-3">
+
               <div class="card-body p-4">
                 <div class="text-center mb-4">
                   <h3>Configuracion de Tarjetas</h3>
@@ -38,7 +39,7 @@
                           href="#!"
                           class="my-3 text-danger"
                           @click="elimina(card)"
-                          >Eliminar Tarjeta</a
+                          >Eliminar Tarjetassssssssssssssssssssss</a
                         >
                       </div>
                     </div>
