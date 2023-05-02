@@ -3,9 +3,10 @@
   on:
     workflow_dispatch:
 
-
     push:
       branches: [ "main"]
+      paths: 
+        -'chambeaya/**'
       
   jobs:
 
@@ -26,11 +27,12 @@
       - uses: actions/cache@v3
         id: cache
         with:
-          path: chamabeya/node_modules/
-          key: ${{runner.os}}-${{hashfiles('chambeaya/package.json') }}
+          path: chamabeaya/node_modules/
+          key: chambeaya-${{hashfiles('chambeaya/package.json') }}
 
       - name: Install all dependencies (05)
         run: |
+          cd chambeaya
           npm install --save
           npm run build
 
@@ -47,6 +49,6 @@
       - name: Build and push (08)
         uses: docker/build-push-action@v4
         with:
-          context: ./
+          context: ./chambeaya/
           push: true
           tags: ghcr.io/kixzeit/dockerized-chambeaya:latest
