@@ -5,10 +5,8 @@
 
 
     push:
-      brnaches: [ "main"]
-      paths:
-        - 'chambeaya/**'
-
+      branches: [ "main"]
+      
   jobs:
 
     build_vue:
@@ -24,7 +22,7 @@
         with:
           node-version: '16'
 
-      - nane: setup for cache (04)
+      - name: setup for cache (04)
       - uses: actions/cache@v3
         id: cache
         with:
@@ -33,9 +31,8 @@
 
       - name: Install all dependencies (05)
         run: |
-        cd chambeaya
-        npm install --save
-        npm run build
+          npm install --save
+          npm run build
 
       - name: Prepare Buider Action (06)
       - uses: docker/setup-buildx-action@v1
@@ -53,14 +50,3 @@
           context: ./chambeaya
           push: true
           tags: ghcr.io/kixzeit/dockerized-chambeaya:latest
-
-      - name: Execute remote commands (09)
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.REMOTE_SRV_IP}}
-          username: ${{ secrets.REMOTE_SRV_USER }}
-          key: ${{ secrets.REMOTE_SRV_PRIV_KEY }}
-          PORT: 22
-          script: |
-            ls -la
-            ~/publisher-all/publisher-front/run.sh
